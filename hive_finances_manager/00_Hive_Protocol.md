@@ -29,7 +29,13 @@ For the `hive_worker.py` to parse tasks correctly, they must follow this structu
     - Worker creates a `hive/T<ID>-<name>` branch.
     - Worker performs the edit and runs verification.
 4.  **Review**: Orchestrator (Antigravity) reviews the branch/diff.
-5.  **Merge/Archival**: If approved, Orchestrator merges the branch and marks the task as `[x]` in the plan.
+5.  **PR Authorization Gate**: Agent posts PR details to Slack `#pull-requests` and waits/reads automation authorization.
+6.  **Merge/Archival**: If Slack authorization and GitHub mergeability/check gates pass, Orchestrator merges the branch and marks the task as `[x]` in the plan.
+
+### Mergeability Reconciliation Rule
+
+- Slack approval is a coordination signal, not a merge override.
+- If Slack shows approved but GitHub reports merge conflicts (`CONFLICTING`/`DIRTY`), treat as blocked and resolve conflicts before merge.
 
 ## 4. Guiding Principles
 

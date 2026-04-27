@@ -12,6 +12,7 @@ Run documentation sync when any of the following occur:
 - CLI command semantics or output behavior changes
 - Phase scope, milestone order, or rollout assumptions change
 - Cross-repo dependency or blocker status changes
+- PR governance/protocol changes (Slack automation routing, approval gates, mergeability rules)
 
 ## Sync Routine
 
