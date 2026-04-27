@@ -38,8 +38,11 @@ One-page operating checklist for agents and humans to keep repo hygiene consiste
 - [ ] Branch is pushed and remote tracking is healthy.
 - [ ] PR title states intent and target repo context.
 - [ ] PR body includes summary, validation run, and risks/follow-ups.
+- [ ] PR is announced in Slack `#pull-requests` (repo, branch, PR URL).
+- [ ] Slack automation authorization state is observed (`approved`/`merged` or explicit blocker).
 - [ ] Required checks are green.
 - [ ] Required signoffs/approvals are present.
+- [ ] Slack authorization and GitHub mergeability are reconciled (no `CONFLICTING`/`DIRTY` mismatch).
 - [ ] No unresolved high-severity findings remain.
 
 ## Merge Readiness Gate
