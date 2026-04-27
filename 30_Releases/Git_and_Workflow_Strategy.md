@@ -6,13 +6,17 @@ The Finance Manager project will utilize a **Multi-Repo Strategy**. Each major c
 ## Agent Execution Rules (The Git Ecosystem)
 To ensure traceability and roll-back capability, all agents MUST adhere to the following Git workflow during execution:
 
-1. **Working in Main:** For the current Alpha/Beta phase, agents work directly in the `main` branch to maintain velocity.
+1. **Working Branches + PRs:** Agents do not implement feature work directly on `main`/`master`. Use feature branches and open pull requests for changes intended for shared history.
 2. **Atomic Commits:** Upon completing a logical task (e.g., "Fix dashboard charts"), the agent MUST commit the changes with a clear `type: description` message (Conventional Commits style).
-3. **Version Tagging (v-tags):** 
+3. **Push + Review Gates:**
+    - Feature branch must be pushed before review.
+    - PR must include summary, validation evidence, and known risks/follow-ups.
+    - Required checks and required signoffs/approvals must pass before merge.
+4. **Version Tagging (v-tags):** 
     - Every successful execution of a plan MUST be accompanied by a version tag increment.
     - Format: `vX.Y.Z` (e.g., `v0.1.1`, `v0.1.2`).
     - This allows the user to roll back the entire repository to a known good state if an agent introduces a regression.
-4. **Git First:** No changes should be considered "complete" until they are committed and tagged.
+5. **Git First:** No changes should be considered "complete" until they are committed and tagged.
 
 ---
 

@@ -18,6 +18,7 @@ Run documentation sync when any of the following occur:
 1. **Capture Change Set**
    - What changed in code behavior
    - Which repo(s) changed
+   - Which branch/PR(s) carry the change
    - What risks/assumptions shifted
 2. **Map to Docs**
    - Current state: `design_docs/10_Current_State/`
@@ -46,6 +47,7 @@ Run documentation sync when any of the following occur:
 
 - Change summary: API introduces calendar aggregates; CLI adds verification path; Reflex calendar consumes contract.
 - Repos touched: API, CLI, Reflex.
+- Branch/PRs: `feature/...` branches with linked per-repo PRs.
 - Docs updated:
   - `design_docs/30_Releases/Subagent_Multi_Repo_Routine.md`
   - `design_docs/20_Roadmap/Phase_Execution_Triggers_and_Breakpoints.md`
