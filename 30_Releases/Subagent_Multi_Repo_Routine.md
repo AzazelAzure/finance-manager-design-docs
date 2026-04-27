@@ -26,6 +26,7 @@ It operationalizes the existing API-first dependency rule and prevents repo drif
 5. **Cross-Repo Validation (`shell` subagent)**
    - Run repo-scoped status/diff/test passes and release notes checks.
    - Confirm per-repo feature branch, PR URL/state, and required checks/signoffs.
+   - Use local `gh` CLI for PR/status/check operations when managing GitHub workflow from terminal.
 
 ## Hard Guardrails
 
@@ -35,6 +36,7 @@ It operationalizes the existing API-first dependency rule and prevents repo drif
 - Every repo touch must include changelog/design-doc impact assessment.
 - Every repo intended for merge must have PR status and check/signoff state recorded in handoff output.
 - Every handoff must use the shared handoff contract.
+- Verify `gh auth status` before PR actions if GitHub auth state is uncertain.
 
 ## Run-Through Example: Transaction Calendar Program
 
