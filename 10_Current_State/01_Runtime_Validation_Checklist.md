@@ -60,3 +60,23 @@ When behavior does not match expectations:
 3. Confirm container/service status is healthy.
 4. Inspect API and Reflex logs for contract/runtime errors.
 5. Re-run the smoke checklist before concluding regression.
+
+## F) Authentication Runtime Guardrails (Post-Rebuild)
+
+Use this sequence before diagnosing frontend login regressions:
+
+1. Confirm API runtime database backend from inside the API container:
+   - `podman exec finance-manager-api uv run python manage.py shell -c "from django.conf import settings; print(settings.DATABASES['default'])"`
+2. Confirm expected users exist in Postgres:
+   - `podman exec finance-manager-db psql -U finance_user -d finance_db -c "select count(*) as users from auth_user;"`
+3. If API login returns `401` for known-good credentials, verify account presence before frontend debugging.
+4. Treat empty `auth_user` after restart/rebuild as a data-state issue (seed/reset) rather than an auth contract regression.
+
+## G) Manual Verification Gate (Current)
+
+Pending manual verification before final signoff of this change wave:
+
+1. Splash/account-health labels render localized values (no placeholder keys).
+2. Login succeeds from UI for both known username and known email identifiers.
+3. Token refresh path returns `401` (not `500`) when refresh token references deleted user.
+4. Onboarding source + initial transaction flow works end-to-end with canonical source naming.
