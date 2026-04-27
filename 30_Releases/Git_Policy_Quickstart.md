@@ -12,6 +12,14 @@ One-page operating checklist for agents and humans to keep repo hygiene consiste
 4. Push branch, open PR, and track PR URL/status.
 5. Merge only after required checks and required signoffs/approvals pass.
 
+## Local GitHub CLI
+
+- `gh` is installed locally and should be used from terminal for GitHub operations.
+- Local agents may use `gh` to create PRs, inspect checks, review comments, and manage merge flow.
+- Basic checks:
+  - `gh --version`
+  - `gh auth status`
+
 ## Pre-Work Checklist
 
 - [ ] Confirm active repo (`finance_manager_api/`, `finance_manager_cli/`, `finance_manager_reflex/`, or docs repo).

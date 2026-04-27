@@ -18,6 +18,12 @@ To ensure traceability and roll-back capability, all agents MUST adhere to the f
     - This allows the user to roll back the entire repository to a known good state if an agent introduces a regression.
 5. **Git First:** No changes should be considered "complete" until they are committed and tagged.
 
+### GitHub Operations Tooling
+
+- `gh` (GitHub CLI) is available locally and is the default terminal interface for PR operations by local agents.
+- Expected local PR flow includes `gh pr create`, `gh pr view`, `gh pr checks`, and related review/merge commands as permitted by repo policy.
+- Agents should verify CLI auth with `gh auth status` before attempting PR operations.
+
 ---
 
 ## Feature Rollout Pipeline
