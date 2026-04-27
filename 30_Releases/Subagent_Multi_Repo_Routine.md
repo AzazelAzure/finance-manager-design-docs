@@ -25,12 +25,15 @@ It operationalizes the existing API-first dependency rule and prevents repo drif
    - Emit handoff: UX impact and backend assumptions.
 5. **Cross-Repo Validation (`shell` subagent)**
    - Run repo-scoped status/diff/test passes and release notes checks.
+   - Confirm per-repo feature branch, PR URL/state, and required checks/signoffs.
 
 ## Hard Guardrails
 
 - Never stage or commit files from different repos in one commit step.
+- Never implement shared feature work directly on `main`/`master`; use per-repo feature branches.
 - Block downstream implementation if upstream contract is unresolved.
 - Every repo touch must include changelog/design-doc impact assessment.
+- Every repo intended for merge must have PR status and check/signoff state recorded in handoff output.
 - Every handoff must use the shared handoff contract.
 
 ## Run-Through Example: Transaction Calendar Program

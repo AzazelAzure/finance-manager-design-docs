@@ -43,6 +43,16 @@ Coordinate branch ownership across multiple agents so commit/push responsibility
 - Transfer condition:
 - Transfer timestamp:
 
+### PR Tracking
+- PR URL:
+- PR status: draft | open | in_review | approved | changes_requested | merged
+- Required checks:
+  - check:
+    status: pending | pass | fail
+- Required signoffs:
+  - reviewer/agent:
+    status: pending | approved | blocked
+
 ### Notes
 - Blockers:
 - Cross-repo dependency notes:
@@ -105,6 +115,9 @@ Coordinate branch ownership across multiple agents so commit/push responsibility
   - [ ] `git log --oneline -n 10` checked for message style
   - [ ] commit(s) created in correct repo boundary
   - [ ] branch pushed to remote
+  - [ ] PR opened and linked in this record
+  - [ ] required checks green
+  - [ ] required signoffs/approvals recorded
   - [ ] post-push `git status` clean/expected
 ```
 
@@ -115,7 +128,8 @@ Coordinate branch ownership across multiple agents so commit/push responsibility
 3. Every ownership transfer must include a git handoff record in:
    - `design_docs/30_Releases/Git_Owner_Handoff_Template.md`
 4. Final owner is the only agent authorized to run closeout commit/push flow.
-5. Final owner marks session `closed` after checklist completion.
+5. Final owner opens/updates PR metadata and verifies required checks/signoffs.
+6. Final owner marks session `closed` only after merge readiness is satisfied.
 
 ## Guardrails
 

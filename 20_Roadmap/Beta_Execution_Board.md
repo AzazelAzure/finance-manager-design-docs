@@ -66,6 +66,7 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
 5. Runtime access must follow shared ownership tracking in `design_docs/30_Releases/Runtime_Signup_Sheet.md`.
 6. Runtime ownership transfers must use `design_docs/30_Releases/Runtime_Owner_Handoff_Template.md`.
 7. Items labeled `[Post-Launch Beta]` or `[Far Future]` must not block `[Now]` launch gates.
+8. Feature work should run on repo feature branches with PRs; merge only after required checks and signoffs.
 
 ## Next Suggested Parallel Slice
 
