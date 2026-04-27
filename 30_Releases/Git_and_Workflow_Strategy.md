@@ -11,7 +11,9 @@ To ensure traceability and roll-back capability, all agents MUST adhere to the f
 3. **Push + Review Gates:**
     - Feature branch must be pushed before review.
     - PR must include summary, validation evidence, and known risks/follow-ups.
+    - Agent must post PR to Slack `#pull-requests` and wait/read automation authorization.
     - Required checks and required signoffs/approvals must pass before merge.
+    - If Slack authorizes but GitHub reports `mergeable=CONFLICTING` or `mergeStateStatus=DIRTY`, treat as blocked until conflicts are resolved.
 4. **Version Tagging (v-tags):** 
     - Every successful execution of a plan MUST be accompanied by a version tag increment.
     - Format: `vX.Y.Z` (e.g., `v0.1.1`, `v0.1.2`).

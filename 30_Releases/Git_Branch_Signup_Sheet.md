@@ -46,6 +46,8 @@ Coordinate branch ownership across multiple agents so commit/push responsibility
 ### PR Tracking
 - PR URL:
 - PR status: draft | open | in_review | approved | changes_requested | merged
+- Slack channel: `#pull-requests`
+- Slack authorization state: pending | approved | merged | changes_requested | blocked
 - Required checks:
   - check:
     status: pending | pass | fail
@@ -129,7 +131,8 @@ Coordinate branch ownership across multiple agents so commit/push responsibility
    - `design_docs/30_Releases/Git_Owner_Handoff_Template.md`
 4. Final owner is the only agent authorized to run closeout commit/push flow.
 5. Final owner opens/updates PR metadata and verifies required checks/signoffs.
-6. Final owner marks session `closed` only after merge readiness is satisfied.
+6. Final owner confirms Slack `#pull-requests` authorization and reconciles with GitHub mergeability state before merge.
+7. Final owner marks session `closed` only after merge readiness is satisfied.
 
 ## Guardrails
 
