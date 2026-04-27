@@ -27,6 +27,8 @@ It operationalizes the existing API-first dependency rule and prevents repo drif
    - Run repo-scoped status/diff/test passes and release notes checks.
    - Confirm per-repo feature branch, PR URL/state, and required checks/signoffs.
    - Use local `gh` CLI for PR/status/check operations when managing GitHub workflow from terminal.
+   - Post each opened PR to Slack `#pull-requests` and wait/read automation authorization before merge.
+   - Reconcile Slack authorization with GitHub mergeability state to catch conflict mismatches.
 
 ## Hard Guardrails
 
