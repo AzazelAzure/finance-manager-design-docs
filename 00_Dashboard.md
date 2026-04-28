@@ -32,5 +32,9 @@ Guidelines for cross-repo contracts, dependency locking, and versioning.
 - [[30_Releases/Dependency_Management|Dependency Management]]
 - [[30_Releases/Git_and_Workflow_Strategy|Git and Workflow Strategy]]
 
+### 6. 🤖 CLI / Slack / cloud agent bridge
+How GitHub cloud agents and the headless Cursor CLI agent coordinate over Slack, PR gates, and runtimes.
+- [[40_System_Design/12_Cursor_CLI_Slack_Cloud_Agent_Bridge|Cursor CLI, Slack, and Cloud Agent Bridge]]
+
 ---
 *Maintained jointly by Gemini (Architect) and Cursor (Implementer).*
