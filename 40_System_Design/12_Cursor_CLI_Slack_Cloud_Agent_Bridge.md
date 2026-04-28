@@ -122,20 +122,22 @@ Runtime artifacts (local defaults):
 
 ## Slack pinned message (copy-paste)
 
-Use a short pin in `#cli-interface` with a link to this file in your default branch (adjust URL host/org/repo as needed):
+Use a short pin in `#cli-interface` with a link to this file in your default branch.
+
+**Why not use the parent `finance-manager-ecosystem` URL?** In that repo, `design_docs` is a **git submodule**, not regular files. GitHub does **not** serve `.../blob/main/design_docs/.../file.md` for paths inside submodule content; those links **404**. Use the **design docs repository** URL below (or open `design_docs` in the parent repo and use GitHub’s submodule link).
 
 ```text
 *Cursor CLI bridge — how to task the agent*
 
 Full contract (read this first):
-https://github.com/<org>/<repo>/blob/<default-branch>/design_docs/40_System_Design/12_Cursor_CLI_Slack_Cloud_Agent_Bridge.md
+https://github.com/AzazelAzure/finance-manager-design-docs/blob/main/40_System_Design/12_Cursor_CLI_Slack_Cloud_Agent_Bridge.md
 
 *Quick rules*
 • Task the bot with a mention or `!cursor` (see runner config).
 • Say which *sub-repo* and *workspace path*; state *local* vs *server* runtime.
 • Workflow: *roadmap-rollout-planning* → plan under `plans/<branch-name>/` → *orchestration-manager* → implement on a *feature branch* → PR → *design-docs-sync*.
 • Post every PR to *#pull-requests*; follow Slack *and* GitHub; treat conflict/dirty as *blocked* until fixed.
-• Optional PR log: `design_docs/30_Releases/pr_status.md`
+• Optional PR log: `design_docs/30_Releases/pr_status.md` (in the design-docs repo, path is `30_Releases/pr_status.md` from repo root)
 ```
 
-Replace `<org>`, `<repo>`, and `<default-branch>` with your GitHub coordinates when you pin.
+**Private repo:** you must be logged into GitHub (and have access) or the link can show **404** in some clients.
