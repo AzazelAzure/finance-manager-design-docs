@@ -78,8 +78,16 @@ TASK: |
 | **Cursor CLI / `agent`** | Installed on the machine running the script | Same, on the server host or in an approved runner image. |
 | **Containers / services** | Follow `scripts/fm_docker.sh` / `scripts/fm_services.sh` and **single runtime owner** in `design_docs/30_Releases/Runtime_Signup_Sheet.md` | Same policy; do not mix modes without documentation. |
 | **Secrets** | `CURSOR_API_KEY`, `SLACK_BOT_TOKEN` in env or secure store | Same; prefer secret manager on server. |
+| **Runtime bundle migration** | Build artifacts with `scripts/server/create_runtime_bundle.sh`; optional single-step push with `scripts/server/push_runtime_bundle.sh` for VPS handoff testing. | Prefer artifact push + `scripts/server/verify_release_manifest.sh` over ad-hoc host edits. |
 
 State **RUNTIME** and **RUNTIME_NOTES** in every task so automations can branch (e.g. server-only heavy tests, no local GPU).
+
+### Control plane vs execution plane
+
+Use cloud agents as the **control plane** (planning/orchestration) and a host-local runner as the **execution plane** for runtime operations. This avoids depending on direct cloud-agent SSH into live hosts while keeping auditability and scripted safety gates.
+
+Reference contract: `design_docs/40_System_Design/13_Server_Runtime_Agent_Operations_Contract.md`.
+Server install/runbook details: `deploy/SERVER_BETA_INSTALL.md`.
 
 ### Local runtime baseline (recommended default today)
 
@@ -104,6 +112,15 @@ Runtime artifacts (local defaults):
 - Last full agent run (stdout/stderr, not posted to Slack): `./.cursor_slack_agent_last_run.log` (ignored by `*.log` in the parent gitignore)
 
 **Long output:** the runner posts a short header in the task thread, then **splits** agent stdout/stderr into multiple thread messages (default `CURSOR_SLACK_MAX_MESSAGE_CHARS=2400`) so Slack does not clip mid-status. Set `CURSOR_SLACK_THREAD_TASKS=1` to allow `!cursor` / mention tasks in **thread replies** (default: only top-level channel messages start tasks).
+
+### Thread task reliability notes
+
+Slack thread replies are polled from both channel history and explicit thread-reply endpoints to avoid missing in-thread task prompts. Keep:
+
+- `CURSOR_SLACK_TOP_LEVEL=1`
+- `CURSOR_SLACK_THREAD_TASKS=1`
+
+for top-level-first behavior plus explicit thread task support.
 
 ## Logs and cross-agent handoff
 
