@@ -37,6 +37,8 @@ User identity and application configuration.
 - **Preferences**: Setting the base currency, timezone, and start of the week.
 - **Security**: Password change and account deletion workflows.
 - **Integration**: Triggers global data reloads when preferences change to ensure consistent currency rendering across the app.
+- **Login Submit Contract**: Login form submits named fields (`username`, `password`) and uses form payload binding (`login_and_load_from_form`) to avoid stale state during browser autofill scenarios.
+- **Splash Preview Data**: Marketing splash preview account-health rows use stable status values (`healthy`, `stable`, `watch`) for localized label mapping.
 
 ## Upcoming Expenses (`features/upcoming_expenses/`)
 Forward-looking financial planning.
