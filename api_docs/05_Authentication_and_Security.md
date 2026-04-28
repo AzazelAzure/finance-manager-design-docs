@@ -11,6 +11,8 @@ The API uses **JSON Web Tokens (JWT)** via the `djangorestframework-simplejwt` p
 - **Access Tokens**: Short-lived (1 day) tokens used for authorizing individual requests.
 - **Refresh Tokens**: Longer-lived (7 days) tokens used to obtain new access tokens without requiring the user to re-authenticate.
 - **Rotation**: Refresh tokens are rotated upon use (`ROTATE_REFRESH_TOKENS: True`) and old tokens are blacklisted to mitigate replay attacks.
+- **Identifier Input**: `/api/token/` and `/api/token/auth/` accept either username or email identifier (case-insensitive lookup before credential validation).
+- **Refresh Resilience**: refresh serializers map missing/deleted-user token lookups to `401 InvalidToken` instead of `500`.
 
 ### Social Login
 
@@ -68,6 +70,13 @@ CSRF_TRUSTED_ORIGINS = [
     "https://api.financemanager.local:8443",
 ]
 ```
+
+## Runtime Notes (Current)
+
+- Token obtain route is served by `CustomTokenObtainPairView` with `CustomTokenObtainPairSerializer`.
+- Token refresh route is served by `CustomTokenRefreshView` with `CustomTokenRefreshSerializer`.
+- Contract verification includes a regression test ensuring email-identifier token login:
+  - `finance/tests/user_tests/test_token_login_identifier.py`
 
 ---
 
