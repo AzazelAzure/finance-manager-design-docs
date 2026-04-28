@@ -54,6 +54,8 @@ Horizon alignment:
 
 - `[Post-Launch Beta]` PH UX validation and formatting hardening
 - `[Post-Launch Beta]` SMS wallet ingestion architecture discovery (GCash/Maya message parsing)
+- `[Post-Launch Beta]` Blue/green pre-cutover validation host lane (for example `dev.thehivemanager.com` -> inactive color) after VPS go-live baseline is stable
+- `[Post-Launch Beta]` Nginx/proxy host-routing rules for active/public vs inactive/private validation traffic, only after VPS runtime + traffic telemetry pass
 
 These are intentionally deferred from Phase 2 launch gates and should be orchestrated after initial hosted beta launch.
 
@@ -211,3 +213,21 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
 - **Reflex + proxy (local container evidence, 2026-04-28):** `partial` (containers up; `fm_docker.sh status` shows API/Reflex/proxy healthy; `fm_services.sh` shows local API/Reflex stopped — **no mixed use** of container stack + local services in this session). Reflex log shows app at `http://localhost:3000/`.
 - **Hosted test server:** `BETA-P0-01` remains `blocked` until external hosted evidence exists (this cycle is local-runtime only).
 - Plan root: `plans/cursor/api-reflex-beta-readiness-plan-53be/`.
+
+### Cycle 6 (2026-04-28, VM -> VPS migration prep sync)
+
+- Scope: align deployment docs/contracts with newly added runtime bundle scripts for VPS migration flow.
+- Task execution:
+  - Added lean bundle scripts and verification references to install runbook:
+    - `scripts/server/create_runtime_bundle.sh`
+    - `scripts/server/push_runtime_bundle.sh`
+    - `scripts/server/verify_release_manifest.sh`
+  - Synced system design docs to treat bundle push + manifest verification as first-class execution path for server runtime agents.
+- Validation evidence:
+  - Script capabilities cross-checked against:
+    - `deploy/SERVER_BETA_INSTALL.md`
+    - `design_docs/40_System_Design/12_Cursor_CLI_Slack_Cloud_Agent_Bridge.md`
+    - `design_docs/40_System_Design/13_Server_Runtime_Agent_Operations_Contract.md`
+- Current status by P0:
+  - `BETA-P0-09` (repro deploy routine): `partial-pass` (artifact workflow documented; hosted server execution evidence still pending).
+  - `BETA-P0-01` (hosted runtime path): `blocked` (server-side smoke/cutover evidence not yet attached).
