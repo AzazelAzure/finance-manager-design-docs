@@ -13,10 +13,10 @@ Coordinate a single shared runtime across multiple agents during testing windows
 ## Runtime Session
 - Session ID: `beta-now-cycle-1`
 - Current owner: `Plan Orchestration Manager (Codex)`
-- Runtime mode: `local-services`
+- Runtime mode: `containerized`
 - Current status: `live`
 - Started at: `2026-04-27T04:34:00+08:00`
-- Last updated at: `2026-04-27T04:38:00+08:00`
+- Last updated at: `2026-04-27T22:10:00+08:00`
 
 ### Current Users
 - Owner: `Plan Orchestration Manager (Codex)` (scope: Phase 2 `[Now]` Breakpoint A/B/C orchestration)
@@ -26,10 +26,10 @@ Coordinate a single shared runtime across multiple agents during testing windows
     started_at: _(n/a)_
 
 ### Lifecycle Commands (script-only)
-- Last command: `./scripts/fm_services.sh restart && ./scripts/fm_services.sh status && ./scripts/fm_docker.sh status`
+- Last command: `./scripts/fm_services.sh stop && ./scripts/fm_docker.sh start --build && ./scripts/fm_docker.sh status && ./scripts/fm_services.sh status`
 - Last status check:
-  - `scripts/fm_docker.sh status`: `No active containers listed.`
-  - `scripts/fm_services.sh status`: `API running (PID 1059435), Reflex running (PID 1059437).`
+  - `scripts/fm_docker.sh status`: `db/api/reflex/proxy all running; api healthy`
+  - `scripts/fm_services.sh status`: `API stopped, Reflex stopped`
 
 ### Queue / Waiting Agents
 - Agent: _(none)_
@@ -43,7 +43,7 @@ Coordinate a single shared runtime across multiple agents during testing windows
 - Transfer timestamp: _(n/a)_
 
 ### Notes
-- Blockers: _Containerized runtime not currently live; local-services mode restart checks are passing._
+- Blockers: _No startup disconnect reproduced in containerized mode; observed data-source mismatch between local SQLite and container Postgres._
 - Mixed runtime allowed? `no`
 
 ## Status Vocabulary

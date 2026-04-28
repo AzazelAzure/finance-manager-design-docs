@@ -18,6 +18,7 @@ Define the Beta-critical API contract expectations shared across `finance_manage
 | Current user | `GET /finance/user/` | Returns authenticated user payload (dict response) | `fm user me` | Session/bootstrap user state | Active |
 | Profile snapshot | `GET /finance/appprofile/snapshot/` | Returns dashboard snapshot envelope for authenticated user | `fm profile snapshot` | Dashboard load chain in `agentdash/state_load.py` | Active |
 | Transactions list/create | `GET/POST /finance/transactions/` | Supports filter query + payload validation contract | `fm transactions list/create` | Transactions state + dashboard refresh trigger | Active |
+| Transactions calendar | `GET /finance/transactions/calendar/` | Returns base-currency normalized daily/weekly/monthly aggregates plus `heat_*` metadata and `due_events`; supports `display_currency_mode` and `heat_metric_mode` params | _No CLI command yet_ (API call only) | Transactions calendar route + state load + due-events/day-drill rendering | Active |
 | Transaction patch | `PATCH /finance/transactions/<tx_id>/` | `date` required; `tx_id`/`entry_id` immutable | `fm transactions patch <tx_id> --date ...` | Transaction edit flow | Active |
 | Sources delete guard | `DELETE /finance/sources/<source>/` | Reserved `unknown` source cannot be deleted | `fm sources delete unknown` expects reject | Source mutation paths | Active |
 | Tags mapping | `PATCH/PUT/DELETE /finance/tags/` | Mapping shape `{"tags": {"old": "new"}}` / null delete | `fm tags patch/put/delete --map ...` | Tag mutation payload builders | Active |
