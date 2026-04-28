@@ -101,6 +101,9 @@ Runtime artifacts (local defaults):
 
 - Slack cursors and tracked PR URLs: `./.cursor_slack_agent_state.json`
 - PR event log JSONL: `./.cursor_pr_status_log.jsonl`
+- Last full agent run (stdout/stderr, not posted to Slack): `./.cursor_slack_agent_last_run.log` (ignored by `*.log` in the parent gitignore)
+
+**Long output:** the runner posts a short header in the task thread, then **splits** agent stdout/stderr into multiple thread messages (default `CURSOR_SLACK_MAX_MESSAGE_CHARS=2400`) so Slack does not clip mid-status. Set `CURSOR_SLACK_THREAD_TASKS=1` to allow `!cursor` / mention tasks in **thread replies** (default: only top-level channel messages start tasks).
 
 ## Logs and cross-agent handoff
 

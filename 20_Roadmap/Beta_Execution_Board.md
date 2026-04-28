@@ -202,3 +202,12 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
   - `ReadLints` on touched Reflex modules -> no linter errors.
 - Status:
   - Feedback polish batch -> `pass` (runtime-owner smoke still recommended at next breakpoint window).
+
+### Cycle 5 (2026-04-28, `PLAN_API_REFLEX_BETA_READINESS_2026-04-28` / `cursor/api-reflex-beta-readiness-plan-53be`)
+
+- Scope: API production-style settings, test suite triage, pytest collection fix, headless Slack bridge long-output handling, local container runtime evidence.
+- **Infra / bridge (parent `scripts/cursor_headless_slack_agent.py`):** `pass` for chunking + full local log; optional `CURSOR_SLACK_THREAD_TASKS` for threaded `!cursor` follow-ups.
+- **API (`finance_manager_api`, branch `cursor/api-beta-hardening-53be`):** `pass` for `manage.py check --deploy` with production-like env (residual W005/W021 HSTS sub-domain/preload until public domain policy is fixed); `uv run pytest -q` -> `171 passed, 4 skipped` with `testpaths=finance/tests`.
+- **Reflex + proxy (local container evidence, 2026-04-28):** `partial` (containers up; `fm_docker.sh status` shows API/Reflex/proxy healthy; `fm_services.sh` shows local API/Reflex stopped — **no mixed use** of container stack + local services in this session). Reflex log shows app at `http://localhost:3000/`.
+- **Hosted test server:** `BETA-P0-01` remains `blocked` until external hosted evidence exists (this cycle is local-runtime only).
+- Plan root: `plans/cursor/api-reflex-beta-readiness-plan-53be/`.
