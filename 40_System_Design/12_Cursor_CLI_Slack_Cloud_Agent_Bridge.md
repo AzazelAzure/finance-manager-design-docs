@@ -10,10 +10,12 @@ Single manifest for **GitHub cloud agents**, **CI/automation**, and **humans** d
 
 ## Slack channels
 
-| Channel | Role |
-|--------|------|
-| `#cli-interface` | Task intake: mention the bot or use the task prefix (see runner env e.g. `CURSOR_SLACK_PREFIX`); the runner posts **threaded** results here. |
+
+| Channel          | Role                                                                                                                                                                                                                          |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `#cli-interface` | Task intake: mention the bot or use the task prefix (see runner env e.g. `CURSOR_SLACK_PREFIX`); the runner posts **threaded** results here.                                                                                  |
 | `#pull-requests` | **Required** for PR lifecycle: announce PRs (repo, branch, URL), read automation authorization, **reconcile with live GitHub** mergeability and checks. See `design_docs/30_Releases/Slack_PR_Protocol_Compliance_Matrix.md`. |
+
 
 The CLI agent process should **monitor both** channels: tasks in `#cli-interface`, authorization and merge state in `#pull-requests`.
 
@@ -40,28 +42,23 @@ TASK: |
 
 ## Standard workflow (required order)
 
-1. **roadmap-rollout-planning**  
-   - Produce an **execution-ready** plan under `plans/<proposed-git-branch-name>/` (one directory per batch; branch name should match your intended git feature branch).  
-   - Include phases, checkpoints, validation gates, and explicit **exit criteria** before implementation continues.
-
-2. **orchestration-manager**  
-   - Use the plan root above as the **canonical plan root**.  
-   - Enforce breakpoint validation, delegate to the right skills, and do not mark complete until readiness checks pass (see `.cursor/skills/orchestration-manager/SKILL.md`).
-
-3. **Feature implementation** (in the target sub-repo)  
-   - On a **feature branch**, not `main`/`master`.  
-   - Changelog in the same sub-repo when behavior changes.
-
-4. **pr-ops-merge-readiness**  
-   - Open the PR, ensure description and checks are merge-ready, follow repo-local validation.
-
-5. **design-docs-sync**  
-   - After behavior or governance changes, update the appropriate files under `design_docs/` (see `design_docs/10_Current_State/02_Documentation_Sync_Protocol.md`).
-
-6. **Slack + GitHub reconciliation**  
-   - Post the PR to `#pull-requests` (repo, branch, URL).  
-   - Wait for automation messages; **never merge on Slack approval alone** if GitHub reports `CONFLICTING` or dirty merge state.  
-   - Document blockers and handoffs per `design_docs/30_Releases/Subagent_Multi_Repo_Routine.md` and workspace rules.
+1. **roadmap-rollout-planning**
+  - Produce an **execution-ready** plan under `plans/<proposed-git-branch-name>/` (one directory per batch; branch name should match your intended git feature branch).  
+  - Include phases, checkpoints, validation gates, and explicit **exit criteria** before implementation continues.
+2. **orchestration-manager**
+  - Use the plan root above as the **canonical plan root**.  
+  - Enforce breakpoint validation, delegate to the right skills, and do not mark complete until readiness checks pass (see `.cursor/skills/orchestration-manager/SKILL.md`).
+3. **Feature implementation** (in the target sub-repo)
+  - On a **feature branch**, not `main`/`master`.  
+  - Changelog in the same sub-repo when behavior changes.
+4. **pr-ops-merge-readiness**
+  - Open the PR, ensure description and checks are merge-ready, follow repo-local validation.
+5. **design-docs-sync**
+  - After behavior or governance changes, update the appropriate files under `design_docs/` (see `design_docs/10_Current_State/02_Documentation_Sync_Protocol.md`).
+6. **Slack + GitHub reconciliation**
+  - Post the PR to `#pull-requests` (repo, branch, URL).  
+  - Wait for automation messages; **never merge on Slack approval alone** if GitHub reports `CONFLICTING` or dirty merge state.  
+  - Document blockers and handoffs per `design_docs/30_Releases/Subagent_Multi_Repo_Routine.md` and workspace rules.
 
 ## PR and merge monitoring
 
@@ -72,14 +69,24 @@ TASK: |
 
 ## Runtime: local vs server (flexible)
 
-| Concern | Local (today) | Server (future) |
-|--------|-----------------|-----------------|
-| **WORKSPACE_PATH** | Your clone path | Deployed single root or per-repo paths; set explicitly in each task. |
-| **Cursor CLI / `agent`** | Installed on the machine running the script | Same, on the server host or in an approved runner image. |
-| **Containers / services** | Follow `scripts/fm_docker.sh` / `scripts/fm_services.sh` and **single runtime owner** in `design_docs/30_Releases/Runtime_Signup_Sheet.md` | Same policy; do not mix modes without documentation. |
-| **Secrets** | `CURSOR_API_KEY`, `SLACK_BOT_TOKEN` in env or secure store | Same; prefer secret manager on server. |
+
+| Concern                      | Local (today)                                                                                                                                                   | Server (future)                                                                            |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **WORKSPACE_PATH**           | Your clone path                                                                                                                                                 | Deployed single root or per-repo paths; set explicitly in each task.                       |
+| **Cursor CLI / `agent`**     | Installed on the machine running the script                                                                                                                     | Same, on the server host or in an approved runner image.                                   |
+| **Containers / services**    | Follow `scripts/fm_docker.sh` / `scripts/fm_services.sh` and **single runtime owner** in `design_docs/30_Releases/Runtime_Signup_Sheet.md`                      | Same policy; do not mix modes without documentation.                                       |
+| **Secrets**                  | `CURSOR_API_KEY`, `SLACK_BOT_TOKEN` in env or secure store                                                                                                      | Same; prefer secret manager on server.                                                     |
+| **Runtime bundle migration** | Build artifacts with `scripts/server/create_runtime_bundle.sh`; optional single-step push with `scripts/server/push_runtime_bundle.sh` for VPS handoff testing. | Prefer artifact push + `scripts/server/verify_release_manifest.sh` over ad-hoc host edits. |
+
 
 State **RUNTIME** and **RUNTIME_NOTES** in every task so automations can branch (e.g. server-only heavy tests, no local GPU).
+
+### Control plane vs execution plane
+
+Use cloud agents as the **control plane** (planning/orchestration) and a host-local runner as the **execution plane** for runtime operations. This avoids depending on direct cloud-agent SSH into live hosts while keeping auditability and scripted safety gates.
+
+Reference contract: `design_docs/40_System_Design/13_Server_Runtime_Agent_Operations_Contract.md`.
+Server install/runbook details: `deploy/SERVER_BETA_INSTALL.md`.
 
 ### Local runtime baseline (recommended default today)
 
@@ -105,6 +112,15 @@ Runtime artifacts (local defaults):
 
 **Long output:** the runner posts a short header in the task thread, then **splits** agent stdout/stderr into multiple thread messages (default `CURSOR_SLACK_MAX_MESSAGE_CHARS=2400`) so Slack does not clip mid-status. Set `CURSOR_SLACK_THREAD_TASKS=1` to allow `!cursor` / mention tasks in **thread replies** (default: only top-level channel messages start tasks).
 
+### Thread task reliability notes
+
+Slack thread replies are polled from both channel history and explicit thread-reply endpoints to avoid missing in-thread task prompts. Keep:
+
+- `CURSOR_SLACK_TOP_LEVEL=1`
+- `CURSOR_SLACK_THREAD_TASKS=1`
+
+for top-level-first behavior plus explicit thread task support.
+
 ## Logs and cross-agent handoff
 
 - **Upload or paste logs** in the **Slack thread** tied to the task (or a linked channel if files are large), with a one-line **summary** and **repo/path** so cloud agents can route work.  
@@ -119,7 +135,7 @@ Runtime artifacts (local defaults):
 - `design_docs/30_Releases/Runtime_Signup_Sheet.md`  
 - `.cursor/skills/roadmap-rollout-planning/SKILL.md`  
 - `.cursor/skills/orchestration-manager/SKILL.md`  
-- `.cursor/skills/design-docs-sync/SKILL.md`  
+- `.cursor/skills/design-docs-sync/SKILL.md`
 
 ---
 
