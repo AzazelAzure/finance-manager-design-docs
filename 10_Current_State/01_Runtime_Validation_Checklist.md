@@ -80,3 +80,61 @@ Pending manual verification before final signoff of this change wave:
 2. Login succeeds from UI for both known username and known email identifiers.
 3. Token refresh path returns `401` (not `500`) when refresh token references deleted user.
 4. Onboarding source + initial transaction flow works end-to-end with canonical source naming.
+
+## H) BP7 Beta Launch Snapshot (2026-04-29)
+
+Use this snapshot to restore the current known-good beta launch runtime.
+
+- Active color: `blue`
+- Inactive color: `green`
+- Web commit hash (blue): `c758e106a17a`
+- Web commit hash (green): `c758e106a17a`
+- API commit hash (blue): `2a482dd75259`
+- API commit hash (green): `2a482dd75259`
+- Web image/build (blue): `f8bfc4daa6daf80d8625ff180ffdb45607a20beb8cba8efe5c7736117bc6554a` (`2026-04-29 15:29:42 UTC`)
+- Web image/build (green): `9ddedc1b8d70aca9b5e2ee34e5ad7fc6bb2bc49b7cdace18236de0cf4a2956aa` (`2026-04-29 15:30:07 UTC`)
+- DB migration version (latest applied): `token_blacklist.0013_alter_blacklistedtoken_options_and_more` (`2026-04-28 14:46:09 UTC`)
+- Health check result (blue):
+  - `https://api.thehivemanager.com/api/health/` -> `{"status":"ok"}`
+  - `https://thehivemanager.com/` -> `200 OK` (serving web static)
+  - `https://jsdevtesting.thehivemanager.com/` -> `200 OK`
+- Health check result (green):
+  - `web-green` container responds `HTTP/1.1 200 OK` on internal check
+  - `api-green` container status healthy
+- Last successful smoke timestamp: `2026-04-29T15:30:25Z`
+
+### Runtime posture
+
+- Proxy is intentionally configured to route production web hostnames to `web-blue` (blue-only web traffic cutover).
+- Reflex runtime is removed from live request path; containers are stopped (`fm-beta_reflex-blue_1`, `fm-beta_reflex-green_1` exited).
+- Dashboard `Quick add -> +Bill` is intentionally disabled pending redesign of bill-flow semantics.
+- Important restore note: the deployed `+Bill` disable is currently a VPS hotfix in the runtime build context (`finance_manager_web/src/components/dashboard/QuickActions.tsx`) and is not represented by a new git commit hash yet.
+
+### Swap command (to move traffic back to color-aware mode)
+
+```bash
+cd ~/finance_manager
+cp proxy/nginx.bluegreen.conf.bak-<timestamp> proxy/nginx.bluegreen.conf
+cat > proxy/active_color.conf <<'EOF'
+map $request_uri $fm_active_color {
+    default green;
+}
+EOF
+podman rm -f fm-beta_proxy_1
+podman-compose -p fm-beta -f docker-compose.bluegreen.yml --env-file .secrets/server.env up -d proxy
+```
+
+### Rollback command (restore this exact blue-only snapshot)
+
+```bash
+cd ~/finance_manager
+# Ensure blue-only nginx file is present in proxy/nginx.bluegreen.conf
+cat > proxy/active_color.conf <<'EOF'
+map $request_uri $fm_active_color {
+    default blue;
+}
+EOF
+podman rm -f fm-beta_proxy_1
+podman-compose -p fm-beta -f docker-compose.bluegreen.yml --env-file .secrets/server.env up -d proxy
+podman stop fm-beta_reflex-blue_1 fm-beta_reflex-green_1
+```
