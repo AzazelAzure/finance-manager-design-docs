@@ -1,9 +1,11 @@
 # Calendar Phase 1 Contract + UI Packet
 
 ## Objective
+
 Freeze the API and Reflex contract for Phase 1 calendar delivery with explicit currency semantics, heatmap rules, and due-expense overlays.
 
 ## Contract Freeze (API)
+
 - Endpoint: `GET /finance/transactions/calendar/`
 - Required query params: `start_date`, `end_date`
 - Optional query params:
@@ -17,6 +19,7 @@ Freeze the API and Reflex contract for Phase 1 calendar delivery with explicit c
   - `heat_max` and `heat_metric_mode` are returned to keep client bucket logic deterministic.
 
 ## Reflex Calendar UI Structure
+
 - Route: `/transactions/calendar`
 - Primary controls:
   - Date range picker (start/end)
@@ -33,6 +36,7 @@ Freeze the API and Reflex contract for Phase 1 calendar delivery with explicit c
   - Calendar route promoted to protected nav (`Calendar`) for direct discovery.
 
 ## Deterministic Validation
+
 - API gate:
   - `uv run pytest finance/tests/transaction_tests/test_transaction_calendar.py`
 - Reflex gate:

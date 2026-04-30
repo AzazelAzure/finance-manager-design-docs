@@ -25,7 +25,7 @@ Slack is lossy for structure; use a **consistent, copy-paste block** so the agen
 
 ```text
 @<bot> !cursor
-REPO: <finance_manager_api | finance_manager_reflex | finance_manager_cli>
+REPO: <finance_manager_api | finance_manager_web | finance_manager_cli | finance_manager_android>
 WORKSPACE_PATH: <absolute path on the machine running the headless agent; on a future server, the deployed workspace root>
 RUNTIME: <local | server>
 RUNTIME_NOTES: <e.g. "container owner: team X" or "no docker until approved" — free text>
@@ -124,7 +124,7 @@ for top-level-first behavior plus explicit thread task support.
 ## Logs and cross-agent handoff
 
 - **Upload or paste logs** in the **Slack thread** tied to the task (or a linked channel if files are large), with a one-line **summary** and **repo/path** so cloud agents can route work.  
-- **Redirect by repo:** if the failure is in `finance_manager_api` vs `finance_manager_reflex`, say so explicitly; use **multi-repo-orchestration** when the fix spans repos and record dependencies in the plan.  
+- **Redirect by repo:** if the failure is in `finance_manager_api` vs `finance_manager_web` (flagship; Reflex archived 2026-04-30), say so explicitly; use **multi-repo-orchestration** when the fix spans repos and record dependencies in the plan.  
 - Prefer **small, labeled artifacts** (snippet + path) over entire log dumps in chat.
 
 ## Related documents

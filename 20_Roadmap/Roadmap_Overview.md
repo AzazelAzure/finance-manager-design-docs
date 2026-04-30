@@ -1,5 +1,9 @@
 # Roadmap Overview
 
+> **HISTORICAL REFERENCE ONLY (as of 2026-04-30).** The canonical roadmap is now `plans/cursor/strategic-roadmap-reframe-53be/`. The S1–S6 Phase model supersedes the `Phase 1`/`Phase 2`/Track A–E structure documented here. This file is preserved for historical context and should not be used as the source of truth for ongoing work.
+>
+> **Why retired:** The dual-persona "Average Joe vs Finance Bro" framing was a target list, not a strategy. Post-beta huddle 2026-04-30 reframed to PH-first wedge ("safe-to-spend for thin-margin households"), 4-Stage breakdown of S1, JS pivot completed (Reflex archived), per-product launch-state model, and revenue path narrowed (ads + user-data sales rejected). See `plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` §3 + §4 for full lock list.
+
 This document outlines the high-level trajectory of the Finance Manager project, tracking its evolution from a local, loosely coupled Alpha state to a fully hosted, secure, and production-ready system.
 
 ## Terminology and Execution Model
