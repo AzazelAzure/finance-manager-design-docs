@@ -1,10 +1,12 @@
 # Deployment Strategy: Blue-Green Multi-Agent Pipeline
 
+> **Updated 2026-04-30:** Reflex archived; flagship product is `web` (`finance_manager_web`). The active blue-green stack pairs `api-blue/api-green` and `web-blue/web-green` (no longer Reflex). Per-feature color-cycle workflow is canonical at `plans/_governance/branching_guidelines.md`.
+
 ## Overview
-To achieve high availability and zero-downtime updates, the Finance Manager ecosystem utilizes a **Blue-Green Deployment Strategy**. This involves running two identical environments (Runtime and Testing/Update) simultaneously.
+To achieve high availability and zero-downtime updates, the Finance Manager ecosystem utilizes a **Blue-Green Deployment Strategy**. This involves running two identical environments (active and inactive) simultaneously, with one feature at a time staged on the inactive color.
 
 ## Architecture
-- **Infrastructure**: Each subsection (API, Reflex) runs within its own Docker container.
+- **Infrastructure**: Each service (API, web) runs within its own Docker container, with blue and green variants per service.
 - **Orchestration**: A traffic manager (Nginx, HAProxy, or a Redis-backed router) sits in front of the services.
 - **Shared Persistence**: Both the "Blue" (Live) and "Green" (Testing) environments point to the same PostgreSQL database to ensure state consistency.
 

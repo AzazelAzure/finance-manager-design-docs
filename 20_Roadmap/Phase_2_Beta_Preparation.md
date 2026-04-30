@@ -1,8 +1,12 @@
 # Phase 2: Beta Preparation & Hosting Infrastructure
 
-**Status:** `Planned`
-**Objective:** Transition from a purely local tool to a hosted application with distinct environments for testing and production. Harden the backend, setup CI/CD, and introduce OAuth.
-**Execution semantics:** This is a long-running program phase composed of multiple epics and rollout loops. Items can run in parallel when dependencies are satisfied; completion is determined by exit criteria, not by single-pass task completion.
+> **HISTORICAL REFERENCE ONLY (as of 2026-04-30).** This document refers to the pre-huddle "Phase 2" structure (Beta Preparation + Hosting Infrastructure) and is superseded by the canonical Strategic Plan at `plans/cursor/strategic-roadmap-reframe-53be/`. The work described here was effectively completed during S1.A in the canonical model — beta launched 2026-04-29 on VPS with web flagship + blue-green proxy + API. The original "Phase 2" is now distributed across canonical Stages S1.A (completed), S1.B (research/cleanup, active), and S1.C (Founding Beta, pending).
+>
+> Preserved for context and audit trail; do not use as the source of truth for ongoing work.
+
+**Status:** `Historical` (was `Planned` until 2026-04-30; effectively executed as canonical S1.A → entering S1.B at huddle close)
+**Objective (historical):** Transition from a purely local tool to a hosted application with distinct environments for testing and production.
+**Execution semantics:** This was a long-running program phase composed of multiple epics and rollout loops.
 
 ## Horizon Labels
 
