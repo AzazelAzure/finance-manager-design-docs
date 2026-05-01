@@ -13,7 +13,7 @@
 | Quantitative gates | `plans/cursor/strategic-roadmap-reframe-53be/validation_gates.md`, `kill_commit_gates.md` |
 | Vocabulary (`Phase` = S1…, `Stage` = S1.A…) | `plans/_governance/glossary.md` |
 | Authoring / executing tactical plans | `plans/_governance/README.md` → `plan_registry.md` |
-| Legacy doc vs strategy conflicts | `design_docs/10_Current_State/Strategic_doc_conflicts_pending_direction.md` |
+| Resolved alignment log (2026-05-01) | `design_docs/10_Current_State/Strategic_doc_conflicts_pending_direction.md` |
 
 This document outlines the **historical** high-level trajectory (pre-S1-reframe vocabulary), tracking evolution from local Alpha toward hosted beta. **Do not** use its Phase 1/2/Track structure for new execution planning.
 
@@ -24,17 +24,17 @@ This document outlines the **historical** high-level trajectory (pre-S1-reframe 
 - **Task:** A scoped implementation unit that can usually be completed in one focused work session.
 - **Execution Rule:** We complete phases by iterating through many tasks and epics until exit criteria are met. Phases can overlap when dependencies permit.
 
-## 🛑 Rigid Feature Dependencies (The Golden Rule) — historical wording
+## Rigid feature dependencies (API-first pipeline)
 
-> **2026-05-01 alignment note:** Step 3 below still says **Reflex**; production GUI is now **`finance_manager_web`**. The dependency order (API → CLI verify → web UI) remains; swap Reflex → web for all new work. Full conflict log: `design_docs/10_Current_State/Strategic_doc_conflicts_pending_direction.md`.
+To prevent clients and the backend from drifting out of sync, **new work** follows this pipeline (see also `plans/_governance/` and workspace `finance_manager_web/README.md`):
 
-To prevent the frontend and backend from drifting out of sync, **all development MUST follow a strict, rigid pipeline:**
+1. **API first:** No GUI or CLI feature ships until the API contract and payloads are defined and stable for the slice.
+2. **CLI verification:** Integrate and test via `finance_manager_cli` as the baseline integration path.
+3. **Web UI:** Only after CLI verification, implement in **`finance_manager_web`** (React SPA). Reflex remains archived.
 
-1. **API First:** No UI or CLI feature can be developed until the underlying API endpoint and data structure are fully finalized and returning the exact required payload.
-2. **CLI Verification:** Once the API is built, the feature MUST be integrated and tested via the CLI. The CLI acts as our baseline integration test.
-3. **Web implementation (was Reflex):** Only after the CLI verifies the API contract is the **web** frontend (`finance_manager_web`) allowed to implement the UI for the feature. (Reflex is archived.)
+*If a feature requires a data model change, halt GUI work until API and CLI are updated and verified.*
 
-*If a feature requires a change in the data model, development halts on the frontend until the API and CLI are updated to match.*
+*(The rest of this page still uses legacy "Phase 1 / Phase 2" narrative below; ignore that structure for execution—use the strategic plan instead.)*
 
 ---
 

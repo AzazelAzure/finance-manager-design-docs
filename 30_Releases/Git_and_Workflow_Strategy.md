@@ -36,7 +36,7 @@ Because the components are heavily interdependent but decoupled, new features fo
 1. **API Feature Branch:** New logic and endpoints are implemented and tested in `finance_manager_api`.
 2. **CLI Integration:** The CLI is updated in `finance_manager_cli` to consume the new API feature for base-level verification and developer testing.
 3. **Bug Fixes (Round 1):** Any issues identified via CLI testing are fixed in the API/CLI.
-4. **Web implementation:** The new feature is implemented in **`finance_manager_web`** (React SPA). *(Historical docs may still say Reflex; treat as superseded.)*
+4. **Web implementation:** The new feature is implemented in **`finance_manager_web`** (React SPA).
 5. **Bug Fixes (Round 2):** Any UX or state issues identified via web testing are fixed.
 6. **CLI Retest:** The CLI verifies that no API changes required by the web client broke the core CLI workflows.
 7. **Release:** Coordinated version tags are cut across all modified repositories.

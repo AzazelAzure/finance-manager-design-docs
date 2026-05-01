@@ -7,7 +7,7 @@
 
 ## 🧭 Core Design Philosophy
 
-**The Frontend Must Be Lean:** The Reflex application should be as lightweight as possible. It is responsible for routing, state synchronization, and rendering. **All heavy lifting, math, and data aggregation MUST be offloaded to the API (and eventually Rust middleware).** 
+**The Frontend Must Be Lean (historical Reflex framing):** The archived Reflex app was kept as lightweight as possible—routing, state sync, rendering only. The same rule applies to **`finance_manager_web`**: **heavy lifting, math, and aggregation stay in the API** (Rust middleware per strategic **S5**). 
 
 ---
 
@@ -41,9 +41,10 @@
 - **i18n Implementation:** Support multiple languages (e.g., English, Tagalog) and locale-specific formatting (currency, dates).
 - **Accessibility (a11y):** Ensure the UI/UX is robust for power users but simple and accessible enough for the least tech-savvy users.
 
-## 📌 Phase 3: Rust Middleware Integration (Performance)
+## 📌 Phase 3: Rust Middleware Integration (Performance) — superseded by strategic **S5**
 
-**Goal:** Supercharge the UI responsiveness.
+**Goal (historical):** Supercharge UI responsiveness.
 
-- **WASM / Rust Calculators:** As the Rust middleware is developed, integrate specialized calculators to speed up complex UI state calculations (if any remain on the client) or to handle rapid client-side encryption before payloads are sent to the API.
-- **Dependency Note:** Rust integration milestones assume Rust repos are fully initialized only after Track B/Phase 3 gate opens and owner learning ramp is complete.
+- **Strategic note:** ZK / Rust middleware sequencing is **S5** in `plans/cursor/strategic-roadmap-reframe-53be/`; this section is not a current commitment date.
+- **WASM / Rust Calculators:** As middleware matures, specialized calculators may reduce client work or handle client-side encryption pre-API—subject to S5 architecture decisions.
+- **Dependency note:** Legacy “Track B / Phase 3 gate” language is retired; see strategic plan and `kill_commit_gates.md`.

@@ -7,7 +7,7 @@ Welcome to the Finance Manager architecture and design vault. This vault acts as
 - **Strategic truth (phases S1–S6, stages, triggers):** `plans/cursor/strategic-roadmap-reframe-53be/README.md` — start here for what is active, what shipped, and what gates what.
 - **Vocabulary and plan lifecycle:** `plans/_governance/glossary.md`, then `plans/_governance/README.md`.
 - **Tactical plan portfolio:** `plans/_governance/plan_registry.md`.
-- **Known conflicts** between legacy `design_docs` prose and the strategic plan: `design_docs/10_Current_State/Strategic_doc_conflicts_pending_direction.md` (requires HitM direction before bulk rewrites).
+- **Strategic alignment audit (resolved 2026-05-01):** `design_docs/10_Current_State/Strategic_doc_conflicts_pending_direction.md`
 
 Historical `design_docs/20_Roadmap/*` Phase 1 / Phase 2 / Track docs remain as **archive context** unless a file header says otherwise; they do not override the strategic plan.
 

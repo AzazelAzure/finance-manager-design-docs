@@ -1,6 +1,6 @@
-# Phase Execution Triggers and Breakpoints
+# Phase Execution Triggers and Breakpoints (historical only)
 
-> **HISTORICAL / PRE-S1-REFRAME (2026-05-01).** This file uses legacy "Phase 1.5 / Phase 2" language and Reflex-centric gates. **Canonical** phase triggers, stage exits, and numeric validation live in `plans/cursor/strategic-roadmap-reframe-53be/validation_gates.md` and `kill_commit_gates.md`. Treat the sections below as archive context unless explicitly re-mapped to S1 stages.
+> **Do not execute new work from this document.** It preserves pre–S1-reframe "Phase 1.5 / Phase 2" language. **Canonical** triggers, stage exits, and numeric validation: `plans/cursor/strategic-roadmap-reframe-53be/validation_gates.md` and `kill_commit_gates.md`. Body text below was updated 2026-05-01 to say **web** where it previously said **Reflex** for the flagship GUI; narrative phase names remain legacy.
 
 ## Purpose
 Define a repeatable roadmap planning structure with hard decision gates, phase triggers, and verification checkpoints for multi-repo rollout.
@@ -9,7 +9,7 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
 
 - API-first delivery dependency remains mandatory.
 - CLI is the integration verification layer before GUI implementation.
-- **Web** (`finance_manager_web`) is lean; heavy aggregation stays in API (or Rust middleware later). (Historical text below may still say Reflex.)
+- **Web** (`finance_manager_web`) is lean; heavy aggregation stays in API (or Rust middleware later, strategic S5).
 
 ## Phase Plan
 
@@ -29,8 +29,8 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
 - Verification gate:
   - CLI validation passes for all stabilized contracts.
 - Risks and mitigations:
-  - Risk: premature Reflex wiring to unstable contracts.
-  - Mitigation: block Reflex work until CLI gate passes.
+  - Risk: premature web UI wiring to unstable contracts.
+  - Mitigation: block web UI work until CLI gate passes.
 
 ## Phase 2: Beta Preparation and Hosting
 - Goal: Deliver secure hosted environments with predictable deployment flow.
@@ -45,7 +45,7 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
 - Dependencies:
   - Infra scripts, auth implementation, deployment workflow, and compatibility governance.
 - Required implementation updates:
-  - API auth/logging capabilities, CLI compatibility checks, Reflex hosted verification.
+  - API auth/logging capabilities, CLI compatibility checks, web hosted verification.
 - Verification gate:
   - End-to-end workflow passes in Test environment with production-like settings.
 - Risks and mitigations:
@@ -53,7 +53,7 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
   - Mitigation: enforce milestone gates and separate rollout windows.
 
 ## Phase 2.5: Visualization Readiness Gate
-- Goal: Prepare API + Reflex for advanced visual views without violating lean-frontend rule.
+- Goal: Prepare API + web client for advanced visual views without violating lean-frontend rule.
 - Entry criteria: Phase 2 stable test environment available.
 - Exit criteria: calendar/graph payloads validated through API and CLI before UI finalization.
 - Breakpoints:
@@ -64,9 +64,9 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
 - Dependencies:
   - API aggregation endpoints and CLI verification commands.
 - Required implementation updates:
-  - API aggregate payloads, CLI validation paths, Reflex consumer wiring.
+  - API aggregate payloads, CLI validation paths, web client wiring.
 - Verification gate:
-  - Contract tests + CLI checks + Reflex integration smoke pass.
+  - Contract tests + CLI checks + web integration smoke pass.
 - Risks and mitigations:
   - Risk: frontend computes heavy aggregates locally.
   - Mitigation: reject frontend-local aggregate logic in reviews.
@@ -83,7 +83,7 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
 - Dependencies:
   - Stable API contracts, frontend component patterns, roadmap prioritization.
 - Required implementation updates:
-  - Feature contracts in API, CLI verification hooks, Reflex user flows, docs sync.
+  - Feature contracts in API, CLI verification hooks, web user flows, docs sync.
 - Verification gate:
   - Cross-repo validation and changelog/doc updates per feature increment.
 - Risks and mitigations:
@@ -102,7 +102,7 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
 - Dependencies:
   - Existing currency support baseline, UI copy/format audit pass, beta feedback loop output.
 - Required implementation updates:
-  - Reflex localization adjustments, docs updates, and targeted regression checks.
+  - Web localization adjustments, docs updates, and targeted regression checks.
 - Verification gate:
   - Beta localization test checklist passes for priority locales and critical workflows.
 - Risks and mitigations:
@@ -111,7 +111,7 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
 
 ## Track D (Post-Beta): Mobile Execution Gate
 - Goal: Start mobile work only after localization and shared design assets stabilize.
-- Entry criteria: localization and i18n behavior accepted in Reflex.
+- Entry criteria: localization and i18n behavior accepted in the web flagship.
 - Exit criteria: mobile architecture plan validated with offline-first sync constraints.
 - Breakpoints:
   - Offline sync conflict strategy not finalized.
@@ -155,7 +155,7 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
   2. `design-docs-sync` routine
 - Any phase or milestone scope change triggers:
   1. `roadmap-rollout-planning` routine
-  2. Roadmap doc refresh in `design_docs/20_Roadmap/`
+  2. Strategic plan / validation gate refresh in `plans/cursor/strategic-roadmap-reframe-53be/` (and `design_docs/` when behavior changes)
 - Any `[Now]` runtime-dependent validation wave triggers:
   1. Runtime owner assignment in `design_docs/30_Releases/Runtime_Signup_Sheet.md`
   2. Breakpoint-based handoff logging in `design_docs/30_Releases/Runtime_Owner_Handoff_Template.md`

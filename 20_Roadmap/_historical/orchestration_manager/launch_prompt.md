@@ -4,14 +4,14 @@ First, read and follow:
 - `.cursor/skills/orchestration-manager/SKILL.md`
 
 Then use these execution inputs:
-- Manifest: `design_docs/20_Roadmap/orchestration_manager/execution_manifest.md`
-- Validation gates: `design_docs/20_Roadmap/orchestration_manager/validation_gates.md`
+- Manifest: `design_docs/20_Roadmap/_historical/orchestration_manager/execution_manifest.md`
+- Validation gates: `design_docs/20_Roadmap/_historical/orchestration_manager/validation_gates.md`
 - Task packets:
-  - `design_docs/20_Roadmap/orchestration_manager/task_packets/T01_calendar_phase1_contract.md`
-  - `design_docs/20_Roadmap/orchestration_manager/task_packets/T02_calendar_phase1_ui.md`
-  - `design_docs/20_Roadmap/orchestration_manager/task_packets/T03_budgeting_discovery_track.md`
-  - `design_docs/20_Roadmap/orchestration_manager/task_packets/T04_volatile_bills_partial_payments.md`
-  - `design_docs/20_Roadmap/orchestration_manager/task_packets/T05_persistent_balance_history.md`
+  - `design_docs/20_Roadmap/_historical/orchestration_manager/task_packets/T01_calendar_phase1_contract.md`
+  - `design_docs/20_Roadmap/_historical/orchestration_manager/task_packets/T02_calendar_phase1_ui.md`
+  - `design_docs/20_Roadmap/_historical/orchestration_manager/task_packets/T03_budgeting_discovery_track.md`
+  - `design_docs/20_Roadmap/_historical/orchestration_manager/task_packets/T04_volatile_bills_partial_payments.md`
+  - `design_docs/20_Roadmap/_historical/orchestration_manager/task_packets/T05_persistent_balance_history.md`
 
 Hard constraints:
 - Do not edit `/home/pproctor/.cursor/plans/api_reflex_feature_rollout_1f0a0342.plan.md`.
