@@ -21,7 +21,7 @@ Coordinate a single shared runtime across multiple agents during testing windows
 - Last updated at: `2026-04-27T22:10:00+08:00`
 
 ### Current Users
-- Owner: `Plan Orchestration Manager (Codex)` (scope: Phase 2 `[Now]` Breakpoint A/B/C orchestration)
+- Owner: `Plan Orchestration Manager (Codex)` (scope: **S1.B** / hosted beta runtime — update this line when ownership changes)
 - Sublet users:
   - Agent: _(none yet)_
     scope: _(n/a)_
