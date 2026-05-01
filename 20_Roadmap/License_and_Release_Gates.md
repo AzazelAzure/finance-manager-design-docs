@@ -3,6 +3,7 @@
 ## Purpose
 
 Define roadmap gates that coordinate:
+
 - what is private vs public,
 - when middleware can be published,
 - when bounty sandbox can be opened,
@@ -10,40 +11,48 @@ Define roadmap gates that coordinate:
 
 ## Streams
 
-## Stream A: Proprietary Product (API + Reflex)
+## Stream A: Proprietary Product (API + **Web**)
+
 - Full-feature product remains private/proprietary.
 - Release gating prioritizes hosted beta reliability, UX parity, and operational stability.
 
 ## Stream B: Open Middleware
+
 - Middleware publication and hardening is a distinct stream with independent gates.
 - Must remain API-agnostic, low-overhead, and integration-friendly.
 
 ## Stream C: Semi-Public Bounty Sandbox
+
 - Reduced/skeleton stack for adversarial testing and coordinated disclosures.
 - Non-commercial use direction pending legal finalization.
 
 ## Gate Roadmap
 
 ## Gate G1: Boundary Lock
+
 - Lock code ownership boundaries between private product and public/security surfaces.
 - Confirm no accidental dependency inversion from private code into public middleware.
 
 ## Gate G2: Middleware Public-Readiness
+
 - Choose middleware license.
 - Publish contribution policy (`CLA`/`DCO`) and `SECURITY.md`.
 - Establish initial compatibility targets and performance baseline.
 
 ## Gate G3: Sandbox Internal Readiness
+
 - Sandbox architecture implemented with synthetic data only.
 - Scope and abuse controls tested internally.
 - Reset and incident controls validated.
 
 ## Gate G4: Sandbox External Pilot
+
 - Invite-only tester cohort.
 - Triage and response workflow validated against real submissions.
 - Critical findings triaged without impacting private production operations.
 
 ## Gate G5: Broader Security Program
+
 - Public policy, scope, and disclosure model stable.
 - Payout and legal operations defined.
 - Program cadence integrated into release management.

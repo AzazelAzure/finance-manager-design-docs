@@ -4,24 +4,24 @@
 Define the target architecture for an Android app that remains usable with intermittent connectivity (especially in PH mobile-first contexts), while preserving API contract integrity and preventing silent data loss.
 
 ## Program Gate (Hard Dependency)
-- **Android implementation is gated by Reflex localization completion.**
-- Localization completion means:
-  - Shared translation key catalog is stable and versioned.
-  - Locale-aware formatting rules (currency/date/number) are defined and documented.
-  - UX copy strategy is consistent enough to reuse between Reflex and Android.
-- Until this gate is complete, Android work is limited to research/prototyping and interface contracts only.
+- **Android full product implementation is gated on flagship web + localization readiness** (Reflex is **archived**; do not key gates on Reflex).
+- Localization / UX readiness means:
+  - Shared translation key catalog is stable and versioned (owned with **`finance_manager_web`** as the reference UI).
+  - Locale-aware formatting rules (currency/date/number) are defined and documented for **PH-first** scope per `03_Localization_Strategy.md` and the strategic plan.
+  - UX copy and interaction patterns are consistent enough to reuse between **web** and Android.
+- Until this gate is complete, Android work is limited to research/prototyping and interface contracts only (scaffold in repo is expected).
 
 ## Architecture Principles
 - **Offline first:** The app must always allow local capture/edit workflows even without internet.
 - **Server authority with atomic validation:** The API remains source of truth for final persisted state.
 - **Idempotent replay:** Sync operations must be safe to retry without duplicating writes.
-- **Contract parity:** Android uses the same API contracts as Reflex/CLI.
+- **Contract parity:** Android uses the same API contracts as **web** and CLI.
 - **Durable local state:** Pending operations survive app restarts and device reboot.
 
 ## Layer Model
 1. **Presentation Layer**
    - Screens, input flows, and localized UX components.
-   - Uses shared design tokens and interaction patterns aligned with Reflex.
+   - Uses shared design tokens and interaction patterns aligned with the **web** app.
 2. **Domain Layer**
    - Use-case orchestration for create/update/delete/list operations.
    - Conflict handling policy and retry policy selection.
@@ -104,4 +104,4 @@ Define the target architecture for an Android app that remains usable with inter
 - App supports offline create/update/delete for core financial entities.
 - No data loss across restart, reboot, or transient connectivity failures.
 - Sync replay is idempotent and validated atomically by API.
-- Localization parity with Reflex for supported locales in release scope.
+- Localization parity with **web** for supported locales in release scope.
