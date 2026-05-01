@@ -58,13 +58,15 @@ Every report should include:
 
 ## Triage Lanes
 
-| Lane | Owner | Output |
-|------|-------|--------|
-| Intake/Dedupe | Companion + operator | canonical incident record + duplicate links |
-| Diagnosis | Agent-assisted | likely root cause + impacted boundary |
-| Patch Design | Agent-assisted | implementation plan + test plan |
-| Delivery | Human-approved | feature branch + PR + validation evidence |
-| Verification | Human + runtime checks | pass/fail + release decision |
+
+| Lane          | Owner                  | Output                                      |
+| ------------- | ---------------------- | ------------------------------------------- |
+| Intake/Dedupe | Companion + operator   | canonical incident record + duplicate links |
+| Diagnosis     | Agent-assisted         | likely root cause + impacted boundary       |
+| Patch Design  | Agent-assisted         | implementation plan + test plan             |
+| Delivery      | Human-approved         | feature branch + PR + validation evidence   |
+| Verification  | Human + runtime checks | pass/fail + release decision                |
+
 
 ## Human-Gated Autofix Policy
 
@@ -101,15 +103,15 @@ Current state: blue/green assets exist but are not run as strict operational lan
 Required hardening steps before full production-style operation:
 
 1. **Color ownership model**
-   - Explicitly label active/inactive runtime every cycle.
+  - Explicitly label active/inactive runtime every cycle.
 2. **Inactive color smoke gate**
-   - All candidate deploys must pass smoke on inactive color first.
+  - All candidate deploys must pass smoke on inactive color first.
 3. **Cutover checklist**
-   - Single documented switch sequence with rollback command inline.
+  - Single documented switch sequence with rollback command inline.
 4. **Rollback drill cadence**
-   - Scheduled rehearsal to keep rollback deterministic.
+  - Scheduled rehearsal to keep rollback deterministic.
 5. **Evidence ledger**
-   - Record color, artifact identity, checks, and approver per cutover.
+  - Record color, artifact identity, checks, and approver per cutover.
 
 ## VPS Email Outbound Guidance
 
