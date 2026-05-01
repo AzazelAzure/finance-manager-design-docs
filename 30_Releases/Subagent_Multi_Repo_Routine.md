@@ -5,9 +5,9 @@ This runbook standardizes cross-repo execution when a feature requires coordinat
 
 - `finance_manager_api/`
 - `finance_manager_cli/`
-- `finance_manager_reflex/`
+- `finance_manager_web/` (flagship GUI; **Reflex is archived** — see `plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` §3.1)
 
-It operationalizes the existing API-first dependency rule and prevents repo drift.
+It operationalizes the existing API-first dependency rule and prevents repo drift. **Strategic sequencing** follows `plans/cursor/strategic-roadmap-reframe-53be/`; **plan governance** follows `plans/_governance/`.
 
 ## Routine (Execution Order)
 
@@ -20,8 +20,8 @@ It operationalizes the existing API-first dependency rule and prevents repo drif
 3. **CLI Verification (`generalPurpose` or `shell`)**
    - Integrate API changes in CLI and run targeted checks.
    - Emit handoff: pass/fail, observed gaps, required API follow-ups.
-4. **Reflex Implementation (`generalPurpose` subagent)**
-   - Wire frontend behavior after API/CLI verification.
+4. **Web implementation (`generalPurpose` subagent)**
+   - Wire `finance_manager_web` after API/CLI verification.
    - Emit handoff: UX impact and backend assumptions.
 5. **Cross-Repo Validation (`shell` subagent)**
    - Run repo-scoped status/diff/test passes and release notes checks.
@@ -42,14 +42,14 @@ It operationalizes the existing API-first dependency rule and prevents repo drif
 
 ## Run-Through Example: Transaction Calendar Program
 
-This example follows the roadmap dependency for calendar aggregates (API -> CLI -> Reflex).
+This example follows the dependency chain for calendar aggregates (API → CLI → web).
 
 ### Step A: Impact Mapping
-- Inputs: `design_docs/20_Roadmap/Roadmap_Overview.md`, `design_docs/20_Roadmap/API_Feature_Roadmap.md`, `design_docs/20_Roadmap/Reflex_Feature_Roadmap.md`
+- Inputs: `plans/cursor/strategic-roadmap-reframe-53be/README.md` (context), plus `design_docs/20_Roadmap/API_Feature_Roadmap.md` for endpoint-level sketches where still accurate.
 - Output:
   - API adds calendar aggregate payload shape.
   - CLI adds baseline verification command/output checks.
-  - Reflex consumes API-calculated daily/weekly/monthly totals.
+  - Web consumes API-calculated daily/weekly/monthly totals.
 
 ### Step B: API Workstream
 - Define contract for:
@@ -62,9 +62,9 @@ This example follows the roadmap dependency for calendar aggregates (API -> CLI 
 - Add/adjust command that exercises new API payload.
 - Confirm schema compatibility and error handling behavior.
 
-### Step D: Reflex Workstream
-- Bind calendar view and day-detail interactions to the new contract.
-- Ensure no local heavy aggregation is introduced in frontend.
+### Step D: Web workstream (example)
+- Bind calendar view and day-detail interactions to the new contract in `finance_manager_web`.
+- Ensure no local heavy aggregation is introduced in the SPA.
 
 ### Step E: Closeout
 - Record unresolved items as explicit follow-up tasks per repo.

@@ -30,7 +30,7 @@ WORKSPACE_PATH: <absolute path on the machine running the headless agent; on a f
 RUNTIME: <local | server>
 RUNTIME_NOTES: <e.g. "container owner: team X" or "no docker until approved" — free text>
 SKILLS: roadmap-rollout-planning → orchestration-manager → design-docs-sync; pr-ops-merge-readiness; multi-repo-orchestration (if cross-repo)
-PLAN_ROOT: <after planning: plans/<proposed-git-branch-name>/ — must match the feature branch you will use>
+PLAN_ROOT: <after planning: plans/cursor/<phase-stage>/<sub-plan>/ — must match governed plan layout; see plans/_governance/README.md>
 TASK: |
   <What to achieve; constraints; out of scope.>
 ```
@@ -43,8 +43,8 @@ TASK: |
 ## Standard workflow (required order)
 
 1. **roadmap-rollout-planning**
-  - Produce an **execution-ready** plan under `plans/<proposed-git-branch-name>/` (one directory per batch; branch name should match your intended git feature branch).  
-  - Include phases, checkpoints, validation gates, and explicit **exit criteria** before implementation continues.
+  - Produce an **execution-ready** plan under `plans/cursor/<phase-stage>/<sub-plan>/` (one directory per batch; git branch follows `plans/_governance/branching_guidelines.md`).  
+  - Include phases, checkpoints, validation gates, and explicit **exit criteria** before implementation continues; register in `plans/_governance/plan_registry.md` when status advances beyond `draft`.
 2. **orchestration-manager**
   - Use the plan root above as the **canonical plan root**.  
   - Enforce breakpoint validation, delegate to the right skills, and do not mark complete until readiness checks pass (see `.cursor/skills/orchestration-manager/SKILL.md`).
@@ -154,7 +154,7 @@ https://github.com/AzazelAzure/finance-manager-design-docs/blob/main/40_System_D
 *Quick rules*
 • Task the bot with a mention or `!cursor` (see runner config).
 • Say which *sub-repo* and *workspace path*; state *local* vs *server* runtime.
-• Workflow: *roadmap-rollout-planning* → plan under `plans/<branch-name>/` → *orchestration-manager* → implement on a *feature branch* → PR → *design-docs-sync*.
+• Workflow: *roadmap-rollout-planning* → plan under `plans/cursor/<phase-stage>/<sub-plan>/` (see `plans/_governance/`) → *orchestration-manager* → implement on a *feature branch* → PR → *design-docs-sync*.
 • Post every PR to *#pull-requests*; follow Slack *and* GitHub; treat conflict/dirty as *blocked* until fixed.
 • Optional PR log: `design_docs/30_Releases/pr_status.md` (in the design-docs repo, path is `30_Releases/pr_status.md` from repo root)
 ```
