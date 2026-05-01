@@ -12,7 +12,7 @@ Each layer has a specific responsibility and interacts only with the layers dire
 
 ```mermaid
 graph TD
-    Client[Client: Reflex/CLI] --> Views[1. Views/Routing]
+    Client[Client: Web SPA / CLI] --> Views[1. Views/Routing]
     Views --> Validators[2. Validators]
     Validators --> Logic[3. Business Logic]
     Logic --> Services[4. Services]

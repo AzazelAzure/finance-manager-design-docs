@@ -1,5 +1,7 @@
 # Runtime Signup Sheet
 
+> **Example session below is historical (2026-04-27).** Update this sheet whenever a human or agent **owns** the shared runtime. Container stacks today are **API + web + proxy** (Reflex removed from architecture 2026-04-30).
+
 ## Purpose
 Coordinate a single shared runtime across multiple agents during testing windows, minimizing redundant shutdown/startup cycles.
 
@@ -28,8 +30,8 @@ Coordinate a single shared runtime across multiple agents during testing windows
 ### Lifecycle Commands (script-only)
 - Last command: `./scripts/fm_services.sh stop && ./scripts/fm_docker.sh start --build && ./scripts/fm_docker.sh status && ./scripts/fm_services.sh status`
 - Last status check:
-  - `scripts/fm_docker.sh status`: `db/api/reflex/proxy all running; api healthy`
-  - `scripts/fm_services.sh status`: `API stopped, Reflex stopped`
+  - `scripts/fm_docker.sh status`: _(example)_ `db, api-blue/green, web-blue/green, proxy healthy`
+  - `scripts/fm_services.sh status`: _(example)_ `API stopped` when using container-only mode
 
 ### Queue / Waiting Agents
 - Agent: _(none)_

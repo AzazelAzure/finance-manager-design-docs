@@ -19,8 +19,9 @@ This document outlines the **historical** high-level trajectory (pre-S1-reframe 
 
 ## Terminology and Execution Model
 
-- **Phase:** A large program increment made up of multiple epics, implementation plans, and validation loops. A phase is measured in weeks/months, not in a single chat turn or one commit.
-- **Epic:** A major body of work inside a phase (for example, OAuth rollout, dashboard parity, CI/CD baseline).
+- **Phase / Stage:** **Canonical** meanings are **Phase S1…S6** and **Stage S1.A…** (`plans/_governance/glossary.md`). Older prose in this vault may say “Phase 1/2”; treat that as **historical** unless the file has an explicit banner.
+- **Program increment:** A large body of work made of epics, implementation plans, and validation loops—measured in weeks/months, not in a single chat turn or one commit.
+- **Epic:** A major body of work inside a **stage** or legacy program block (for example, OAuth rollout, dashboard parity, CI/CD baseline).
 - **Task:** A scoped implementation unit that can usually be completed in one focused work session.
 - **Execution Rule:** We complete phases by iterating through many tasks and epics until exit criteria are met. Phases can overlap when dependencies permit.
 
@@ -34,78 +35,22 @@ To prevent clients and the backend from drifting out of sync, **new work** follo
 
 *If a feature requires a data model change, halt GUI work until API and CLI are updated and verified.*
 
-*(The rest of this page still uses legacy "Phase 1 / Phase 2" narrative below; ignore that structure for execution—use the strategic plan instead.)*
-
 ---
 
-## 📌 Phase 1: Alpha Stabilization (Current Focus)
+## Legacy “Phase 1 / Phase 2 / Tracks A–E” narrative (retired in place)
 
-**Goal:** Solidify the foundation, enforce reproducible builds, and establish a reliable local development workflow before scaling up.
-**Scale:** Multi-epic foundational program (not a single delivery cycle).
+The long-form sections that used to live here (Alpha → Reflex MVP → Beta hosting → parallel Tracks A–E) described **pre-2026-04-30** vocabulary. They are **not** updated line-by-line in this file so we avoid maintaining two roadmaps.
 
-- **Dependency Management:** Implement strict lockfiles (`uv.lock`) across all Python projects (API, CLI, Reflex) to prevent supply-chain drift.
-- **Version Control & Git Tooling:** Define the repository structure (whether keeping it as a monorepo or splitting into a workspace with separate git histories). Develop bash scripts to streamline local Git workflows across the components.
-- **Reflex MVP:** Wire the existing Reflex frontend to the Django API to achieve a Minimum Viable Product (MVP) state for the web GUI.
+| Legacy label (this vault) | Canonical replacement |
+|---------------------------|------------------------|
+| Phase 1 / Alpha stabilization | **S1.A** (complete); detail in `Phase_1_Alpha_Stabilization.md` (historical banner). |
+| Phase 2 / Beta prep & hosting | **S1.A** hosting slice + **S1.B** cleanup/research; detail in `Phase_2_Beta_Preparation.md` (historical banner). |
+| Track A (Reflex feature expansion) | **`finance_manager_web`** feature work under API-first rules; see `API_Feature_Roadmap.md` + strategic **S1**–**S3**. |
+| Track B (ZK / Rust magnum opus) | Strategic **S5**; `finance_manager_rust_middleware` scaffold only until gates open. |
+| Track C (monetization / SaaS) | Strategic **S1.C** onward; `01_unit_economics_and_costs.md`; no ads / no user-data sales (locked). |
+| Track D (mobile) | Strategic **S3**; Android pull-forward begins **S1.B** per `00_strategic_context.md`. |
+| Track E (desktop) | **Concept** stream; see strategic plan desktop note. |
 
-## 📌 Phase 2: Beta Preparation & Hosting Infrastructure
+**Operational status today:** tight invite **beta** on VPS blue-green (**web** + API), **S1.B** active, distribution **blocked** until **S0** drift items close (`plans/cursor/s1b/drift-cleanup/`).
 
-**Goal:** Transition from a purely local tool to a hosted application with distinct environments for testing and production.
-**Scale:** Multi-epic hosting and operations program.
-
-- **Server Provisioning:** Develop bash scripts and infrastructure plans for automatically provisioning a Live Server and a separate Test Server.
-- **Blue-Green Deployment Strategy:** Implement a "High-Availability" architecture using duplicate Docker images (Runtime vs. Testing/Update). Use orchestration tools (Redis/Celery or Nginx) to divert traffic between versions while pointing to a shared database.
-- **Server Runtime & Scaling:** Plan for regional deployment (US then PH), evaluate API/Frontend server splitting, and research DB edge-caching (Neon/Supabase) along with Agent-driven hotfixes. *See [Server Runtime & Scaling](file:///home/pproctor/Documents/python/finance_manager/design_docs/40_System_Design/07_Server_Runtime_and_Scaling.md) for details.*
-- **Cross-Repo Contracts:** Formalize API schemas and compatibility matrices (e.g., CLI/Reflex must match API versions).
-- **Deployment Pipelines:** Setup basic CI/CD to deploy the API, CLI packages, and Reflex frontend to their respective test environments.
-- **Server-Side Logging:** Transition from local Loguru to a production-grade, per-user logging system. This must support critical bug reporting and direct user feedback loops (Email/Support tickets).
-- **Beta Launch:** Achieving a stable, hosted environment ready for initial users with real data.
-
-## 📌 Post-Beta: Dual-Track Development
-
-Upon successful Beta launch, the project trajectory splits into two parallel, highly coordinated tracks:
-
-### Track A: Feature Expansion (Frontend & UX)
-
-- Building out the full suite of planned financial management features in the Reflex frontend.
-- **Budgeting & Savings Goals:** Implement sophisticated budgeting tools and progress-tracking for long-term saving goals.
-- **Credit Card Tracking:** Add specialized tracking for credit card balances, interest rates, and payoff strategies.
-- **Localization:** Implement a global i18n system to support multiple languages and regional financial conventions (date formats, currency separators).
-- **Advanced Upcoming Expenses:** Develop a robust system for handling recurring bills and cash-flow forecasting.
-- Refining user flows, dashboard visualizations, and data entry mechanisms.
-- Maintaining the "API-First" golden rule for all new capabilities.
-
-### Track D: Mobile Development (Post-Beta)
-
-- **Execution Gate:** Android implementation starts only after post-launch beta localization hardening is complete and shared locale/design assets are stable.
-- **Mobile Roadmap:** Develop rollouts for Android and iOS versions to bring the Finance Manager ecosystem to mobile users.
-- **Offline-First Sync:** Implement robust, atomic synchronization between local SQLite (mobile) and cloud PostgreSQL, ensuring data integrity across devices.
-- **Native Integrations:** Utilize device-specific features (SMS parsing in PH wallets/messages, Biometrics) for automated transaction capture and security.
-- **Legal & Compliance:** Tackle app store legal requirements, data privacy (GDPR/CCPA), and financial tool disclosures.
-- **Repo Initialization Note:** Android repository scaffolding can exist locally, but full remote/release initialization is deferred until Track D execution gate is formally opened.
-
-### Track E: Desktop Standalone Version
-
-- **Portable Runtime:** Develop a standalone bundle containing both the Django API and the frontend, allowing for a fully local, single-binary experience on Linux, Windows, and macOS.
-- **Self-Contained Data:** Enable users to run the entire stack locally with a local SQLite database, with optional sync to the cloud.
-
-### Track C: Business & Monetization (SaaS)
-
-- **SaaS Paymodel (Far Future):** Develop subscription infrastructure only after product-market stabilization, operational maturity, and legal/tax execution readiness.
-- **User Personas:** Design the system to accommodate both the "Average Joe" (intuitive, simple overview) and the "Finance Bro" (deep-dive analytics, power-user features).
-- **Cross-Border Legal/Tax Program:** Treat international monetization structure as a standalone strategic program due to multi-jurisdiction complexity.
-- **License and Publication Coordination:** Tie commercialization and public-release boundaries to explicit gates. See [License and Release Gates](file:///home/pproctor/Documents/python/finance_manager/design_docs/20_Roadmap/License_and_Release_Gates.md).
-
-### Track B: Phase 3 - Security Hardening (Long-Term)
-
-- **Zero-Knowledge (ZK) Implementation:** Development of the Rust middleware (`finance_manager_crypto`) as a generic Django extension.
-- **Security Parity:** Ensuring the encryption layer does not break existing features from Track A.
-- **Live Data Migration:** Developing tools to seamlessly encrypt existing user data for current Beta/Production users.
-- **Rust Repo Timing:** Dedicated Rust repositories (middleware and Rust tooling) are intentionally deferred from full remote initialization until Track B entry criteria are met.
-- **Learning and Ownership:** Rust implementation is owner-led and hands-on; roadmap sequencing should reserve explicit learning/prototyping windows before production milestones.
-- **Publication Strategy Inputs:** See [Licensing and Publication Strategy](file:///home/pproctor/Documents/python/finance_manager/design_docs/40_System_Design/09_Licensing_and_Publication_Strategy.md), [Bounty Sandbox Architecture](file:///home/pproctor/Documents/python/finance_manager/design_docs/40_System_Design/10_Bounty_Sandbox_Architecture.md), and [Security Disclosure and Bounty Program](file:///home/pproctor/Documents/python/finance_manager/design_docs/40_System_Design/11_Security_Disclosure_and_Bounty_Program.md).
-- *Note: This track is a multi-year effort and is NOT required for the initial Beta launch.*
-
----
-
-*Note: This roadmap overview provides the macro-level trajectory. For a detailed list of feature requirements and future capabilities, see the [Planned Features List](file:///home/pproctor/Documents/python/finance_manager/design_docs/20_Roadmap/Planned_Features.md).*
-For execution gates, breakpoints, and trigger-driven phase transitions, see [Phase Execution Triggers and Breakpoints](file:///home/pproctor/Documents/python/finance_manager/design_docs/20_Roadmap/Phase_Execution_Triggers_and_Breakpoints.md).
+For feature depth, see [[20_Roadmap/Planned_Features|Planned Features List]]. For gate vocabulary (historical file, do not override strategic plan), see [[20_Roadmap/Phase_Execution_Triggers_and_Breakpoints|Phase Execution Triggers and Breakpoints]].

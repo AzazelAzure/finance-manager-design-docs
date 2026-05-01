@@ -1,41 +1,51 @@
 # Beta Execution Board (Parallel Workstream View)
 
+> **Superseded for new work (2026-05-01).** Canonical phase/stage is **S1.B** in `plans/cursor/strategic-roadmap-reframe-53be/`. Tactical execution (drift cleanup, S0 fixes, per-feature color cycle) lives under **`plans/cursor/s1b/`** and `plans/_governance/plan_registry.md`. This board remains a **continuity ledger** for the pre-governance “beta prep” IDs and cycle log; do not treat Reflex-era rows as current architecture.
+
 ## Purpose
 
-Provide a single execution board for "Necessary Right Now" Beta launch work with owner lanes and priority tags (`P0`, `P1`). This board is optimized for parallel agent/human execution across repos.
+Originally: a single execution board for “Necessary Right Now” hosted-beta prep with owner lanes and `P0` / `P1` tags.
 
-Horizon alignment:
+**Now:** Use this file for **audit history** (cycle log below) and high-level P0/P1 labels. **Do not** add new Reflex lanes or Reflex completion criteria.
 
-- This board tracks **[Now]** execution for hosted beta readiness.
-- Post-launch and far-future items are tracked in roadmap docs and are not blockers for this board.
+## Current operational picture (aligned with huddle 2026-04-30)
+
+| Topic | Status |
+|--------|--------|
+| **Phase / stage** | **S1** — **S1.B** (drift cleanup + research; tight invite beta, not “public launch”). |
+| **Flagship GUI** | `finance_manager_web` (React/Vite SPA). **`finance_manager_reflex` archived** — not in prod path. |
+| **Runtime** | Blue/green **API + web** behind workspace/VPS **proxy on :8443** (see `design_docs/40_System_Design/05_Deployment_Strategy.md`, ecosystem `AGENTS.md`). Dev VPS: `dev@159.198.75.194`, app root `~/finance_manager`. |
+| **Deploy discipline** | One feature at a time on **inactive** color; CPPR+D per `plans/_governance/deployment_protocol.md` and `branching_guidelines.md`. |
+| **Distribution** | **Not** distribution-ready; **S0** email uniqueness (and related drift) tracked in `plans/cursor/s1b/drift-cleanup/`. |
 
 ## Priority Definitions
 
 - `P0`: launch-blocking; must be complete for server-ready Beta tests.
 - `P1`: important near-term hardening; can run in parallel but cannot block urgent `P0` fixes.
 
-## Owner Lanes
+## Owner Lanes (current)
 
 - `API`: `finance_manager_api/`
+- `Web`: `finance_manager_web/` (flagship SPA)
 - `CLI`: `finance_manager_cli/`
-- `Reflex`: `finance_manager_reflex/`
-- `Infra`: root workspace infra/scripts/runtime operations
-- `Docs`: `design_docs/` synchronization and rollout records
+- `Android`: `finance_manager_android/` (scaffold; execution pull-forward per strategic plan)
+- `Infra`: parent workspace `deploy/`, `proxy/`, `scripts/`, compose blue-green
+- `Docs`: `design_docs/` + plan pointers under parent `plans/`
 
-## P0 Board (Necessary Right Now)
+## P0 Board (Necessary Right Now) — **legacy IDs; Web/Infra wording updated**
 
 
 | ID         | Priority | Owner          | Work Item                                                                                                 | Dependency             | Done When                                                           |
 | ---------- | -------- | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------- |
-| BETA-P0-01 | P0       | Infra          | Provision Test server and validate container runtime path                                                 | none                   | Test server can host API + Reflex together                          |
+| BETA-P0-01 | P0       | Infra          | Hosted **VPS** blue-green path validated (API + **web** + proxy + Postgres)                               | none                   | Repeatable evidence on target host; no mixed local+container testing without signoff |
 | BETA-P0-02 | P0       | Infra          | Validate deployment/restart path using project scripts (`scripts/fm_docker.sh`, `scripts/fm_services.sh`) | BETA-P0-01             | Repeatable start/stop/restart cycle with no crash loop              |
 | BETA-P0-03 | P0       | API            | Complete OAuth integration baseline                                                                       | BETA-P0-01             | Auth flow works in hosted test environment                          |
 | BETA-P0-04 | P0       | API            | Enforce JWT rotation and token blacklist policy                                                           | BETA-P0-03             | Token lifecycle matches policy with tests/log evidence              |
 | BETA-P0-05 | P0       | API            | Enable user-tagged operational logging                                                                    | BETA-P0-01             | Error logs are attributable per user/session                        |
 | BETA-P0-06 | P0       | API            | Enable basic bug-report email pipeline                                                                    | BETA-P0-05             | Verified report path in test environment                            |
-| BETA-P0-07 | P0       | API+CLI+Reflex | Publish Beta-critical contract compatibility matrix                                                       | BETA-P0-03             | Shared matrix exists and maps endpoint/payload/version expectations |
-| BETA-P0-08 | P0       | Reflex         | Fix critical dashboard UX/UI defects impacting core flows                                                 | BETA-P0-07             | Core CRUD/snapshot dashboard flows pass smoke tests                 |
-| BETA-P0-09 | P0       | Infra          | Define reproducible deploy routine (CI/CD or scripted deploy)                                             | BETA-P0-01             | Deployment can be repeated without manual drift                     |
+| BETA-P0-07 | P0       | API+CLI+**Web** | Publish Beta-critical contract compatibility matrix                                                       | BETA-P0-03             | Shared matrix exists and maps endpoint/payload/version expectations |
+| BETA-P0-08 | P0       | **Web**        | Fix critical dashboard UX/UI defects impacting core flows                                                 | BETA-P0-07             | Core CRUD/snapshot dashboard flows pass smoke tests on **web**      |
+| BETA-P0-09 | P0       | Infra          | Define reproducible deploy routine (CI/CD or scripted deploy + **runtime bundle** path where used)        | BETA-P0-01             | Deployment can be repeated without manual drift                     |
 | BETA-P0-10 | P0       | Docs           | Record Beta smoke checklist and cutline status                                                            | BETA-P0-08, BETA-P0-09 | Checklist is executable and tracked in `design_docs/`               |
 
 
@@ -44,9 +54,9 @@ Horizon alignment:
 
 | ID         | Priority | Owner      | Work Item                                                 | Dependency | Done When                                                       |
 | ---------- | -------- | ---------- | --------------------------------------------------------- | ---------- | --------------------------------------------------------------- |
-| BETA-P1-01 | P1       | Reflex     | Mobile responsiveness audit for key pages                 | BETA-P0-08 | Critical viewport defects are triaged and tracked               |
+| BETA-P1-01 | P1       | **Web**    | Mobile responsiveness audit for key pages                 | BETA-P0-08 | Critical viewport defects are triaged and tracked               |
 | BETA-P1-02 | P1       | Infra      | Improve runtime observability for crash/bottleneck triage | BETA-P0-02 | Restart/crash evidence can be captured quickly                  |
-| BETA-P1-03 | P1       | API+Reflex | Stabilize advanced visualization contracts incrementally  | BETA-P0-07 | Calendar/graph payload requirements are documented and testable |
+| BETA-P1-03 | P1       | API+**Web** | Stabilize advanced visualization contracts incrementally  | BETA-P0-07 | Calendar/graph payload requirements are documented and testable |
 | BETA-P1-04 | P1       | Docs       | Update roadmap/status docs after each P0 milestone        | ongoing    | No major implementation/doc drift remains                       |
 
 
@@ -62,7 +72,7 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
 ## Execution Rules
 
 1. `P0` bug fixes always preempt `P1` work.
-2. Any API contract change triggers CLI validation before Reflex dependency work.
+2. Any API contract change triggers **CLI** validation before **web** dependency work.
 3. Any behavior change triggers `design_docs` sync before marking task complete.
 4. Cross-repo work must use explicit handoff output and repo boundaries.
 5. Runtime access must follow shared ownership tracking in `design_docs/30_Releases/Runtime_Signup_Sheet.md`.
@@ -76,6 +86,8 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
 - Lane B (API): `BETA-P0-03`, `BETA-P0-04`, `BETA-P0-05`, `BETA-P0-06`
 - Lane C (Contracts/UI): `BETA-P0-07`, `BETA-P0-08`
 - Lane D (Docs): `BETA-P0-10` plus milestone syncs
+
+**S1.B priority:** execute **`plans/cursor/s1b/drift-cleanup/`** (especially **S0** email uniqueness) before scaling invites or monetization prep.
 
 ## Execution Cycle Log
 
@@ -230,4 +242,13 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
     - `design_docs/40_System_Design/13_Server_Runtime_Agent_Operations_Contract.md`
 - Current status by P0:
   - `BETA-P0-09` (repro deploy routine): `partial-pass` (artifact workflow documented; hosted server execution evidence still pending).
-  - `BETA-P0-01` (hosted runtime path): `blocked` (server-side smoke/cutover evidence not yet attached).
+  - `BETA-P0-01` (hosted runtime path): `partial-pass` (VPS blue-green + web path live per beta snapshot in `01_Runtime_Validation_Checklist.md` §H; ongoing cutover discipline and invite-scale hardening remain).
+
+### Cycle 7 (2026-04-30, post-beta huddle — strategic + governance lock)
+
+- Scope: reconcile roadmap vocabulary with **canonical S1–S6**, **S1.B** entry, **PH-first** market, **web** flagship, **Reflex archival**, per-feature **inactive-color** workflow, and **`plans/_governance/`** + **`plans/cursor/s1b/`** hierarchy.
+- Outcomes:
+  - Execution surface for “what we do next” moved to **`plans/cursor/s1b/`** (drift cleanup task pack + research stubs).
+  - This board explicitly **superseded** for net-new task IDs; legacy `BETA-P0-*` rows kept with **Web**/**VPS** wording.
+  - Distribution explicitly **not** ready until **S0** items in drift cleanup close (see `plans/cursor/s1b/drift-cleanup/tasks/T02_email_uniqueness_s0_fix.md`).
+

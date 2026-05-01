@@ -12,27 +12,27 @@ Use this checklist after rebuilds/restarts to prevent stale-image false negative
 ## A) Container Runtime (Podman/Docker Compose Path)
 
 1. Rebuild and recreate when validating fresh code:
-   - `./scripts/fm_docker.sh rebuild`
+  - `./scripts/fm_docker.sh rebuild`
 2. Confirm containers are healthy:
-   - `./scripts/fm_docker.sh status`
+  - `./scripts/fm_docker.sh status`
 3. Confirm frontend route is reachable:
-   - `https://financemanager.local:8443`
-   - `http://localhost:8080` is also exposed by the local proxy for HTTP-only checks.
-4. If output seems stale, verify startup logs for current run:
-   - `podman logs --tail 120 finance-manager-reflex`
-   - `podman logs --tail 120 finance-manager-api`
+  - `https://financemanager.local:8443`
+  - `http://localhost:8080` is also exposed by the local proxy for HTTP-only checks.
+4. If output seems stale, verify startup logs for current run (container names depend on compose project; use `./scripts/fm_docker.sh status` or `podman ps`):
+  - **API** (e.g. `api-blue` / `api-green` service)
+  - **Web** static bundle (e.g. `web-blue` / `web-green` service)
 
 ## B) Local Service Runtime (Non-container Path)
 
 1. Start local services:
-   - `./scripts/fm_services.sh start`
+  - `./scripts/fm_services.sh start`
 2. Confirm running:
-   - `./scripts/fm_services.sh status`
+  - `./scripts/fm_services.sh status`
 3. Validate frontend route:
-   - `http://localhost:3000`
+  - **Web dev (Vite):** typically `http://localhost:5173` (see `finance_manager_web` package scripts)—only when intentionally running the SPA outside containers.
 4. Port expectations for local integration:
-   - Django API listens on `http://127.0.0.1:8000`.
-   - Reflex backend/event traffic is forced to `http://127.0.0.1:8001` so it does not collide with Django.
+  - Django API listens on `http://127.0.0.1:8000`.
+  - Do **not** assume a Reflex port; Reflex is **archived**. For production-style checks, prefer the **container + :8443** path in section A.
 
 ## C) Smoke Tests For UI Change Validation
 
@@ -42,12 +42,13 @@ Run these checks in the target runtime URL after login:
 2. Expected widget/layout changes are visible.
 3. Dashboard quick filters update in place (no unintended redirect).
 4. Cookie consent behavior matches current requirement:
-   - show once before accept
-   - remain hidden after accept + refresh/revisit
+  - show once before accept
+  - remain hidden after accept + refresh/revisit
 
 ## D) Upcoming Expenses Filter Semantics
 
 Validate this exact behavior:
+
 - Initial page load defaults to current month.
 - Clear filters followed by apply/load returns all expenses.
 - Existing explicit filters (month/paid/recurring) still function.
@@ -55,10 +56,11 @@ Validate this exact behavior:
 ## E) Failure Triage Order
 
 When behavior does not match expectations:
+
 1. Confirm correct runtime URL.
 2. Confirm fresh build/recreate completed successfully.
 3. Confirm container/service status is healthy.
-4. Inspect API and Reflex logs for contract/runtime errors.
+4. Inspect **API** and **web** logs for contract/runtime errors.
 5. Re-run the smoke checklist before concluding regression.
 
 ## F) Authentication Runtime Guardrails (Post-Rebuild)
@@ -66,9 +68,9 @@ When behavior does not match expectations:
 Use this sequence before diagnosing frontend login regressions:
 
 1. Confirm API runtime database backend from inside the API container:
-   - `podman exec finance-manager-api uv run python manage.py shell -c "from django.conf import settings; print(settings.DATABASES['default'])"`
+  - `podman exec finance-manager-api uv run python manage.py shell -c "from django.conf import settings; print(settings.DATABASES['default'])"`
 2. Confirm expected users exist in Postgres:
-   - `podman exec finance-manager-db psql -U finance_user -d finance_db -c "select count(*) as users from auth_user;"`
+  - `podman exec finance-manager-db psql -U finance_user -d finance_db -c "select count(*) as users from auth_user;"`
 3. If API login returns `401` for known-good credentials, verify account presence before frontend debugging.
 4. Treat empty `auth_user` after restart/rebuild as a data-state issue (seed/reset) rather than an auth contract regression.
 
@@ -106,7 +108,7 @@ Use this snapshot to restore the current known-good beta launch runtime.
 ### Runtime posture
 
 - Proxy is intentionally configured to route production web hostnames to `web-blue` (blue-only web traffic cutover).
-- Reflex runtime is removed from live request path; containers are stopped (`fm-beta_reflex-blue_1`, `fm-beta_reflex-green_1` exited).
+- **Reflex** is removed from the live request path (archived product). Active traffic is **API + web** through the proxy.
 - Dashboard `Quick add -> +Bill` is intentionally disabled pending redesign of bill-flow semantics.
 - Restore note: the `+Bill` disable is now tracked in git at `finance_manager_web/src/components/dashboard/QuickActions.tsx`; keep it disabled until the bill-flow redesign is approved.
 
@@ -136,5 +138,6 @@ map $request_uri $fm_active_color {
 EOF
 podman rm -f fm-beta_proxy_1
 podman-compose -p fm-beta -f docker-compose.bluegreen.yml --env-file .secrets/server.env up -d proxy
-podman stop fm-beta_reflex-blue_1 fm-beta_reflex-green_1
+# Reflex containers (if any legacy names remain) should stay stopped; they are not part of the supported stack.
 ```
+

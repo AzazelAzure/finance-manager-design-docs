@@ -21,7 +21,7 @@ Use append-only lines with this exact pattern:
 
 Example:
 
-`2026-04-27T14:20:00+08:00 | finance_manager_reflex/fix/empty-state-var-truthiness | opened | local-agent | pr=https://github.com/.../pull/3`
+`2026-04-27T14:20:00+08:00 | finance_manager_web/fix/example-branch | opened | local-agent | pr=https://github.com/.../pull/3`
 
 ## Coordination Flow
 
@@ -42,7 +42,7 @@ Example:
 Replace placeholders:
 
 - `<ts>` ISO timestamp (example: `2026-04-27T14:30:00+08:00`)
-- `<repo>` one of `finance_manager_api`, `finance_manager_reflex`, `finance_manager_cli`
+- `<repo>` one of `finance_manager_api`, `finance_manager_web`, `finance_manager_cli` (legacy: `finance_manager_reflex` archived)
 - `<branch>` branch name
 - `<actor>` `local-agent` or `cli-agent`
 - `<notes>` short context (PR URL, reviewer, blocker, etc.)
