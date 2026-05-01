@@ -11,6 +11,10 @@ Define the target architecture for an Android app that remains usable with inter
   - UX copy and interaction patterns are consistent enough to reuse between **web** and Android.
 - Until this gate is complete, Android work is limited to research/prototyping and interface contracts only (scaffold in repo is expected).
 
+## Related — Flagship Web PWA (install / offline / resync)
+
+PH-first distribution includes an **installable web PWA** before native Android reaches full parity. **Outbox, idempotency, and server authority** for that surface are specified alongside S1.B gates in the ecosystem parent `plans/` tree. Vault bridge: [12_Web_PWA_Install_Offline_Sync](./12_Web_PWA_Install_Offline_Sync.md).
+
 ## Architecture Principles
 - **Offline first:** The app must always allow local capture/edit workflows even without internet.
 - **Server authority with atomic validation:** The API remains source of truth for final persisted state.
