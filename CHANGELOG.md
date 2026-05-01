@@ -4,6 +4,15 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Added (2026-05-01 — Web PWA plans bridge + Android cross-ref)
+
+- **`40_System_Design/12_Web_PWA_Install_Offline_Sync.md`:** Bridge from vault to ecosystem parent `plans/cursor/s1b/pwa-install-offline-sync-research/` (D0–D4, seeding, sprint activation index on `plans/cursor/s1b/README.md`) and strategic `validation_gates.md` / `S1_public_beta_position.md`; aligns web PWA with Android offline-first vocabulary.
+- **`40_System_Design/08_Android_Offline_First_Sync_Architecture.md`:** "Related — Flagship Web PWA" pointer to the new bridge doc.
+
+### Changed (2026-05-01 — PH monetization tiers vs strategic §2.0 lock)
+
+- **`01_Business_Vision.md`:** Tier table shows **₱249/mo Pro** list lock, **Founding Lifetime** capped at **100 seats** planning lock; cross-ref `01_unit_economics_and_costs.md` §2.0.
+
 ### Changed (2026-05-01 — beta cutline + runtime sheet alignment)
 
 - **`20_Roadmap/Beta_Launch_Cutline_and_SPA_Transition.md`:** Rewritten for **`finance_manager_web`** flagship, archived Reflex, **S1.B** / `s1b` drift gate, and canonical `plans/` pointers (replaces Reflex-era checklist wording).
