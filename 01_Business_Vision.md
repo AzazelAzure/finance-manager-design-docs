@@ -39,10 +39,10 @@ The original "Average Joe" framing was a target list, not a strategy. Replaced b
 
 | Tier | PHP/mo | What's included |
 |---|---|---|
-| Free | ₱0 | Safe-to-spend, manual entry, single account, GCash/Maya CSV import (PH only), ~10 free AI prompts/mo |
-| Pro (PH) | ₱149–₱249 | Multi-account, automatic GCash/Maya parsing, 100 AI prompts/mo, priority support, family-share |
-| Pro+ AI | ₱349 | Pro + 500 AI prompts, AI planning sessions, advanced predictions |
-| Founding Lifetime | ₱999–₱1,499 one-time | First 50–100 seats. Hard cap. |
+| Free | ₱0 | Safe-to-spend, manual entry, single account, GCash/Maya CSV import (PH only), ~10 AI credits/mo |
+| Pro (PH) | **₱249**/mo list | Multi-account, automatic GCash/Maya parsing, 100 AI credits/mo, priority support, family-share (`01_unit_economics_and_costs.md` §2.0) |
+| Pro+ AI | **₱349**/mo list | Pro + **250 AI credits/mo**, AI planning sessions, advanced predictions |
+| Founding Lifetime | ₱999–₱1,499 one-time | **First 100 seats** hard cap (planning lock 2026-05-01) |
 | Honorary US Founder | $0 | US testers grandfathered (pre-PH-pivot era) |
 
 Full pricing model and unit economics at `plans/cursor/strategic-roadmap-reframe-53be/01_unit_economics_and_costs.md`.

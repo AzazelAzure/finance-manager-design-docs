@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Define what was required to reach a **server-ready, invite-only tight beta** versus what is intentionally **post-launch / S1.B+** quality work. The flagship GUI is **`finance_manager_web`** (React/Vite). **`finance_manager_reflex` is archived** (2026-04-30) and must not appear as an execution dependency.
+Define what was required to reach a **server-ready, invite-only tight beta** versus what is intentionally **post-launch / S1.B+** quality work. The flagship GUI is `**finance_manager_web`** (React/Vite). `**finance_manager_reflex` is archived** (2026-04-30) and must not appear as an execution dependency.
 
 For owner lanes, legacy `BETA-P0` IDs, and cycle history, see [Beta Execution Board](Beta_Execution_Board.md) (superseded for *new* task IDs by `plans/cursor/s1b/`).
 
@@ -40,7 +40,7 @@ For owner lanes, legacy `BETA-P0` IDs, and cycle history, see [Beta Execution Bo
 - **Entry:** S1.B drift cleanup on track; no open **S0** regressions for distribution.
 - **Exit:** Clearer dashboard vs subpage split; core transaction + snapshot flows unchanged or improved.
 - **Dependencies:** Stable API contracts for tiles and subpages; feedback from beta cohort.
-- **Implementation:** **`finance_manager_web`** routing/state and layout; API summaries as needed.
+- **Implementation:** `**finance_manager_web`** routing/state and layout; API summaries as needed.
 - **Verification:** UX acceptance unchanged or better; no regression in core flows.
 
 ### Post-launch QoL backlog (explicitly deferred)

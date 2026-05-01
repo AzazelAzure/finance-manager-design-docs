@@ -8,6 +8,7 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 - **`40_System_Design/12_Web_PWA_Install_Offline_Sync.md`:** Bridge from vault to ecosystem parent `plans/cursor/s1b/pwa-install-offline-sync-research/` (D0–D4, seeding, sprint activation index on `plans/cursor/s1b/README.md`) and strategic `validation_gates.md` / `S1_public_beta_position.md`; aligns web PWA with Android offline-first vocabulary.
 - **`40_System_Design/08_Android_Offline_First_Sync_Architecture.md`:** "Related — Flagship Web PWA" pointer to the new bridge doc.
+- **`01_Business_Vision.md`**, **`20_Roadmap/Beta_Launch_Cutline_and_SPA_Transition.md`:** Touch-up edits aligned with strategic §2.0 / flagship web wording (batched on same branch as the bridge doc).
 
 ### Changed (2026-05-01 — PH monetization tiers vs strategic §2.0 lock)
 
