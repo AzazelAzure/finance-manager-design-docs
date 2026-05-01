@@ -2,7 +2,7 @@
 
 ## Plan Task ID and Current Objective
 - Task ID: `calendar-phase1-ui`
-- Objective: Deliver dedicated Reflex calendar experience with full grid, weekly summaries, monthly footer totals, heatmap visualization, due-expense events, and date drill-through.
+- Objective (historical — Reflex era): Deliver dedicated calendar experience with full grid, weekly summaries, monthly footer totals, heatmap visualization, due-expense events, and date drill-through.
 
 ## Scope Boundary
 - Repo/path: `finance_manager_reflex/finance_manager_reflex/`
@@ -36,10 +36,10 @@
   - weekly/monthly summaries render correctly
 
 ## Known Constraints
-- Keep heavy calculations in API, not Reflex state logic.
+- Keep heavy calculations in API, not client state logic.
 - Keep interaction flows additive and avoid breaking existing transactions pages.
 - Do not edit plan file.
 
 ## Branch/PR Expectations
-- Work on current Reflex feature branch.
+- Work on current feature branch (historical: Reflex-era branch naming).
 - If PR is opened later: required checks must pass before merge.

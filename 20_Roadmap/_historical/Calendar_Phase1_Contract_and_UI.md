@@ -1,5 +1,7 @@
 # Calendar Phase 1 Contract + UI Packet
 
+> **Historical (archived under `20_Roadmap/_historical/`, 2026-05-01).** Written for the Reflex calendar program. **Reflex is archived**; the live calendar UI is **`finance_manager_web`**. Treat API payload bullets as **hints**—verify against the current API and web implementation before relying on them.
+
 ## Objective
 
 Freeze the API and Reflex contract for Phase 1 calendar delivery with explicit currency semantics, heatmap rules, and due-expense overlays.

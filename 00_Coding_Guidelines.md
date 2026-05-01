@@ -53,11 +53,11 @@ All agents are considered collaborative partners and peers in this project. Proa
 No task is complete until changes are committed to the `main` branch with a clear description and a version tag (`vX.Y.Z`) is incremented. This ensures a clean audit trail and allows for instant rollbacks.
 
 ### 13. Plan-Based Execution & Archiving
-To ensure transparency and tracking, **every significant task must have an implementation plan** based on the official project templates (e.g., `GEMINI_PLAN_TEMPLATE_V2.md`). Changes must be tracked within these plans. **Once a plan is completed and verified, it must be moved to the `plans/archived/` directory** to keep the active workspace clean and focused.
+To ensure transparency and tracking, **every significant task must have an implementation plan** using `plans/_governance/plan_template.md` (and templates under `plans/templates/` as examples). Active tactical plans live under **`plans/cursor/<phase-stage>/<sub-plan>/`** per `plans/_governance/branching_guidelines.md`. **Once a plan is completed or superseded,** record status in `plans/_governance/plan_registry.md` and move artifacts under **`plans/archived/`** (flat files, `post_beta_huddle_*`, or nested `archived/feat/`, `archived/fix/`, `archived/volatile*`) so the workspace root stays clean.
 
 ### 14. Knowledge Hierarchy (The Source of Truth)
 Agents may encounter "Knowledge Items" (KIs) or summaries provided by the system. **These are snapshots and may be stale.**
-- **Primary Source of Truth**: The live files in `design_docs/`, `CHANGELOG.md`, and the `plans/` directory.
+- **Primary Source of Truth**: The live files in `design_docs/`, subrepo `CHANGELOG.md`, **`plans/cursor/strategic-roadmap-reframe-53be/`** (strategy), **`plans/_governance/`** (plan ops + vocabulary), and other material under `plans/` as referenced by the registry.
 - **Secondary Source**: System-provided Knowledge Items.
 If a conflict exists between a KI and a live file in the workspace, **the live file ALWAYS wins.** Agents MUST check the `design_docs/` folder at the start of every session to ensure they are working with the latest architectural rules.
 

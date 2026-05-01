@@ -62,6 +62,8 @@ This checkpoint captures in-flight implementation status while manual verificati
 - Untracked: `20_Roadmap/Volatile_Bills_and_Partial_Payment_Rulebook.md`
 - Untracked: `20_Roadmap/orchestration_manager/`
 
+> **2026-05-01:** `Calendar_Phase1_Contract_and_UI.md` and `orchestration_manager/` were moved to `20_Roadmap/_historical/` (see `20_Roadmap/_historical/README.md`). This checkpoint list is otherwise unchanged as a time capsule.
+
 ## Resume Sequence
 
 1. Run rebuild/recreate and validate runtime health.
