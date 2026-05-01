@@ -3,6 +3,7 @@
 ## Purpose
 
 Define a predictable intake, triage, and response model for security reports affecting:
+
 - open middleware components,
 - sandbox integration layers,
 - scoped security-critical API adapters.
@@ -25,11 +26,13 @@ This draft is operational guidance and not legal advice.
 ## Scope (Initial Draft)
 
 ## In Scope
+
 - Middleware cryptographic misuse resistance.
 - Key handling, encryption/decryption safety boundaries.
 - Sandbox integration vulnerabilities affecting middleware assurance.
 
 ## Out of Scope
+
 - Denial-of-service from unrealistic traffic floods unless specifically declared.
 - Social engineering/phishing against maintainers.
 - Attacks requiring non-default unsupported local setup.

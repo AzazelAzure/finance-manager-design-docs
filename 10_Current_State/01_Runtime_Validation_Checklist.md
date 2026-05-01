@@ -108,7 +108,7 @@ Use this snapshot to restore the current known-good beta launch runtime.
 - Proxy is intentionally configured to route production web hostnames to `web-blue` (blue-only web traffic cutover).
 - Reflex runtime is removed from live request path; containers are stopped (`fm-beta_reflex-blue_1`, `fm-beta_reflex-green_1` exited).
 - Dashboard `Quick add -> +Bill` is intentionally disabled pending redesign of bill-flow semantics.
-- Important restore note: the deployed `+Bill` disable is currently a VPS hotfix in the runtime build context (`finance_manager_web/src/components/dashboard/QuickActions.tsx`) and is not represented by a new git commit hash yet.
+- Restore note: the `+Bill` disable is now tracked in git at `finance_manager_web/src/components/dashboard/QuickActions.tsx`; keep it disabled until the bill-flow redesign is approved.
 
 ### Swap command (to move traffic back to color-aware mode)
 
