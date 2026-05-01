@@ -1,6 +1,8 @@
 # Orchestration Manager Input Pack
 
-Use this folder as the single source of truth when launching a new `/orchestration-manager` agent for the API + Reflex feature rollout.
+> **Historical execution pack (pre–plan governance, pre–web flagship).** These artifacts targeted API + **Reflex**. Reflex is **archived**; new orchestration should anchor on `plans/cursor/<phase-stage>/<sub-plan>/` per `plans/_governance/README.md` and the strategic plan. Keep this folder as a **read-only template** for packet structure, not live plan roots.
+
+Use this folder as context when reviewing how a prior `/orchestration-manager` run was structured for the API + Reflex feature rollout.
 
 ## Files
 - `execution_manifest.md`: master execution graph, sequencing, and completion contract.

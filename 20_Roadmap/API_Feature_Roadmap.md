@@ -1,6 +1,8 @@
 # API Feature Roadmap (Post-v1.0 Evolution)
 
-**Context:** The API is currently at v1.0 and functional. However, as the Reflex frontend scales to v1.0 and the system prepares for a hosted Beta launch, the API must evolve to support new requirements, offload client math, and harden security.
+> **2026-05-01:** Strategic phase map and PH-first constraints are **canonical** in `plans/cursor/strategic-roadmap-reframe-53be/`. This file retains **API capability sketches**; treat "Reflex" mentions in body text as **historical** unless explicitly updated — flagship client is **`finance_manager_web`**.
+
+**Context:** The API is currently at v1.0 and functional. However, as the **web** frontend and hosted beta scale, the API must evolve to support new requirements, offload client math, and harden security.
 **Roadmap semantics:** "Phase" entries here represent major backend programs containing multiple epics and many implementation tasks over time.
 
 ## 📌 Phase 2: Beta Preparation (Hosting & Hardening)

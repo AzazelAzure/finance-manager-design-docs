@@ -1,5 +1,7 @@
 # Server Runtime, Scaling, and Architecture
 
+> **Strategic conflict (pending rewrite):** Section 2 "Rollout Strategy" below describes **US-first then PH** regional rollout. The canonical strategic plan locks **PH-first** go-to-market and defers US acquisition (`plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` §3.8). See `design_docs/10_Current_State/Strategic_doc_conflicts_pending_direction.md` — do not treat §2 as current strategy until HitM updates or replaces it.
+
 This document outlines the goals and roadmap for the Finance Manager server runtime, deployment architecture, and database scaling strategies as the application transitions from local development to a global production environment.
 
 ## 1. Automated Deployment & Hotfix Management

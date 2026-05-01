@@ -1,22 +1,23 @@
-# Alpha State Overview
+# Current state overview (design_docs mirror of strategic S1)
 
-The Finance Manager is currently in an **Alpha state**. The core logic and data processing are functional, but the frontend and deployment architectures are still being finalized.
+**Strategic source of truth:** `plans/cursor/strategic-roadmap-reframe-53be/` (Phase **S1**, Stage **S1.B** as of 2026-05-01). This page summarizes how `design_docs` describes the live system; where they diverge, the strategic plan and `plans/_governance/glossary.md` win.
+
+The product is in **tight beta** on a **blue-green** VPS stack; flagship client is the **React web** app, not the archived Reflex tree.
 
 ## Component Status Summary
 
 | Component | Status | Location | Notes |
 | :--- | :--- | :--- | :--- |
-| **API** | Operational | `finance_manager_api/` | Handles all core logic, data storage, and calculations. |
-| **CLI** | Operational | `finance_manager_cli/` | Full-featured command line interface for managing finances locally. |
-| **Reflex** | Beta / Active Development | `finance_manager_reflex/` | Web frontend. Feature-usable for authenticated dashboard, transactions, upcoming expenses, profile, and onboarding flows; API parity checks continue as contracts evolve. |
-| **Rust Middleware** | Planned | N/A | Future proxy/middleware for payload encryption and security. |
+| **API** | Operational (tight beta) | `finance_manager_api/` | Core logic, PostgreSQL, REST contracts; pairs with web on blue/green deploy. |
+| **CLI** | Operational | `finance_manager_cli/` | Integration verification and scripting; still the baseline contract checker for many flows. |
+| **Web (flagship)** | Tight beta / active | `finance_manager_web/` | React + TypeScript + Vite SPA; primary authenticated GUI; HTTPS via workspace proxy pattern on `:8443` (see web README + `design_docs/40_System_Design/05_Deployment_Strategy.md`). |
+| **Reflex** | Archived (historical) | `finance_manager_reflex/` | Removed from production architecture 2026-04-30; repo retained for evidence only (`plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` §3.1). Reflex-specific docs under `design_docs/reflex_docs/` are historical. |
+| **Rust Middleware** | Scaffold / deferred | `finance_manager_rust_middleware/` (and related design docs) | Serious ZK middleware work gated to **S5** in the strategic plan. |
 
 ## High-Level System Architecture (Current)
 
-Currently, the system is designed around a decoupled monolith pattern, running locally:
-
-1. **The Core (API)**: A Django REST Framework backend serving JSON endpoints. It holds the local development database and executes all business logic (Snapshot generation, transaction matching, recurring bills).
-2. **The Clients (CLI / Reflex)**: The CLI remains the primary automation and local scripting client. The Reflex web app is now the active GUI client for authenticated finance workflows, with ongoing Beta contract validation against the API.
+1. **The Core (API)**: Django REST backend serving JSON; business logic and persistence.
+2. **The Clients (CLI / Web)**: CLI for automation and contract verification; **web** for end-user GUI. New UI work targets `finance_manager_web` under the API-first rules in `plans/_governance/` and workspace git rules.
 
 ## Deep Dives
 
@@ -24,5 +25,5 @@ For detailed architectural breakdowns of each component, refer to their specific
 
 - [[../api_docs/00_API_Overview|API Architecture & Data Models]]
 - [[../cli_docs/00_CLI_Overview|CLI Architecture & Commands]]
-- [[../reflex_docs/00_Reflex_Overview|Reflex Architecture & UI State]]
-- [[../rust_docs/00_Rust_Overview|Rust Middleware (Planned)]]
+- [[../reflex_docs/00_Reflex_Overview|Reflex Architecture & UI State (archived product; historical)]]
+- [[../rust_docs/00_Rust_Overview|Rust Middleware (strategic plan S5)]]

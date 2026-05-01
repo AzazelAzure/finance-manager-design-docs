@@ -1,6 +1,8 @@
 # Planned Features & Detailed Requirements
 
-This document serves as the high-level backlog for the Finance Manager ecosystem. Each feature listed here is slated for development post-Beta, and will eventually be moved into specific implementation plans.
+This document is a **feature backlog and requirement sketch**, not the phase schedule. **Sequencing, market focus, and gates** are defined in `plans/cursor/strategic-roadmap-reframe-53be/` (see `README.md`, `phases/`, `PARKING_LOT.md`). Items here must be checked against the wedge ("safe to spend") and PH-first locks in `00_strategic_context.md` before scheduling.
+
+Each feature listed here is slated for development across beta and later phases, and should eventually be tied to a governed tactical plan under `plans/cursor/<phase-stage>/<sub-plan>/` (registry: `plans/_governance/plan_registry.md`).
 
 ## 💰 Investment & Asset Tracking
 
@@ -44,4 +46,4 @@ This document serves as the high-level backlog for the Finance Manager ecosystem
 
 ---
 
-*For the timeline of these features, see the [Roadmap Overview](file:///home/pproctor/Documents/python/finance_manager/design_docs/20_Roadmap/Roadmap_Overview.md).*
+*For strategic timeline and triggers, see `plans/cursor/strategic-roadmap-reframe-53be/README.md`. For historical pre-reframe narrative, see [Roadmap Overview](file:///home/pproctor/Documents/python/finance_manager/design_docs/20_Roadmap/Roadmap_Overview.md).*

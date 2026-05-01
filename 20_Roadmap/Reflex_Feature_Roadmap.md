@@ -1,6 +1,8 @@
 # Reflex Feature Roadmap (Path to v1.0)
 
-**Context:** The API and CLI are currently considered v1.0. The primary focus of this roadmap is bringing the Reflex frontend up to a v1.0 standard, making it the premier way users interact with the Finance Manager.
+> **ARCHIVED PRODUCT (2026-04-30).** Reflex is no longer in production; **`finance_manager_web`** is the flagship GUI. Keep this file as **historical UX/parity reference** only. Current sequencing: `plans/cursor/strategic-roadmap-reframe-53be/`.
+
+**Context (historical):** The API and CLI are considered v1.0. This roadmap tracked bringing the Reflex frontend toward v1.0; that effort was superseded by the JS pivot documented in the strategic plan.
 **Roadmap semantics:** Each phase is a substantial frontend program spanning multiple epics, validation passes, and UX iterations. A phase is complete only when its outcome criteria are satisfied.
 
 ## 🧭 Core Design Philosophy

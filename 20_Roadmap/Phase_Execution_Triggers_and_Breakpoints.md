@@ -1,13 +1,15 @@
 # Phase Execution Triggers and Breakpoints
 
+> **HISTORICAL / PRE-S1-REFRAME (2026-05-01).** This file uses legacy "Phase 1.5 / Phase 2" language and Reflex-centric gates. **Canonical** phase triggers, stage exits, and numeric validation live in `plans/cursor/strategic-roadmap-reframe-53be/validation_gates.md` and `kill_commit_gates.md`. Treat the sections below as archive context unless explicitly re-mapped to S1 stages.
+
 ## Purpose
 Define a repeatable roadmap planning structure with hard decision gates, phase triggers, and verification checkpoints for multi-repo rollout.
 
 ## Planning Baseline
 
 - API-first delivery dependency remains mandatory.
-- CLI is the integration verification layer before Reflex implementation.
-- Reflex remains lean; heavy aggregation stays in API (or Rust middleware later).
+- CLI is the integration verification layer before GUI implementation.
+- **Web** (`finance_manager_web`) is lean; heavy aggregation stays in API (or Rust middleware later). (Historical text below may still say Reflex.)
 
 ## Phase Plan
 

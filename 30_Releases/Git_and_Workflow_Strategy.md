@@ -1,7 +1,9 @@
 # Git & Workflow Strategy
 
 ## Overview
-The Finance Manager project will utilize a **Multi-Repo Strategy**. Each major component (API, CLI, Reflex, and eventually Rust Middleware) will maintain its own distinct Git repository. This allows each component to have its own independent feature rollout schedule, version tags, and CI/CD pipelines.
+The Finance Manager project will utilize a **Multi-Repo Strategy**. Each major component (API, CLI, **web** flagship, Android scaffold, and eventually Rust Middleware) will maintain its own distinct Git repository. **Reflex is archived** (historical evidence only). This allows each component to have its own independent feature rollout schedule, version tags, and CI/CD pipelines.
+
+**Plan and phase governance:** `plans/_governance/README.md` (authoring, registry, lifecycle, deploy). **Strategic roadmap:** `plans/cursor/strategic-roadmap-reframe-53be/`.
 
 ## Agent Execution Rules (The Git Ecosystem)
 To ensure traceability and roll-back capability, all agents MUST adhere to the following Git workflow during execution:
@@ -34,10 +36,12 @@ Because the components are heavily interdependent but decoupled, new features fo
 1. **API Feature Branch:** New logic and endpoints are implemented and tested in `finance_manager_api`.
 2. **CLI Integration:** The CLI is updated in `finance_manager_cli` to consume the new API feature for base-level verification and developer testing.
 3. **Bug Fixes (Round 1):** Any issues identified via CLI testing are fixed in the API/CLI.
-4. **Reflex Implementation:** The new feature is implemented in the `finance_manager_reflex` frontend.
-5. **Bug Fixes (Round 2):** Any UX or state issues identified via Reflex testing are fixed.
-6. **CLI Retest:** The CLI verifies that no API changes required by Reflex broke the core CLI workflows.
+4. **Web implementation:** The new feature is implemented in **`finance_manager_web`** (React SPA). *(Historical docs may still say Reflex; treat as superseded.)*
+5. **Bug Fixes (Round 2):** Any UX or state issues identified via web testing are fixed.
+6. **CLI Retest:** The CLI verifies that no API changes required by the web client broke the core CLI workflows.
 7. **Release:** Coordinated version tags are cut across all modified repositories.
+
+Per-feature inactive-color workflow: `plans/_governance/branching_guidelines.md`.
 
 ## Workspace Management
 To manage this multi-repo setup locally, we will use a **Meta-Workspace Repo** (the root directory where these folders reside). This workspace repo will NOT contain the code itself, but rather:
