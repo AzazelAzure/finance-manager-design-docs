@@ -14,10 +14,10 @@ To achieve high availability and zero-downtime updates, the Finance Manager ecos
 
 ## Workflow
 
-1. **Implementation**: Subagents execute plans in the "Green" environment.
-2. **Verification**: Tests are run against the "Green" instance.
-3. **Divergence**: Once verified, the traffic manager redirects user traffic from "Blue" to "Green."
-4. **Sunset**: The old "Blue" version is decommissioned or kept as a fallback.
+1. **Implementation**: Stage **one feature at a time** on the **inactive** color (see `plans/_governance/branching_guidelines.md`); subagents execute against that inactive color’s API + web pair.
+2. **Verification**: Tests are run against the inactive-color instances before cutover.
+3. **Cutover**: Once verified, the traffic manager moves public traffic to the updated color (blue/green flip).
+4. **Sunset / rollback**: Keep the previous color available for rapid rollback until the monitoring window passes.
 
 ## Considerations for the Future
 
