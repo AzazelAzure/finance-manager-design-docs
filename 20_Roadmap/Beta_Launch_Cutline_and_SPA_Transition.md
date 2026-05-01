@@ -1,119 +1,64 @@
 # Beta Launch Cutline and Dashboard-Centric Transition
 
-## Purpose
-Define what is required to be server-ready for Beta launch versus what should be intentionally deferred as post-launch quality improvements. This plan assumes ongoing Reflex bugfix/UI polish work and enforces API-first delivery sequencing.
+> **Canonical context (2026-05-01):** Phase/stage vocabulary and execution live in `plans/cursor/strategic-roadmap-reframe-53be/` and `plans/_governance/`. This document describes the **invite-beta cutline** and **dashboard IA** intent in product language; it does **not** override the strategic plan or `plan_registry.md`.
 
-For owner lanes and parallel execution priorities, see [Beta Execution Board](file:///home/pproctor/Documents/python/finance_manager/design_docs/20_Roadmap/Beta_Execution_Board.md).
+## Purpose
+
+Define what was required to reach a **server-ready, invite-only tight beta** versus what is intentionally **post-launch / S1.B+** quality work. The flagship GUI is **`finance_manager_web`** (React/Vite). **`finance_manager_reflex` is archived** (2026-04-30) and must not appear as an execution dependency.
+
+For owner lanes, legacy `BETA-P0` IDs, and cycle history, see [Beta Execution Board](Beta_Execution_Board.md) (superseded for *new* task IDs by `plans/cursor/s1b/`).
 
 ## Scope
 
-- Primary near-term deliverable: stable hosted Beta with reliable core user workflows.
-- Current UI direction: pseudo-single-page dashboard where core actions live on the dashboard and advanced workflows move to focused subpages.
-- Constraint: no frontend-heavy aggregation logic; API owns heavy computation and aggregates.
+- **Near-term:** stable **VPS blue-green** stack (API + **web** + proxy on **:8443**), reliable core flows, API-first sequencing.
+- **UX direction:** pseudo–single-page **dashboard** with deep workflows on subpages (calendar, upcoming expenses, settings).
+- **Constraint:** no heavy client-side aggregation; **API owns math** and snapshot payloads.
 
-## Phase A: Beta Launch Readiness (Necessary Right Now)
-- Goal: Reach a stable, deployable, supportable hosted Beta baseline.
-- Entry criteria: Alpha core flows are functional; active Reflex bugfix cycle in progress.
-- Exit criteria: hosted test/live workflow is stable, secure auth is in place, and MVP user journeys are reliable.
-- Breakpoints:
-  - OAuth/token policy is incomplete.
-  - Test server deployment is unstable.
-  - Critical dashboard UX bugs block core flows.
-  - API/CLI/Reflex contract mismatch appears.
-- Triggers:
-  - Move to Phase B when all "Necessary Right Now" items are complete and confidence checks pass.
-- Dependencies:
-  - API auth/logging readiness
-  - Infra/test-live provisioning
-  - Cross-repo contract checks
-  - Reflex MVP bugfix stabilization
-- Required implementation updates:
-  - API: OAuth + token policy + user-tagged logging baseline
-  - CLI: verification path for changed API contracts
-  - Reflex: dashboard-first UX stabilization for core CRUD and snapshot visibility
-  - Docs: update current-state and release workflow docs
-- Verification gate:
-  - End-to-end test-server pass for key user flows (auth, transaction create/edit, snapshot/dashboard load, error handling path)
-  - No critical severity defects in core flows
-  - Deployment routine reproducible
-- Risks and mitigations:
-  - Risk: shipping while UI overhaul is still evolving.
-  - Mitigation: lock a Beta cutline and defer non-critical redesign items.
+## Phase A: Beta launch readiness (historical “Necessary Right Now”)
 
-### Necessary Right Now Checklist
+- **Goal:** Deployable, supportable **invite beta** baseline on hosted infrastructure.
+- **Entry (historical):** Alpha-era core flows working locally; pivot to **web** complete.
+- **Exit:** Hosted test/live workflow stable; auth baseline in place; MVP journeys reliable on **web**; reproducible deploy + smoke path.
+- **Breakpoints:** OAuth/token gaps; unstable deploy; critical **web** dashboard defects; API/CLI/**web** contract drift.
+- **Dependencies:** API auth/logging/bug-report paths; infra + blue-green; cross-repo contract matrix ([Beta Contract Compatibility Matrix](Beta_Contract_Compatibility_Matrix.md)).
+- **Verification:** End-to-end on target runtime URL (prefer **:8443** checklist in `10_Current_State/01_Runtime_Validation_Checklist.md`); no critical defects in auth, transactions, snapshot/dashboard.
 
-1. Hosting/Test Infrastructure
-   - Provision and validate Test server first, then Live server.
-   - Confirm containerized API + Reflex deployment on Test.
-2. Security/Auth Baseline
-   - OAuth integration complete.
-   - JWT rotation/token blacklist policy enforced.
-3. Operational Readiness
-   - User-tagged logging enabled.
-   - Basic bug-report email pipeline operational.
-4. Contract Governance
-   - API/CLI/Reflex compatibility matrix for Beta-critical endpoints.
-   - No unresolved contract ambiguity in core workflows.
-5. Reflex Beta UX Baseline
-   - Resolve critical and high-severity dashboard UX/UI bugs.
-   - Ensure core dashboard workflows are deterministic and usable.
-6. Deployment and Verification
-   - CI/CD or scripted deploy path tested.
-   - Beta smoke checklist written and repeatable.
+### Necessary-right-now checklist (web-era)
 
-## Phase B: Dashboard-Centric UX Consolidation (Post-Launch QoL)
-- Goal: Evolve toward pseudo-single-page dashboard architecture without destabilizing live operations.
-- Entry criteria: Beta launch baseline is stable in production-like operations.
-- Exit criteria: dashboard information architecture is clearer, with advanced features split into dedicated subpages.
-- Breakpoints:
-  - Core performance regressions from UI restructuring.
-  - Navigation complexity increases user friction.
-  - Feature scope expansion threatens reliability cadence.
-- Triggers:
-  - Start each QoL increment only after previous increment has no critical regressions.
-- Dependencies:
-  - Stable API contracts for dashboard tiles and advanced views.
-  - Instrumented UX feedback from Beta cohort.
-- Required implementation updates:
-  - Reflex route/state architecture updates for dashboard-centric flow.
-  - API endpoint support for dashboard summaries and advanced view data.
-  - Documentation updates for IA and user workflow changes.
-- Verification gate:
-  - UX acceptance metrics improve or remain stable.
-  - No degradation in core transaction and snapshot workflows.
-- Risks and mitigations:
-  - Risk: redesign churn causes release instability.
-  - Mitigation: ship in thin slices with rollback-ready changes.
+1. **Hosting:** VPS (or equivalent) runs **api-blue/green**, **web-blue/green**, **proxy**, Postgres; no accidental mixed local+container ownership (see `30_Releases/Runtime_Signup_Sheet.md`).
+2. **Security / auth:** OAuth + JWT rotation/blacklist per API roadmap; user-attributable logging where required.
+3. **Operations:** Bug-report / support path configured for hosted env.
+4. **Contracts:** API + CLI + **web** compatibility for beta-critical surfaces (matrix above).
+5. **Web UX baseline:** Critical dashboard and CRUD flows stable on mobile and desktop viewports where in scope.
+6. **Deploy:** Scripted or CI-driven path; runtime bundle flow documented where used (`deploy/SERVER_BETA_INSTALL.md`).
 
-### Post-Launch QoL Backlog (Explicitly Deferred)
+**Distribution note (S1.B):** scaling invites remains **blocked** until **S0** items in `plans/cursor/s1b/drift-cleanup/` close (e.g. email uniqueness).
 
-- Full visual overhaul beyond usability-critical fixes.
-- Advanced dashboard interactivity and power-user data manipulation controls.
-- Non-essential animation/transitions.
-- Deep personalization/theming passes.
-- Non-critical information architecture refinements.
-- Extended exploratory visualizations not required for Beta core workflows.
+## Phase B: Dashboard-centric consolidation (post–tight-beta QoL)
 
-## Pseudo-Single-Page Transition Strategy
+- **Goal:** Improve information architecture and polish **without** destabilizing the live color.
+- **Entry:** S1.B drift cleanup on track; no open **S0** regressions for distribution.
+- **Exit:** Clearer dashboard vs subpage split; core transaction + snapshot flows unchanged or improved.
+- **Dependencies:** Stable API contracts for tiles and subpages; feedback from beta cohort.
+- **Implementation:** **`finance_manager_web`** routing/state and layout; API summaries as needed.
+- **Verification:** UX acceptance unchanged or better; no regression in core flows.
 
-1. Keep core actions on dashboard:
-   - quick entry
-   - latest snapshot summary
-   - core account/transaction actions
-2. Move complexity to subpages:
-   - advanced analytics
-   - large data tables
-   - heavy configuration and niche workflows
-3. Use progressive disclosure:
-   - dashboard presents key summaries and directs to subpages for deep operations
-4. Keep API-first alignment:
-   - any new dashboard aggregate requirement must be API-provided before Reflex integration
+### Post-launch QoL backlog (explicitly deferred)
 
-## Execution Triggers
+- Full visual redesign beyond usability-critical fixes.
+- Non-essential animation and deep personalization.
+- Exploratory visualizations not required for the wedge (safe-to-spend, core CRUD).
 
-- Any core-flow defect found in Beta checklist -> route to immediate fix queue (Necessary Now).
-- Any enhancement request that does not impact Beta launch criteria -> queue under Post-Launch QoL.
-- Any new dashboard data requirement needing aggregation -> create upstream API contract task before Reflex work.
-- Runtime-dependent testing waves must use shared runtime ownership tracking and handoff:
-  - `design_docs/30_Releases/Runtime_Signup_Sheet.md`
-  - `design_docs/30_Releases/Runtime_Owner_Handoff_Template.md`
+## Pseudo–single-page transition strategy
+
+1. **On dashboard:** quick entry, snapshot summary, primary account/transaction actions.
+2. **On subpages:** large tables, advanced analytics, heavy configuration.
+3. **Progressive disclosure:** dashboard summarizes; subpages hold depth.
+4. **API-first:** any new aggregate or snapshot field is **API-defined and tested** (CLI where applicable) **before** **web** UI work.
+
+## Execution triggers
+
+- Core-flow defect from beta checklist → immediate fix queue (severity per `plans/_governance/glossary.md`).
+- Enhancement that does not affect invite-beta cutline → S1.B backlog / sub-plan.
+- New dashboard data need → API contract task first, then **web**.
+- Runtime testing → `Runtime_Signup_Sheet.md` + `Runtime_Owner_Handoff_Template.md` + `plans/_governance/execution_protocols.md` gates as applicable.

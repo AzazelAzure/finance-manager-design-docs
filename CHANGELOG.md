@@ -4,6 +4,12 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Changed (2026-05-01 — beta cutline + runtime sheet alignment)
+
+- **`20_Roadmap/Beta_Launch_Cutline_and_SPA_Transition.md`:** Rewritten for **`finance_manager_web`** flagship, archived Reflex, **S1.B** / `s1b` drift gate, and canonical `plans/` pointers (replaces Reflex-era checklist wording).
+- **`30_Releases/Runtime_Signup_Sheet.md`:** Example owner scope line uses **S1.B** vocabulary.
+- **`10_Current_State/Strategic_doc_conflicts_pending_direction.md`:** Audit row for this pass.
+
 ### Changed (2026-05-01 — design_docs vs strategic plan integration pass)
 
 - **Execution reality:** `20_Roadmap/Beta_Execution_Board.md` now states **S1.B** as canonical, **web** flagship, VPS **:8443** proxy, drift-cleanup / **S0** distribution gate, and adds **Cycle 7** huddle log; legacy `BETA-P0/*` rows updated (Reflex → Web) but kept as audit IDs.
