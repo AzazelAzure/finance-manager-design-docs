@@ -23,6 +23,10 @@ This submodule intentionally **links** to that tree rather than copying prose, s
 | Mutating API adapter (queue when offline) | `src/api/client.ts` |
 | Operator smoke (origins, post-switch) | `finance_manager_web/docs/BLUEGREEN_INSTALLED_PWA_SMOKE.md` (parent repo) |
 
+### Offline parity (ledger-adjacent surfaces)
+
+Beyond transactions, the web client merges **FIFO outbox** rows into local reads for **categories, tags, sources** (`lookupsOutboxOverlay.ts` → `api/lookups.ts`), **upcoming expenses** (`upcomingOutboxOverlay.ts` → `api/upcomingExpenses.ts` + unpaid names via `listUpcomingExpenses`), **app profile** (`profileOutboxOverlay.ts` → `api/profile.ts`), and extends **snapshot `source_balances`** with queued source creates/renames/deletes. **Online** allowlisted mutators also receive **`Idempotency-Key`** from the Axios request interceptor (`api/client.ts`) so retries do not duplicate rows. See parent sprint notes `plans/cursor/s1b/pwa-implementation-branch/` and research `plans/cursor/s1b/pwa-install-offline-sync-research/D2_API_OUTBOX_CONTRACT.md`.
+
 ## API parity
 
 Write contract and health fields are implemented in **`finance_manager_web`**’s sibling repo **`finance_manager_api`** (middleware, idempotency store, optional `CLIENT_BUILD_MIN_WRITE`). See API `CHANGELOG.md` and `README.md` env table.
