@@ -51,6 +51,6 @@ The long-form sections that used to live here (Alpha → Reflex MVP → Beta hos
 | Track D (mobile) | Strategic **S3**; Android pull-forward begins **S1.B** per `00_strategic_context.md`. |
 | Track E (desktop) | **Concept** stream; see strategic plan desktop note. |
 
-**Operational status today:** tight invite **beta** on VPS blue-green (**web** + API), **S1.B** active, distribution **blocked** until **S0** drift items close (`plans/cursor/s1b/drift-cleanup/`).
+**Operational status today:** tight invite **beta** on VPS blue-green (**web** + API), **S1.B** active, distribution **blocked** until **S0** drift items close (`plans/S1/S1.B/drift-cleanup/`).
 
 For feature depth, see [[20_Roadmap/Planned_Features|Planned Features List]]. For gate vocabulary (historical file, do not override strategic plan), see [[20_Roadmap/Phase_Execution_Triggers_and_Breakpoints|Phase Execution Triggers and Breakpoints]].

@@ -55,4 +55,4 @@ local-machine integration smoke checklist.
 - API owner lane: `finance_manager_api/`
 - CLI owner lane: `finance_manager_cli/`
 - Web owner lane: `finance_manager_web/`
-- Orchestration and gate status tracked in `design_docs/20_Roadmap/Beta_Execution_Board.md` (superseded for new IDs by `plans/cursor/s1b/`).
+- Orchestration and gate status tracked in `design_docs/20_Roadmap/Beta_Execution_Board.md` (superseded for new IDs by `plans/S1/S1.B/`).

@@ -1,6 +1,6 @@
 # Beta Execution Board (Parallel Workstream View)
 
-> **Superseded for new work (2026-05-01).** Canonical phase/stage is **S1.B** in `plans/cursor/strategic-roadmap-reframe-53be/`. Tactical execution (drift cleanup, S0 fixes, per-feature color cycle) lives under **`plans/cursor/s1b/`** and `governance/plan_registry.md`. This board remains a **continuity ledger** for the pre-governance “beta prep” IDs and cycle log; do not treat Reflex-era rows as current architecture.
+> **Superseded for new work (2026-05-01).** Canonical phase/stage is **S1.B** in `plans/cursor/strategic-roadmap-reframe-53be/`. Tactical execution (drift cleanup, S0 fixes, per-feature color cycle) lives under **`plans/S1/S1.B/`** and `governance/plan_registry.md`. This board remains a **continuity ledger** for the pre-governance “beta prep” IDs and cycle log; do not treat Reflex-era rows as current architecture.
 
 ## Purpose
 
@@ -16,7 +16,7 @@ Originally: a single execution board for “Necessary Right Now” hosted-beta p
 | **Flagship GUI** | `finance_manager_web` (React/Vite SPA). **`finance_manager_reflex` archived** — not in prod path. |
 | **Runtime** | Blue/green **API + web** behind workspace/VPS **proxy on :8443** (see `design_docs/40_System_Design/05_Deployment_Strategy.md`, ecosystem `AGENTS.md`). Dev VPS: `dev@159.198.75.194`, app root `~/finance_manager`. |
 | **Deploy discipline** | One feature at a time on **inactive** color; CPPR+D per `governance/deployment_protocol.md` and `branching_guidelines.md`. |
-| **Distribution** | **Not** distribution-ready; **S0** email uniqueness (and related drift) tracked in `plans/cursor/s1b/drift-cleanup/`. |
+| **Distribution** | **Not** distribution-ready; **S0** email uniqueness (and related drift) tracked in `plans/S1/S1.B/drift-cleanup/`. |
 
 ## Priority Definitions
 
@@ -87,7 +87,7 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
 - Lane C (Contracts/UI): `BETA-P0-07`, `BETA-P0-08`
 - Lane D (Docs): `BETA-P0-10` plus milestone syncs
 
-**S1.B priority:** execute **`plans/cursor/s1b/drift-cleanup/`** (especially **S0** email uniqueness) before scaling invites or monetization prep.
+**S1.B priority:** execute **`plans/S1/S1.B/drift-cleanup/`** (especially **S0** email uniqueness) before scaling invites or monetization prep.
 
 ## Execution Cycle Log
 
@@ -224,7 +224,7 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
 - **API (`finance_manager_api`, branch `cursor/api-beta-hardening-53be`):** `pass` for `manage.py check --deploy` with production-like env (residual W005/W021 HSTS sub-domain/preload until public domain policy is fixed); `uv run pytest -q` -> `171 passed, 4 skipped` with `testpaths=finance/tests`.
 - **Reflex + proxy (local container evidence, 2026-04-28):** `partial` (containers up; `fm_docker.sh status` shows API/Reflex/proxy healthy; `fm_services.sh` shows local API/Reflex stopped — **no mixed use** of container stack + local services in this session). Reflex log shows app at `http://localhost:3000/`.
 - **Hosted test server:** `BETA-P0-01` remains `blocked` until external hosted evidence exists (this cycle is local-runtime only).
-- Plan root: `plans/cursor/api-reflex-beta-readiness-plan-53be/`.
+- Plan root: `plans/archived/cursor-layout-era/api-reflex-beta-readiness-plan-53be/`.
 
 ### Cycle 6 (2026-04-28, VM -> VPS migration prep sync)
 
@@ -246,9 +246,9 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
 
 ### Cycle 7 (2026-04-30, post-beta huddle — strategic + governance lock)
 
-- Scope: reconcile roadmap vocabulary with **canonical S1–S6**, **S1.B** entry, **PH-first** market, **web** flagship, **Reflex archival**, per-feature **inactive-color** workflow, and **`governance/`** + **`plans/cursor/s1b/`** hierarchy.
+- Scope: reconcile roadmap vocabulary with **canonical S1–S6**, **S1.B** entry, **PH-first** market, **web** flagship, **Reflex archival**, per-feature **inactive-color** workflow, and **`governance/`** + **`plans/S1/S1.B/`** hierarchy.
 - Outcomes:
-  - Execution surface for “what we do next” moved to **`plans/cursor/s1b/`** (drift cleanup task pack + research stubs).
+  - Execution surface for “what we do next” moved to **`plans/S1/S1.B/`** (drift cleanup task pack + research stubs).
   - This board explicitly **superseded** for net-new task IDs; legacy `BETA-P0-*` rows kept with **Web**/**VPS** wording.
-  - Distribution explicitly **not** ready until **S0** items in drift cleanup close (see `plans/cursor/s1b/drift-cleanup/tasks/T02_email_uniqueness_s0_fix.md`).
+  - Distribution explicitly **not** ready until **S0** items in drift cleanup close (see `plans/S1/S1.B/drift-cleanup/tasks/T02_email_uniqueness_s0_fix.md`).
 

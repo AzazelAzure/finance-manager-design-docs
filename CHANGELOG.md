@@ -4,13 +4,17 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Changed (2026-05-04 — active S1.B plans path in parent)
+
+- **Cross-links:** Parent active Stage **S1.B** implementation tree is now **`plans/S1/S1.B/`** (replacing `plans/cursor/s1b/`). Vault pointers updated where they referenced the old path.
+
 ### Changed (2026-05-04 — governance path at ecosystem root)
 
-- **Cross-links:** Vault references to `plans/_governance/` now use **`governance/`** (workspace root sibling to `plans/` in the parent `finance_manager` repo). Tactical plans remain under `plans/cursor/<phase-stage>/<sub-plan>/`.
+- **Cross-links:** Vault references to `plans/_governance/` now use **`governance/`** (workspace root sibling to `plans/` in the parent `finance_manager` repo). Tactical plans use `plans/<Phase>/<Stage>/` in the parent (see parent `CHANGELOG.md`).
 
 ### Added (2026-05-01 — Web PWA plans bridge + Android cross-ref)
 
-- **`40_System_Design/12_Web_PWA_Install_Offline_Sync.md`:** Bridge from vault to ecosystem parent `plans/cursor/s1b/pwa-install-offline-sync-research/` (D0–D4, seeding, sprint activation index on `plans/cursor/s1b/README.md`) and strategic `validation_gates.md` / `S1_public_beta_position.md`; aligns web PWA with Android offline-first vocabulary.
+- **`40_System_Design/12_Web_PWA_Install_Offline_Sync.md`:** Bridge from vault to ecosystem parent `plans/S1/S1.B/pwa-install-offline-sync-research/` (D0–D4, seeding, sprint activation index on `plans/S1/S1.B/README.md`) and strategic `validation_gates.md` / `S1_public_beta_position.md`; aligns web PWA with Android offline-first vocabulary.
 - **`40_System_Design/08_Android_Offline_First_Sync_Architecture.md`:** "Related — Flagship Web PWA" pointer to the new bridge doc.
 - **`01_Business_Vision.md`**, **`20_Roadmap/Beta_Launch_Cutline_and_SPA_Transition.md`:** Touch-up edits aligned with strategic §2.0 / flagship web wording (batched on same branch as the bridge doc).
 
