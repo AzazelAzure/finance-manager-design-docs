@@ -1,6 +1,6 @@
 # Phase 1: Alpha Stabilization
 
-> **HISTORICAL REFERENCE ONLY (as of 2026-04-30).** This document refers to the pre-huddle "Phase 1" structure (Alpha Stabilization → Reflex MVP) and is superseded by the canonical Strategic Plan at `plans/cursor/strategic-roadmap-reframe-53be/`. The work described here was effectively completed during S1.A in the canonical model. Reflex frontend has been archived 2026-04-30; flagship product is now `web` (`finance_manager_web`).
+> **HISTORICAL REFERENCE ONLY (as of 2026-04-30).** This document refers to the pre-huddle "Phase 1" structure (Alpha Stabilization → Reflex MVP) and is superseded by the canonical Strategic Plan at `strategy/strategic-roadmap-reframe-53be/`. The work described here was effectively completed during S1.A in the canonical model. Reflex frontend has been archived 2026-04-30; flagship product is now `web` (`finance_manager_web`).
 >
 > Preserved for context and audit trail; do not use as the source of truth for ongoing work.
 

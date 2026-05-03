@@ -1,6 +1,6 @@
 # Beta Launch Cutline and Dashboard-Centric Transition
 
-> **Canonical context (2026-05-01):** Phase/stage vocabulary and execution live in `plans/cursor/strategic-roadmap-reframe-53be/` and `governance/`. This document describes the **invite-beta cutline** and **dashboard IA** intent in product language; it does **not** override the strategic plan or `plan_registry.md`.
+> **Canonical context (2026-05-01):** Phase/stage vocabulary and execution live in `strategy/strategic-roadmap-reframe-53be/` and `governance/`. This document describes the **invite-beta cutline** and **dashboard IA** intent in product language; it does **not** override the strategic plan or `plan_registry.md`.
 
 ## Purpose
 

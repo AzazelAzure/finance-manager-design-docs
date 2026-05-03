@@ -1,6 +1,6 @@
 # Beta Execution Board (Parallel Workstream View)
 
-> **Superseded for new work (2026-05-01).** Canonical phase/stage is **S1.B** in `plans/cursor/strategic-roadmap-reframe-53be/`. Tactical execution (drift cleanup, S0 fixes, per-feature color cycle) lives under **`plans/S1/S1.B/`** and `governance/plan_registry.md`. This board remains a **continuity ledger** for the pre-governance “beta prep” IDs and cycle log; do not treat Reflex-era rows as current architecture.
+> **Superseded for new work (2026-05-01).** Canonical phase/stage is **S1.B** in `strategy/strategic-roadmap-reframe-53be/`. Tactical execution (drift cleanup, S0 fixes, per-feature color cycle) lives under **`plans/S1/S1.B/`** and `governance/plan_registry.md`. This board remains a **continuity ledger** for the pre-governance “beta prep” IDs and cycle log; do not treat Reflex-era rows as current architecture.
 
 ## Purpose
 

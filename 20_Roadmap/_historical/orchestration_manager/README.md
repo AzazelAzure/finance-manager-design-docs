@@ -1,6 +1,6 @@
 # Orchestration Manager Input Pack
 
-> **Historical execution pack (pre–plan governance, pre–web flagship).** Located under `20_Roadmap/_historical/` since 2026-05-01. These artifacts targeted API + **Reflex**. Reflex is **archived**; new orchestration should anchor on `plans/cursor/<phase-stage>/<sub-plan>/` per `governance/README.md` and the strategic plan. **Read-only** reference for packet structure.
+> **Historical execution pack (pre–plan governance, pre–web flagship).** Located under `20_Roadmap/_historical/` since 2026-05-01. These artifacts targeted API + **Reflex**. Reflex is **archived**; new orchestration should anchor on `plans/<Phase>/<Stage>/<sub-plan>/` per `governance/README.md` and the strategic plan. **Read-only** reference for packet structure.
 
 Use this folder as context when reviewing how a prior `/orchestration-manager` run was structured for the API + Reflex feature rollout.
 

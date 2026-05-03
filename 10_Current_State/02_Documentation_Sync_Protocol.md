@@ -3,7 +3,7 @@
 ## Purpose
 Keep `design_docs` aligned with implementation work so planning, architecture, and release decisions remain trustworthy.
 
-**Roadmap and phase truth** live in `plans/cursor/strategic-roadmap-reframe-53be/` (multi-year model, S1 stages, validation gates). **Plan operations** (authoring, lifecycle, registry, deployment) live in `governance/`. When sync touches sequencing or "what is current," update those plans first or cite them; use `design_docs/20_Roadmap/` for deep historical context and feature lists unless a file is explicitly refreshed.
+**Roadmap and phase truth** live in `strategy/strategic-roadmap-reframe-53be/` (multi-year model, S1 stages, validation gates). **Plan operations** (authoring, lifecycle, registry, deployment) live in `governance/`. When sync touches sequencing or "what is current," update those plans first or cite them; use `design_docs/20_Roadmap/` for deep historical context and feature lists unless a file is explicitly refreshed.
 
 ## Trigger Conditions
 
@@ -26,7 +26,7 @@ Run documentation sync when any of the following occur:
 2. **Map to Docs**
    - Current state: `design_docs/10_Current_State/`
    - Architecture: `design_docs/api_docs/`, `design_docs/reflex_docs/`, `design_docs/cli_docs/`
-   - Roadmap and phases: **canonical** `plans/cursor/strategic-roadmap-reframe-53be/`; **historical / feature backlog context** `design_docs/20_Roadmap/`
+   - Roadmap and phases: **canonical** `strategy/strategic-roadmap-reframe-53be/`; **historical / feature backlog context** `design_docs/20_Roadmap/`
    - Release operations: `design_docs/30_Releases/`
 3. **Apply Focused Edits**
    - Update existing files first.

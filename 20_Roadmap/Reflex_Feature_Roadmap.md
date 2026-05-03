@@ -1,6 +1,6 @@
 # Reflex Feature Roadmap (Path to v1.0)
 
-> **ARCHIVED PRODUCT (2026-04-30).** Reflex is no longer in production; **`finance_manager_web`** is the flagship GUI. Keep this file as **historical UX/parity reference** only. Current sequencing: `plans/cursor/strategic-roadmap-reframe-53be/`.
+> **ARCHIVED PRODUCT (2026-04-30).** Reflex is no longer in production; **`finance_manager_web`** is the flagship GUI. Keep this file as **historical UX/parity reference** only. Current sequencing: `strategy/strategic-roadmap-reframe-53be/`.
 
 **Context (historical):** The API and CLI are considered v1.0. This roadmap tracked bringing the Reflex frontend toward v1.0; that effort was superseded by the JS pivot documented in the strategic plan.
 **Roadmap semantics:** Each phase is a substantial frontend program spanning multiple epics, validation passes, and UX iterations. A phase is complete only when its outcome criteria are satisfied.
@@ -45,6 +45,6 @@
 
 **Goal (historical):** Supercharge UI responsiveness.
 
-- **Strategic note:** ZK / Rust middleware sequencing is **S5** in `plans/cursor/strategic-roadmap-reframe-53be/`; this section is not a current commitment date.
+- **Strategic note:** ZK / Rust middleware sequencing is **S5** in `strategy/strategic-roadmap-reframe-53be/`; this section is not a current commitment date.
 - **WASM / Rust Calculators:** As middleware matures, specialized calculators may reduce client work or handle client-side encryption pre-API—subject to S5 architecture decisions.
 - **Dependency note:** Legacy “Track B / Phase 3 gate” language is retired; see strategic plan and `kill_commit_gates.md`.

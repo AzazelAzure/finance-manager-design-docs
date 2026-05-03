@@ -5,9 +5,9 @@ This runbook standardizes cross-repo execution when a feature requires coordinat
 
 - `finance_manager_api/`
 - `finance_manager_cli/`
-- `finance_manager_web/` (flagship GUI; **Reflex is archived** — see `plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` §3.1)
+- `finance_manager_web/` (flagship GUI; **Reflex is archived** — see `strategy/strategic-roadmap-reframe-53be/00_strategic_context.md` §3.1)
 
-It operationalizes the existing API-first dependency rule and prevents repo drift. **Strategic sequencing** follows `plans/cursor/strategic-roadmap-reframe-53be/`; **plan governance** follows `governance/`.
+It operationalizes the existing API-first dependency rule and prevents repo drift. **Strategic sequencing** follows `strategy/strategic-roadmap-reframe-53be/`; **plan governance** follows `governance/`.
 
 ## Routine (Execution Order)
 
@@ -45,7 +45,7 @@ It operationalizes the existing API-first dependency rule and prevents repo drif
 This example follows the dependency chain for calendar aggregates (API → CLI → web).
 
 ### Step A: Impact Mapping
-- Inputs: `plans/cursor/strategic-roadmap-reframe-53be/README.md` (context), plus `design_docs/20_Roadmap/API_Feature_Roadmap.md` for endpoint-level sketches where still accurate.
+- Inputs: `strategy/strategic-roadmap-reframe-53be/README.md` (context), plus `design_docs/20_Roadmap/API_Feature_Roadmap.md` for endpoint-level sketches where still accurate.
 - Output:
   - API adds calendar aggregate payload shape.
   - CLI adds baseline verification command/output checks.

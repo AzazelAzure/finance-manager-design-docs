@@ -1,16 +1,16 @@
 # Roadmap Overview
 
-> **HISTORICAL REFERENCE ONLY (as of 2026-04-30).** The canonical roadmap is now `plans/cursor/strategic-roadmap-reframe-53be/`. The S1–S6 Phase model supersedes the `Phase 1`/`Phase 2`/Track A–E structure documented here. This file is preserved for historical context and should not be used as the source of truth for ongoing work.
+> **HISTORICAL REFERENCE ONLY (as of 2026-04-30).** The canonical roadmap is now `strategy/strategic-roadmap-reframe-53be/`. The S1–S6 Phase model supersedes the `Phase 1`/`Phase 2`/Track A–E structure documented here. This file is preserved for historical context and should not be used as the source of truth for ongoing work.
 >
-> **Why retired:** The dual-persona "Average Joe vs Finance Bro" framing was a target list, not a strategy. Post-beta huddle 2026-04-30 reframed to PH-first wedge ("safe-to-spend for thin-margin households"), 4-Stage breakdown of S1, JS pivot completed (Reflex archived), per-product launch-state model, and revenue path narrowed (ads + user-data sales rejected). See `plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` §3 + §4 for full lock list.
+> **Why retired:** The dual-persona "Average Joe vs Finance Bro" framing was a target list, not a strategy. Post-beta huddle 2026-04-30 reframed to PH-first wedge ("safe-to-spend for thin-margin households"), 4-Stage breakdown of S1, JS pivot completed (Reflex archived), per-product launch-state model, and revenue path narrowed (ads + user-data sales rejected). See `strategy/strategic-roadmap-reframe-53be/00_strategic_context.md` §3 + §4 for full lock list.
 
 ### Where to work now (canonical)
 
 | Need | Path |
 |------|------|
-| Current phase, stages, calendar estimates | `plans/cursor/strategic-roadmap-reframe-53be/README.md` |
-| Locked decisions, personas, rejections | `plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` |
-| Quantitative gates | `plans/cursor/strategic-roadmap-reframe-53be/validation_gates.md`, `kill_commit_gates.md` |
+| Current phase, stages, calendar estimates | `strategy/strategic-roadmap-reframe-53be/README.md` |
+| Locked decisions, personas, rejections | `strategy/strategic-roadmap-reframe-53be/00_strategic_context.md` |
+| Quantitative gates | `strategy/strategic-roadmap-reframe-53be/validation_gates.md`, `kill_commit_gates.md` |
 | Vocabulary (`Phase` = S1…, `Stage` = S1.A…) | `governance/glossary.md` |
 | Authoring / executing tactical plans | `governance/README.md` → `plan_registry.md` |
 | Resolved alignment log (2026-05-01) | `design_docs/10_Current_State/Strategic_doc_conflicts_pending_direction.md` |
