@@ -4,6 +4,10 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Changed (2026-05-04 — single parent plan template)
+
+- **Coding / PR matrix:** `00_Coding_Guidelines.md` and `30_Releases/Slack_PR_Protocol_Compliance_Matrix.md` now reference **`governance/plan_template.md`** only; legacy `plans/templates/GEMINI_PLAN_TEMPLATE*.md` paths removed (those files archived in the parent repo under `plans/archived/gemini_plan_templates/`).
+
 ### Changed (2026-05-04 — strategic roadmap path in parent)
 
 - **Cross-links:** Canonical multi-year roadmap in the parent repo is now **`strategy/strategic-roadmap-reframe-53be/`** (replacing `plans/cursor/strategic-roadmap-reframe-53be/`). Vault pointers updated where they referenced the old path.

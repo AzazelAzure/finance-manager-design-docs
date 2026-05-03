@@ -53,7 +53,7 @@ All agents are considered collaborative partners and peers in this project. Proa
 No task is complete until changes are committed to the `main` branch with a clear description and a version tag (`vX.Y.Z`) is incremented. This ensures a clean audit trail and allows for instant rollbacks.
 
 ### 13. Plan-Based Execution & Archiving
-To ensure transparency and tracking, **every significant task must have an implementation plan** using `governance/plan_template.md` (and templates under `plans/templates/` as examples). Active tactical plans live under **`plans/<Phase>/<Stage>/<sub-plan>/`** per `governance/branching_guidelines.md`. **Once a plan is completed or superseded,** record status in `governance/plan_registry.md` and move artifacts under **`plans/archived/`** (flat files, `post_beta_huddle_*`, or nested `archived/feat/`, `archived/fix/`, `archived/volatile*`) so the workspace root stays clean.
+To ensure transparency and tracking, **every significant task must have an implementation plan** using **`governance/plan_template.md`** (single canonical schema for all agents). Active tactical plans live under **`plans/<Phase>/<Stage>/<sub-plan>/`** per `governance/branching_guidelines.md`. **Once a plan is completed or superseded,** record status in `governance/plan_registry.md` and move artifacts under **`plans/archived/`** (flat files, `post_beta_huddle_*`, or nested `archived/feat/`, `archived/fix/`, `archived/volatile*`) so the workspace root stays clean.
 
 ### 14. Knowledge Hierarchy (The Source of Truth)
 Agents may encounter "Knowledge Items" (KIs) or summaries provided by the system. **These are snapshots and may be stale.**
