@@ -4,6 +4,10 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Changed (2026-05-04 — governance path at ecosystem root)
+
+- **Cross-links:** Vault references to `plans/_governance/` now use **`governance/`** (workspace root sibling to `plans/` in the parent `finance_manager` repo). Tactical plans remain under `plans/cursor/<phase-stage>/<sub-plan>/`.
+
 ### Added (2026-05-01 — Web PWA plans bridge + Android cross-ref)
 
 - **`40_System_Design/12_Web_PWA_Install_Offline_Sync.md`:** Bridge from vault to ecosystem parent `plans/cursor/s1b/pwa-install-offline-sync-research/` (D0–D4, seeding, sprint activation index on `plans/cursor/s1b/README.md`) and strategic `validation_gates.md` / `S1_public_beta_position.md`; aligns web PWA with Android offline-first vocabulary.
@@ -31,7 +35,7 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ### Changed (2026-05-01 — strategic alignment CPPRD)
 
-- **Canonical sources:** `00_Dashboard.md` and `10_Current_State/00_Alpha_Overview.md` now anchor on `plans/cursor/strategic-roadmap-reframe-53be/` and `plans/_governance/` (S1.B, web flagship, Reflex archived).
+- **Canonical sources:** `00_Dashboard.md` and `10_Current_State/00_Alpha_Overview.md` now anchor on `plans/cursor/strategic-roadmap-reframe-53be/` and `governance/` (S1.B, web flagship, Reflex archived).
 - **Roadmap vault:** `20_Roadmap/Roadmap_Overview.md`, `Planned_Features.md`, `Phase_Execution_Triggers_and_Breakpoints.md`, `API_Feature_Roadmap.md`, `Reflex_Feature_Roadmap.md` updated; legacy **`orchestration_manager/`** and **`Calendar_Phase1_Contract_and_UI.md`** moved to **`20_Roadmap/_historical/`** with index `README.md`.
 - **Runtime/scaling:** `40_System_Design/07_Server_Runtime_and_Scaling.md` §2 aligned to **PH-first** + passive US (P-6).
 - **Conflict log:** `10_Current_State/Strategic_doc_conflicts_pending_direction.md` converted to resolved audit table.
