@@ -2,7 +2,7 @@
 
 This document is a **feature backlog and requirement sketch**, not the phase schedule. **Sequencing, market focus, and gates** are defined in `plans/cursor/strategic-roadmap-reframe-53be/` (see `README.md`, `phases/`, `PARKING_LOT.md`). Items here must be checked against the wedge ("safe to spend") and PH-first locks in `00_strategic_context.md` before scheduling.
 
-Each feature listed here is slated for development across beta and later phases, and should eventually be tied to a governed tactical plan under `plans/cursor/<phase-stage>/<sub-plan>/` (registry: `plans/_governance/plan_registry.md`).
+Each feature listed here is slated for development across beta and later phases, and should eventually be tied to a governed tactical plan under `plans/cursor/<phase-stage>/<sub-plan>/` (registry: `governance/plan_registry.md`).
 
 ## 💰 Investment & Asset Tracking
 

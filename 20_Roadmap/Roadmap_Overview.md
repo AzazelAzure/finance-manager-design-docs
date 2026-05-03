@@ -11,15 +11,15 @@
 | Current phase, stages, calendar estimates | `plans/cursor/strategic-roadmap-reframe-53be/README.md` |
 | Locked decisions, personas, rejections | `plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` |
 | Quantitative gates | `plans/cursor/strategic-roadmap-reframe-53be/validation_gates.md`, `kill_commit_gates.md` |
-| Vocabulary (`Phase` = S1…, `Stage` = S1.A…) | `plans/_governance/glossary.md` |
-| Authoring / executing tactical plans | `plans/_governance/README.md` → `plan_registry.md` |
+| Vocabulary (`Phase` = S1…, `Stage` = S1.A…) | `governance/glossary.md` |
+| Authoring / executing tactical plans | `governance/README.md` → `plan_registry.md` |
 | Resolved alignment log (2026-05-01) | `design_docs/10_Current_State/Strategic_doc_conflicts_pending_direction.md` |
 
 This document outlines the **historical** high-level trajectory (pre-S1-reframe vocabulary), tracking evolution from local Alpha toward hosted beta. **Do not** use its Phase 1/2/Track structure for new execution planning.
 
 ## Terminology and Execution Model
 
-- **Phase / Stage:** **Canonical** meanings are **Phase S1…S6** and **Stage S1.A…** (`plans/_governance/glossary.md`). Older prose in this vault may say “Phase 1/2”; treat that as **historical** unless the file has an explicit banner.
+- **Phase / Stage:** **Canonical** meanings are **Phase S1…S6** and **Stage S1.A…** (`governance/glossary.md`). Older prose in this vault may say “Phase 1/2”; treat that as **historical** unless the file has an explicit banner.
 - **Program increment:** A large body of work made of epics, implementation plans, and validation loops—measured in weeks/months, not in a single chat turn or one commit.
 - **Epic:** A major body of work inside a **stage** or legacy program block (for example, OAuth rollout, dashboard parity, CI/CD baseline).
 - **Task:** A scoped implementation unit that can usually be completed in one focused work session.
@@ -27,7 +27,7 @@ This document outlines the **historical** high-level trajectory (pre-S1-reframe 
 
 ## Rigid feature dependencies (API-first pipeline)
 
-To prevent clients and the backend from drifting out of sync, **new work** follows this pipeline (see also `plans/_governance/` and workspace `finance_manager_web/README.md`):
+To prevent clients and the backend from drifting out of sync, **new work** follows this pipeline (see also `governance/` and workspace `finance_manager_web/README.md`):
 
 1. **API first:** No GUI or CLI feature ships until the API contract and payloads are defined and stable for the slice.
 2. **CLI verification:** Integrate and test via `finance_manager_cli` as the baseline integration path.

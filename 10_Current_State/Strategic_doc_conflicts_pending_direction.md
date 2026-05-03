@@ -1,6 +1,6 @@
 # Strategic alignment — conflict resolutions (2026-05-01)
 
-**Canonical strategy:** `plans/cursor/strategic-roadmap-reframe-53be/` + `plans/_governance/glossary.md`.
+**Canonical strategy:** `plans/cursor/strategic-roadmap-reframe-53be/` + `governance/glossary.md`.
 
 The table in the 2026-05-01 design-docs sync that listed “pending HitM direction” has been **resolved** using the suggested options. This file is now a short **audit trail** only.
 

@@ -1,6 +1,6 @@
 # Beta Execution Board (Parallel Workstream View)
 
-> **Superseded for new work (2026-05-01).** Canonical phase/stage is **S1.B** in `plans/cursor/strategic-roadmap-reframe-53be/`. Tactical execution (drift cleanup, S0 fixes, per-feature color cycle) lives under **`plans/cursor/s1b/`** and `plans/_governance/plan_registry.md`. This board remains a **continuity ledger** for the pre-governance “beta prep” IDs and cycle log; do not treat Reflex-era rows as current architecture.
+> **Superseded for new work (2026-05-01).** Canonical phase/stage is **S1.B** in `plans/cursor/strategic-roadmap-reframe-53be/`. Tactical execution (drift cleanup, S0 fixes, per-feature color cycle) lives under **`plans/cursor/s1b/`** and `governance/plan_registry.md`. This board remains a **continuity ledger** for the pre-governance “beta prep” IDs and cycle log; do not treat Reflex-era rows as current architecture.
 
 ## Purpose
 
@@ -15,7 +15,7 @@ Originally: a single execution board for “Necessary Right Now” hosted-beta p
 | **Phase / stage** | **S1** — **S1.B** (drift cleanup + research; tight invite beta, not “public launch”). |
 | **Flagship GUI** | `finance_manager_web` (React/Vite SPA). **`finance_manager_reflex` archived** — not in prod path. |
 | **Runtime** | Blue/green **API + web** behind workspace/VPS **proxy on :8443** (see `design_docs/40_System_Design/05_Deployment_Strategy.md`, ecosystem `AGENTS.md`). Dev VPS: `dev@159.198.75.194`, app root `~/finance_manager`. |
-| **Deploy discipline** | One feature at a time on **inactive** color; CPPR+D per `plans/_governance/deployment_protocol.md` and `branching_guidelines.md`. |
+| **Deploy discipline** | One feature at a time on **inactive** color; CPPR+D per `governance/deployment_protocol.md` and `branching_guidelines.md`. |
 | **Distribution** | **Not** distribution-ready; **S0** email uniqueness (and related drift) tracked in `plans/cursor/s1b/drift-cleanup/`. |
 
 ## Priority Definitions
@@ -246,7 +246,7 @@ These are intentionally deferred from Phase 2 launch gates and should be orchest
 
 ### Cycle 7 (2026-04-30, post-beta huddle — strategic + governance lock)
 
-- Scope: reconcile roadmap vocabulary with **canonical S1–S6**, **S1.B** entry, **PH-first** market, **web** flagship, **Reflex archival**, per-feature **inactive-color** workflow, and **`plans/_governance/`** + **`plans/cursor/s1b/`** hierarchy.
+- Scope: reconcile roadmap vocabulary with **canonical S1–S6**, **S1.B** entry, **PH-first** market, **web** flagship, **Reflex archival**, per-feature **inactive-color** workflow, and **`governance/`** + **`plans/cursor/s1b/`** hierarchy.
 - Outcomes:
   - Execution surface for “what we do next” moved to **`plans/cursor/s1b/`** (drift cleanup task pack + research stubs).
   - This board explicitly **superseded** for net-new task IDs; legacy `BETA-P0-*` rows kept with **Web**/**VPS** wording.

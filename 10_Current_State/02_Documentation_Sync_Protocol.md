@@ -3,7 +3,7 @@
 ## Purpose
 Keep `design_docs` aligned with implementation work so planning, architecture, and release decisions remain trustworthy.
 
-**Roadmap and phase truth** live in `plans/cursor/strategic-roadmap-reframe-53be/` (multi-year model, S1 stages, validation gates). **Plan operations** (authoring, lifecycle, registry, deployment) live in `plans/_governance/`. When sync touches sequencing or "what is current," update those plans first or cite them; use `design_docs/20_Roadmap/` for deep historical context and feature lists unless a file is explicitly refreshed.
+**Roadmap and phase truth** live in `plans/cursor/strategic-roadmap-reframe-53be/` (multi-year model, S1 stages, validation gates). **Plan operations** (authoring, lifecycle, registry, deployment) live in `governance/`. When sync touches sequencing or "what is current," update those plans first or cite them; use `design_docs/20_Roadmap/` for deep historical context and feature lists unless a file is explicitly refreshed.
 
 ## Trigger Conditions
 

@@ -7,4 +7,4 @@ Material under `20_Roadmap/_historical/` is **not** current execution guidance. 
 | `orchestration_manager/` | Legacy orchestration packet layout (API + Reflex era). |
 | `Calendar_Phase1_Contract_and_UI.md` | Calendar contract notes from the Reflex calendar program; API shapes may still apply—verify against live API + web client. |
 
-New plans: `plans/cursor/<phase-stage>/<sub-plan>/`. Vocabulary: `plans/_governance/glossary.md`.
+New plans: `plans/cursor/<phase-stage>/<sub-plan>/`. Vocabulary: `governance/glossary.md`.

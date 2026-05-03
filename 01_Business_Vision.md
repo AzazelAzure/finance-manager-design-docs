@@ -78,5 +78,5 @@ S1–S6 multi-year roadmap; canonical at `plans/cursor/strategic-roadmap-reframe
 ## References
 
 Strategic Plan canonical: `plans/cursor/strategic-roadmap-reframe-53be/README.md`.
-Operating governance: `plans/_governance/`.
-Vocabulary: `plans/_governance/glossary.md`.
+Operating governance: `governance/`.
+Vocabulary: `governance/glossary.md`.

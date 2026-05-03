@@ -1,6 +1,6 @@
 # Beta Launch Cutline and Dashboard-Centric Transition
 
-> **Canonical context (2026-05-01):** Phase/stage vocabulary and execution live in `plans/cursor/strategic-roadmap-reframe-53be/` and `plans/_governance/`. This document describes the **invite-beta cutline** and **dashboard IA** intent in product language; it does **not** override the strategic plan or `plan_registry.md`.
+> **Canonical context (2026-05-01):** Phase/stage vocabulary and execution live in `plans/cursor/strategic-roadmap-reframe-53be/` and `governance/`. This document describes the **invite-beta cutline** and **dashboard IA** intent in product language; it does **not** override the strategic plan or `plan_registry.md`.
 
 ## Purpose
 
@@ -58,7 +58,7 @@ For owner lanes, legacy `BETA-P0` IDs, and cycle history, see [Beta Execution Bo
 
 ## Execution triggers
 
-- Core-flow defect from beta checklist → immediate fix queue (severity per `plans/_governance/glossary.md`).
+- Core-flow defect from beta checklist → immediate fix queue (severity per `governance/glossary.md`).
 - Enhancement that does not affect invite-beta cutline → S1.B backlog / sub-plan.
 - New dashboard data need → API contract task first, then **web**.
-- Runtime testing → `Runtime_Signup_Sheet.md` + `Runtime_Owner_Handoff_Template.md` + `plans/_governance/execution_protocols.md` gates as applicable.
+- Runtime testing → `Runtime_Signup_Sheet.md` + `Runtime_Owner_Handoff_Template.md` + `governance/execution_protocols.md` gates as applicable.
