@@ -1,6 +1,6 @@
 # Phase Execution Triggers and Breakpoints (historical only)
 
-> **Do not execute new work from this document.** It preserves pre–S1-reframe "Phase 1.5 / Phase 2" language. **Canonical** triggers, stage exits, and numeric validation: `plans/cursor/strategic-roadmap-reframe-53be/validation_gates.md` and `kill_commit_gates.md`. Body text below was updated 2026-05-01 to say **web** where it previously said **Reflex** for the flagship GUI; narrative phase names remain legacy.
+> **Do not execute new work from this document.** It preserves pre–S1-reframe "Phase 1.5 / Phase 2" language. **Canonical** triggers, stage exits, and numeric validation: `strategy/strategic-roadmap-reframe-53be/validation_gates.md` and `kill_commit_gates.md`. Body text below was updated 2026-05-01 to say **web** where it previously said **Reflex** for the flagship GUI; narrative phase names remain legacy.
 
 ## Purpose
 Define a repeatable roadmap planning structure with hard decision gates, phase triggers, and verification checkpoints for multi-repo rollout.
@@ -155,7 +155,7 @@ Define a repeatable roadmap planning structure with hard decision gates, phase t
   2. `design-docs-sync` routine
 - Any phase or milestone scope change triggers:
   1. `roadmap-rollout-planning` routine
-  2. Strategic plan / validation gate refresh in `plans/cursor/strategic-roadmap-reframe-53be/` (and `design_docs/` when behavior changes)
+  2. Strategic plan / validation gate refresh in `strategy/strategic-roadmap-reframe-53be/` (and `design_docs/` when behavior changes)
 - Any `[Now]` runtime-dependent validation wave triggers:
   1. Runtime owner assignment in `design_docs/30_Releases/Runtime_Signup_Sheet.md`
   2. Breakpoint-based handoff logging in `design_docs/30_Releases/Runtime_Owner_Handoff_Template.md`

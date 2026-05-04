@@ -4,7 +4,7 @@
 
 ## Overview
 
-Finance Manager is **PH-first**. All marketing, distribution, content, and product decisions optimize for PH. US/EU support continues passively (existing testers grandfathered) but is not a development priority until specific trigger conditions fire (per `plans/cursor/strategic-roadmap-reframe-53be/PARKING_LOT.md` P-6).
+Finance Manager is **PH-first**. All marketing, distribution, content, and product decisions optimize for PH. US/EU support continues passively (existing testers grandfathered) but is not a development priority until specific trigger conditions fire (per `strategy/strategic-roadmap-reframe-53be/PARKING_LOT.md` P-6).
 
 ## Active Locale (PH)
 
@@ -58,6 +58,6 @@ Finance Manager is **PH-first**. All marketing, distribution, content, and produ
 
 ## References
 
-- Strategic context: `plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` §3.8 (PH-first lock).
-- Parking lot: `plans/cursor/strategic-roadmap-reframe-53be/PARKING_LOT.md` P-6 (US re-engagement trigger).
-- S2 phase doc: `plans/cursor/strategic-roadmap-reframe-53be/phases/S2_ph_vertical_hardening.md` W5 (retention investment).
+- Strategic context: `strategy/strategic-roadmap-reframe-53be/00_strategic_context.md` §3.8 (PH-first lock).
+- Parking lot: `strategy/strategic-roadmap-reframe-53be/PARKING_LOT.md` P-6 (US re-engagement trigger).
+- S2 phase doc: `strategy/strategic-roadmap-reframe-53be/phases/S2_ph_vertical_hardening.md` W5 (retention investment).

@@ -1,6 +1,6 @@
 # Phase 2: Beta Preparation & Hosting Infrastructure
 
-> **HISTORICAL REFERENCE ONLY (as of 2026-04-30).** This document refers to the pre-huddle "Phase 2" structure (Beta Preparation + Hosting Infrastructure) and is superseded by the canonical Strategic Plan at `plans/cursor/strategic-roadmap-reframe-53be/`. The work described here was effectively completed during S1.A in the canonical model — beta launched 2026-04-29 on VPS with web flagship + blue-green proxy + API. The original "Phase 2" is now distributed across canonical Stages S1.A (completed), S1.B (research/cleanup, active), and S1.C (Founding Beta, pending).
+> **HISTORICAL REFERENCE ONLY (as of 2026-04-30).** This document refers to the pre-huddle "Phase 2" structure (Beta Preparation + Hosting Infrastructure) and is superseded by the canonical Strategic Plan at `strategy/strategic-roadmap-reframe-53be/`. The work described here was effectively completed during S1.A in the canonical model — beta launched 2026-04-29 on VPS with web flagship + blue-green proxy + API. The original "Phase 2" is now distributed across canonical Stages S1.A (completed), S1.B (research/cleanup, active), and S1.C (Founding Beta, pending).
 >
 > Preserved for context and audit trail; do not use as the source of truth for ongoing work.
 

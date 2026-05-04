@@ -1,6 +1,6 @@
 # API Feature Roadmap (Post-v1.0 Evolution)
 
-> **2026-05-01:** Strategic phase map and PH-first constraints are **canonical** in `plans/cursor/strategic-roadmap-reframe-53be/`. This file retains **API capability sketches**; treat "Reflex" mentions in body text as **historical** unless explicitly updated — flagship client is **`finance_manager_web`**.
+> **2026-05-01:** Strategic phase map and PH-first constraints are **canonical** in `strategy/strategic-roadmap-reframe-53be/`. This file retains **API capability sketches**; treat "Reflex" mentions in body text as **historical** unless explicitly updated — flagship client is **`finance_manager_web`**.
 
 **Context:** The API is currently at v1.0 and functional. However, as the **web** frontend and hosted beta scale, the API must evolve to support new requirements, offload client math, and harden security.
 **Roadmap semantics:** "Phase" entries here represent major backend programs containing multiple epics and many implementation tasks over time.
@@ -35,7 +35,7 @@
 
 **Goal:** Offload the heaviest calculations and secure the data.
 
-- **Strategic timing:** Serious production ZK / Rust middleware work is **gated to S5** in `plans/cursor/strategic-roadmap-reframe-53be/` (not an implied “next quarter” from this legacy heading).
+- **Strategic timing:** Serious production ZK / Rust middleware work is **gated to S5** in `strategy/strategic-roadmap-reframe-53be/` (not an implied “next quarter” from this legacy heading).
 - **Rust Calculators:** Integrate the custom Rust calculators (developed in parallel) into the Django API's calculation pipeline to speed up heavy math.
 - **Data Migration Tooling:** Support the Celery/Redis (or Rust-native) tools required to migrate and encrypt existing user data once the `finance_manager_crypto` layer goes live.
 - **Repo and learning:** AI-orchestrated Rust implementation and audit milestones per strategic context §3.2; defer detailed scheduling to `phases/S5_*.md` when that phase approaches.

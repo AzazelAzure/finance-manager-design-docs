@@ -18,12 +18,12 @@ Track where the workspace enforces the Slack-first PR authorization protocol so 
 
 | Gate | Enforced In |
 |---|---|
-| 1) Feature-branch-only implementation | `.cursor/rules/core-standards.mdc`, `.cursor/rules/git-repo-workflow.mdc`, `plans/templates/GEMINI_PLAN_TEMPLATE.md`, `plans/templates/GEMINI_PLAN_TEMPLATE_V2.md`, `plans/templates/GEMINI_PLAN_TEMPLATE_QUICK.md` |
+| 1) Feature-branch-only implementation | `.cursor/rules/core-standards.mdc`, `.cursor/rules/git-repo-workflow.mdc`, `governance/plan_template.md` |
 | 2) Slack PR announcement | `.cursor/rules/git-repo-workflow.mdc`, `.cursor/skills/pr-ops-merge-readiness/SKILL.md`, `.cursor/skills/multi-repo-orchestration/SKILL.md`, `.cursor/rules/agent-delegation.mdc`, `design_docs/30_Releases/Git_Policy_Quickstart.md`, `design_docs/30_Releases/Subagent_Multi_Repo_Routine.md` |
 | 3) Wait/read Slack authorization | `.cursor/skills/orchestration-manager/SKILL.md`, `.cursor/skills/pr-ops-merge-readiness/SKILL.md`, `.cursor/skills/multi-repo-orchestration/SKILL.md`, `.cursor/rules/agent-delegation.mdc`, `.cursor/skills/orchestration-manager/AGENT_PROMPT_TEMPLATE.md` |
 | 4) Slack vs GitHub reconciliation | `.cursor/rules/core-standards.mdc`, `.cursor/rules/git-repo-workflow.mdc`, `.cursor/skills/orchestration-manager/SKILL.md`, `.cursor/skills/pr-ops-merge-readiness/SKILL.md`, `.cursor/skills/multi-repo-orchestration/SKILL.md`, `design_docs/30_Releases/Git_and_Workflow_Strategy.md`, `design_docs/30_Releases/Git_Policy_Quickstart.md`, `design_docs/30_Releases/Subagent_Multi_Repo_Routine.md`, `design_docs/hive_finances_manager/00_Hive_Protocol.md` |
 | 5) Conflict mismatch => blocked | `.cursor/skills/orchestration-manager/SKILL.md`, `.cursor/skills/pr-ops-merge-readiness/SKILL.md`, `.cursor/rules/git-repo-workflow.mdc`, `design_docs/30_Releases/pr_status.md`, `design_docs/hive_finances_manager/00_Hive_Protocol.md`, `design_docs/30_Releases/Git_and_Workflow_Strategy.md` |
-| 6) Completion criteria updated | `plans/templates/GEMINI_PLAN_TEMPLATE.md`, `plans/templates/GEMINI_PLAN_TEMPLATE_V2.md`, `plans/templates/GEMINI_PLAN_TEMPLATE_QUICK.md` |
+| 6) Completion criteria updated | `governance/plan_template.md` |
 | 7) Handoff contract updated | `.cursor/skills/shared-subagent-handoff/SKILL.md`, `design_docs/30_Releases/Git_Branch_Signup_Sheet.md` |
 
 ## Operational Notes

@@ -4,7 +4,7 @@
 Define the Beta-critical API contract expectations shared across `finance_manager_api`, `finance_manager_cli`, and **`finance_manager_web`** (flagship SPA). `finance_manager_reflex` is **archived** and is not a verification target.
 
 ## Scope
-- Horizon: tight hosted **beta** (canonical **S1.B**); see `plans/cursor/strategic-roadmap-reframe-53be/` for phase language.
+- Horizon: tight hosted **beta** (canonical **S1.B**); see `strategy/strategic-roadmap-reframe-53be/` for phase language.
 - Focus: auth + core finance CRUD + dashboard/snapshot read flows.
 - Excludes: `[Post-Launch Beta]` and `[Far Future]` items.
 
@@ -55,4 +55,4 @@ local-machine integration smoke checklist.
 - API owner lane: `finance_manager_api/`
 - CLI owner lane: `finance_manager_cli/`
 - Web owner lane: `finance_manager_web/`
-- Orchestration and gate status tracked in `design_docs/20_Roadmap/Beta_Execution_Board.md` (superseded for new IDs by `plans/cursor/s1b/`).
+- Orchestration and gate status tracked in `design_docs/20_Roadmap/Beta_Execution_Board.md` (superseded for new IDs by `plans/S1/S1.B/`).

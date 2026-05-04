@@ -1,12 +1,12 @@
 # Beta Launch Cutline and Dashboard-Centric Transition
 
-> **Canonical context (2026-05-01):** Phase/stage vocabulary and execution live in `plans/cursor/strategic-roadmap-reframe-53be/` and `plans/_governance/`. This document describes the **invite-beta cutline** and **dashboard IA** intent in product language; it does **not** override the strategic plan or `plan_registry.md`.
+> **Canonical context (2026-05-01):** Phase/stage vocabulary and execution live in `strategy/strategic-roadmap-reframe-53be/` and `governance/`. This document describes the **invite-beta cutline** and **dashboard IA** intent in product language; it does **not** override the strategic plan or `plan_registry.md`.
 
 ## Purpose
 
 Define what was required to reach a **server-ready, invite-only tight beta** versus what is intentionally **post-launch / S1.B+** quality work. The flagship GUI is `**finance_manager_web`** (React/Vite). `**finance_manager_reflex` is archived** (2026-04-30) and must not appear as an execution dependency.
 
-For owner lanes, legacy `BETA-P0` IDs, and cycle history, see [Beta Execution Board](Beta_Execution_Board.md) (superseded for *new* task IDs by `plans/cursor/s1b/`).
+For owner lanes, legacy `BETA-P0` IDs, and cycle history, see [Beta Execution Board](Beta_Execution_Board.md) (superseded for *new* task IDs by `plans/S1/S1.B/`).
 
 ## Scope
 
@@ -32,7 +32,7 @@ For owner lanes, legacy `BETA-P0` IDs, and cycle history, see [Beta Execution Bo
 5. **Web UX baseline:** Critical dashboard and CRUD flows stable on mobile and desktop viewports where in scope.
 6. **Deploy:** Scripted or CI-driven path; runtime bundle flow documented where used (`deploy/SERVER_BETA_INSTALL.md`).
 
-**Distribution note (S1.B):** scaling invites remains **blocked** until **S0** items in `plans/cursor/s1b/drift-cleanup/` close (e.g. email uniqueness).
+**Distribution note (S1.B):** scaling invites remains **blocked** until **S0** items in `plans/S1/S1.B/drift-cleanup/` close (e.g. email uniqueness).
 
 ## Phase B: Dashboard-centric consolidation (post–tight-beta QoL)
 
@@ -58,7 +58,7 @@ For owner lanes, legacy `BETA-P0` IDs, and cycle history, see [Beta Execution Bo
 
 ## Execution triggers
 
-- Core-flow defect from beta checklist → immediate fix queue (severity per `plans/_governance/glossary.md`).
+- Core-flow defect from beta checklist → immediate fix queue (severity per `governance/glossary.md`).
 - Enhancement that does not affect invite-beta cutline → S1.B backlog / sub-plan.
 - New dashboard data need → API contract task first, then **web**.
-- Runtime testing → `Runtime_Signup_Sheet.md` + `Runtime_Owner_Handoff_Template.md` + `plans/_governance/execution_protocols.md` gates as applicable.
+- Runtime testing → `Runtime_Signup_Sheet.md` + `Runtime_Owner_Handoff_Template.md` + `governance/execution_protocols.md` gates as applicable.

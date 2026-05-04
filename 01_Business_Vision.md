@@ -4,7 +4,7 @@
 
 ## Overview
 
-The Finance Manager is a PH-first SaaS that helps people on thin margins decide what they can actually spend before payday. Built and operated by a single human (HitM) with AI agent workforce. Strategic plan canonical at `plans/cursor/strategic-roadmap-reframe-53be/`.
+The Finance Manager is a PH-first SaaS that helps people on thin margins decide what they can actually spend before payday. Built and operated by a single human (HitM) with AI agent workforce. Strategic plan canonical at `strategy/strategic-roadmap-reframe-53be/`.
 
 ## The Wedge (Single Source of Brand Truth)
 
@@ -33,7 +33,7 @@ The original "Average Joe" framing was a target list, not a strategy. Replaced b
 
 ## Monetization Strategy
 
-**Subscription-only** (locked 2026-04-30 post-beta huddle). Ads and user-data monetization formally rejected (`plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` §4).
+**Subscription-only** (locked 2026-04-30 post-beta huddle). Ads and user-data monetization formally rejected (`strategy/strategic-roadmap-reframe-53be/00_strategic_context.md` §4).
 
 ### Tiers (PH-anchored pricing)
 
@@ -45,7 +45,7 @@ The original "Average Joe" framing was a target list, not a strategy. Replaced b
 | Founding Lifetime | ₱999–₱1,499 one-time | **First 100 seats** hard cap (planning lock 2026-05-01) |
 | Honorary US Founder | $0 | US testers grandfathered (pre-PH-pivot era) |
 
-Full pricing model and unit economics at `plans/cursor/strategic-roadmap-reframe-53be/01_unit_economics_and_costs.md`.
+Full pricing model and unit economics at `strategy/strategic-roadmap-reframe-53be/01_unit_economics_and_costs.md`.
 
 ## Core Competitive Advantages
 
@@ -56,7 +56,7 @@ Full pricing model and unit economics at `plans/cursor/strategic-roadmap-reframe
 
 ## Strategic Phases
 
-S1–S6 multi-year roadmap; canonical at `plans/cursor/strategic-roadmap-reframe-53be/`.
+S1–S6 multi-year roadmap; canonical at `strategy/strategic-roadmap-reframe-53be/`.
 
 | Phase | Focus | Status |
 |---|---|---|
@@ -77,6 +77,6 @@ S1–S6 multi-year roadmap; canonical at `plans/cursor/strategic-roadmap-reframe
 
 ## References
 
-Strategic Plan canonical: `plans/cursor/strategic-roadmap-reframe-53be/README.md`.
-Operating governance: `plans/_governance/`.
-Vocabulary: `plans/_governance/glossary.md`.
+Strategic Plan canonical: `strategy/strategic-roadmap-reframe-53be/README.md`.
+Operating governance: `governance/`.
+Vocabulary: `governance/glossary.md`.
