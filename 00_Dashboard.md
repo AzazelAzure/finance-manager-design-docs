@@ -4,18 +4,18 @@ Welcome to the Finance Manager architecture and design vault. This vault acts as
 
 ## Canonical planning and roadmap (read first)
 
-- **Strategic truth (phases S1–S6, stages, triggers):** `plans/cursor/strategic-roadmap-reframe-53be/README.md` — start here for what is active, what shipped, and what gates what.
-- **Vocabulary and plan lifecycle:** `plans/_governance/glossary.md`, then `plans/_governance/README.md`.
-- **Tactical plan portfolio:** `plans/_governance/plan_registry.md`.
+- **Strategic truth (phases S1–S6, stages, triggers):** `strategy/strategic-roadmap-reframe-53be/README.md` — start here for what is active, what shipped, and what gates what.
+- **Vocabulary and plan lifecycle:** `governance/glossary.md`, then `governance/README.md`.
+- **Tactical plan portfolio:** `governance/plan_registry.md`.
 - **Strategic alignment audit (resolved 2026-05-01):** `design_docs/10_Current_State/Strategic_doc_conflicts_pending_direction.md`
-- **Active stage execution (S1.B):** `plans/cursor/s1b/README.md` (parent workspace; not mirrored on VPS)
+- **Active stage execution (S1.B):** `plans/S1/S1.B/README.md` (parent workspace; not mirrored on VPS)
 
 Historical `design_docs/20_Roadmap/*` Phase 1 / Phase 2 / Track docs remain as **archive context** unless a file header says otherwise; they do not override the strategic plan.
 
 ## 🧭 Vault Structure
 
 ### 1. 🏗️ Current State (tight beta era, S1)
-Documentation on what currently exists, highlighting operational components and areas needing work. **Active stage: S1.B** — stage map and gates: `plans/cursor/strategic-roadmap-reframe-53be/README.md`.
+Documentation on what currently exists, highlighting operational components and areas needing work. **Active stage: S1.B** — stage map and gates: `strategy/strategic-roadmap-reframe-53be/README.md`.
 - [[10_Current_State/00_Alpha_Overview|System Architecture & Alpha Status]]
 
 ### 2. 🧩 Component Architectures (The "How")

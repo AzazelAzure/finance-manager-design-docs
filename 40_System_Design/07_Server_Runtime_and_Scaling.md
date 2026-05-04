@@ -1,6 +1,6 @@
 # Server Runtime, Scaling, and Architecture
 
-> **Regional strategy (resolved 2026-05-01):** Section 2 aligns with **PH-first** go-to-market and passive US presence per `plans/cursor/strategic-roadmap-reframe-53be/00_strategic_context.md` §3.8 and `PARKING_LOT.md` (P-6).
+> **Regional strategy (resolved 2026-05-01):** Section 2 aligns with **PH-first** go-to-market and passive US presence per `strategy/strategic-roadmap-reframe-53be/00_strategic_context.md` §3.8 and `PARKING_LOT.md` (P-6).
 
 This document outlines the goals and roadmap for the Finance Manager server runtime, deployment architecture, and database scaling strategies as the application transitions from local development to a global production environment.
 
@@ -20,7 +20,7 @@ As we move towards production, the physical location and distribution of our ser
 
 ### Rollout Strategy (PH-primary)
 - **Primary market — Philippines (PH):** Product, distribution, billing research, and performance tuning **prioritize PH** users (mobile-first, GCash/Maya constraints). New acquisition spend and localized campaigns target PH.
-- **Passive US / global:** The web app and API remain reachable worldwide; existing non-PH testers may be grandfathered per strategic plan. **No US-targeted acquisition** until explicit trigger conditions are met (`plans/cursor/strategic-roadmap-reframe-53be/PARKING_LOT.md` P-6).
+- **Passive US / global:** The web app and API remain reachable worldwide; existing non-PH testers may be grandfathered per strategic plan. **No US-targeted acquisition** until explicit trigger conditions are met (`strategy/strategic-roadmap-reframe-53be/PARKING_LOT.md` P-6).
 - **Latency and infra:** Monitor API and static asset latency from PH (and diaspora) vantage points; add edge caching or regional read paths when measured pain exceeds agreed thresholds—without reversing PH-first product priorities.
 
 ## 3. Database Architecture & Scaling

@@ -3,7 +3,7 @@
 ## Overview
 The Finance Manager project will utilize a **Multi-Repo Strategy**. Each major component (API, CLI, **web** flagship, Android scaffold, and eventually Rust Middleware) will maintain its own distinct Git repository. **Reflex is archived** (historical evidence only). This allows each component to have its own independent feature rollout schedule, version tags, and CI/CD pipelines.
 
-**Plan and phase governance:** `plans/_governance/README.md` (authoring, registry, lifecycle, deploy). **Strategic roadmap:** `plans/cursor/strategic-roadmap-reframe-53be/`.
+**Plan and phase governance:** `governance/README.md` (authoring, registry, lifecycle, deploy). **Strategic roadmap:** `strategy/strategic-roadmap-reframe-53be/`.
 
 ## Agent Execution Rules (The Git Ecosystem)
 To ensure traceability and roll-back capability, all agents MUST adhere to the following Git workflow during execution:
@@ -41,7 +41,7 @@ Because the components are heavily interdependent but decoupled, new features fo
 6. **CLI Retest:** The CLI verifies that no API changes required by the web client broke the core CLI workflows.
 7. **Release:** Coordinated version tags are cut across all modified repositories.
 
-Per-feature inactive-color workflow: `plans/_governance/branching_guidelines.md`.
+Per-feature inactive-color workflow: `governance/branching_guidelines.md`.
 
 ## Workspace Management
 To manage this multi-repo setup locally, we will use a **Meta-Workspace Repo** (the root directory where these folders reside). This workspace repo will NOT contain the code itself, but rather:
