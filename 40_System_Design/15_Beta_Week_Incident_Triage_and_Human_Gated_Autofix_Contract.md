@@ -9,7 +9,7 @@ This document is optimized for the current pre-production state where blue/green
 ## Scope
 
 - Runtime: VPS + current beta stack
-- Intake: in-app reports, email notifications, and companion workflow channels
+- Intake: in-app reports, **Slack** (or other webhook) notifications to operators, and companion workflow channels; **transactional email on the VPS is not assumed** for beta.
 - Delivery: branch + PR based fixes with explicit approval gates
 
 ## Operating Principle (Beta Week)
@@ -27,13 +27,15 @@ Automation is **not** allowed to:
 - cut traffic between colors autonomously
 - deploy without explicit human approval
 
-## Intake Pipeline (Now)
+## Intake Pipeline (Target for beta)
 
 1. User submits bug/feature request from app entrypoint.
-2. API persists report and emits normalized incident event.
-3. Runtime sends outbound notification email to operator.
-4. Companion ingests event summary and updates execution queue.
-5. Incident is routed into triage lane with severity assignment.
+2. API persists report and emits a **normalized incident event** (durable store — see F-012 plans when implemented).
+3. Runtime notifies operators via **Slack** (recommended: dedicated incidents channel; Incoming Webhook or bot post with structured summary). Email remains optional later; do not block intake on SMTP.
+4. Human or headless companion ingests the Slack message (or queue row) and updates the **execution queue** / triage thread.
+5. Incident is routed into a triage lane with severity assignment per rubric below.
+
+**Slack control plane:** gate templates and CLI bridge live in `governance/execution_protocols.md` and `design_docs/40_System_Design/12_Cursor_CLI_Slack_Cloud_Agent_Bridge.md`. Keep **PR authorization** in `#pull-requests`; use a **separate** incidents channel so bug traffic does not drown task/PR threads (see channel table in doc 12).
 
 ## Normalized Incident Envelope
 

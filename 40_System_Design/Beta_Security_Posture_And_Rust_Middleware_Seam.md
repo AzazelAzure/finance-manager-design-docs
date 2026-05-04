@@ -6,13 +6,15 @@ Separate **what is true for the current server beta** from **future zero-knowled
 
 ## Current beta posture (implemented or explicitly accepted)
 
-| Area | Beta state |
-|------|------------|
-| Transport | HTTPS in production; `Secure` / `SameSite` cookies where applicable |
-| API auth | JWT access tokens; OAuth social login via existing stacks; DRF defaults require authentication for finance routes unless a view is explicitly public (see `finance_manager_api` settings and `drf-spectacular` `SERVE_PERMISSIONS`) |
-| Payloads | **Plaintext JSON** finance data inside the trusted API and between API and Reflex over HTTPS — not end-to-end encrypted with client-side ZK in beta |
+
+| Area          | Beta state                                                                                                                                                                                                                                           |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Transport     | HTTPS in production; `Secure` / `SameSite` cookies where applicable                                                                                                                                                                                  |
+| API auth      | JWT access tokens; OAuth social login via existing stacks; DRF defaults require authentication for finance routes unless a view is explicitly public (see `finance_manager_api` settings and `drf-spectacular` `SERVE_PERMISSIONS`)                  |
+| Payloads      | **Plaintext JSON** finance data inside the trusted API and between API and Reflex over HTTPS — not end-to-end encrypted with client-side ZK in beta                                                                                                  |
 | Reflex tokens | Access/refresh held in browser-readable cookies / state for session continuity — **XSS remains a relevant risk**; mitigated by HTTPS, SameSite, and short UX window; HttpOnly refresh and server-issued cookies are a **follow-up**, not a beta fake |
-| Logging | Operators should **not** rely on raw financial payloads or end-user-chosen strings in default logs; API is moving to key-level summaries and pseudonymous request context (see API changelog) |
+| Logging       | Operators should **not** rely on raw financial payloads or end-user-chosen strings in default logs; API is moving to key-level summaries and pseudonymous request context (see API changelog)                                                        |
+
 
 **ZK / client-side encryption / rolling global keys** are **not** beta launch blockers unless explicitly scheduled on the execution board.
 
@@ -33,7 +35,7 @@ Pick one primary attachment pattern before building production middleware:
 2. **Sidecar / service** — gRPC/HTTP to a co-located Rust process; Python unchanged at the network edge.
 3. **FFI (pyo3/maturin)** — in-process for specific hot paths; tighter coupling, faster local dev.
 
-`design_docs/rust_docs/00_Rust_Overview.md` is updated to name **`finance_manager_rust_middleware`** as the main home for the service/gateway direction; FFI vs gateway is an explicit product/ops choice.
+`design_docs/rust_docs/00_Rust_Overview.md` is updated to name `**finance_manager_rust_middleware`** as the main home for the service/gateway direction; FFI vs gateway is an explicit product/ops choice.
 
 ## Lockfiles (Rust)
 
