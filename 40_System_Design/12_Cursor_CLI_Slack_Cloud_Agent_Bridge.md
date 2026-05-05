@@ -14,6 +14,8 @@ Single manifest for **GitHub cloud agents**, **CI/automation**, and **humans** d
 
 > **⚠️ Pipeline vs Ad-Hoc (2026-05-04):** This document covers **Cursor PA ad-hoc tasking** via `#cli-interface`. For the governed **sprint pipeline** (four-agent model with `#sprint-queue` → `#review-queue` → `#hitm-gate`), see `14_Inter_Agent_Message_Relay_and_Ownership_Contract.md` and `governance/agent_workspace_isolation.md`. Cursor PA remains available for quick unplanned work outside the pipeline.
 
+**`#sprint-queue` workspace tasks (cursor-agent path):** Canonical format is **`sprint-queue-v1`** — fixed field order, **`@Cursor PA`** line 1, **`Task Id:`** line 2 (mandatory or the runner may route to the local daemon). **`BRANCH:`** must include a standard suffix: **`(already checked out)`** or **`(checkout required)`** so automation does not infer git state. **Normative spec:** `governance/sprint_queue_message_spec_v1.md`. **Worked example + slice order:** `plans/S1/S1.B/feat-f007-walkthrough-polish/SLACK_SPRINT_QUEUE.md`. Slack MCP for the IDE often lives under `~/.cursor/plugins/cache/cursor-public/slack/<hash>/mcp.json`, not inside the app repo. **Shelved:** MCP-driven channel/thread routing for cursor-agents (spec bump to v2) is documented in `governance/cursor_pa_slack_visibility.md` and the governance sprint-queue spec’s “Shelved” section.
+
 ## Slack channels
 
 

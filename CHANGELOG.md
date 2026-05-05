@@ -4,6 +4,10 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Changed (2026-05-22 — `#sprint-queue` spec location)
+
+- **`40_System_Design/12_Cursor_CLI_Slack_Cloud_Agent_Bridge.md`:** `#sprint-queue` **`sprint-queue-v1`** contract points to parent-repo [`governance/sprint_queue_message_spec_v1.md`](../governance/sprint_queue_message_spec_v1.md) for the normative spec; F-007 `SLACK_SPRINT_QUEUE.md` for worked examples; **`Task Id:`** spelling aligned with automation.
+
 ### Added (2026-05-05 — inter-agent relay contract)
 
 - **`40_System_Design/14_Inter_Agent_Message_Relay_and_Ownership_Contract.md`:** Versioned **relay envelope** (`schema_version`, `correlation_id`, `owning_entity`, `next_owner`, Slack + GitHub anchors, `allowed_actions` / `forbidden`), **single routing truth**, **idempotent handoffs**, **no silent relay**, and **golden-path** test matrix for **cursor-executor**, **antigravity-executor**, **antigravity-reviewer**, and **Cursor PA** across Slack/GitHub/models.
