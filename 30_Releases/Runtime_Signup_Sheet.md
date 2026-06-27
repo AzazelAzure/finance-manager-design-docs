@@ -13,25 +13,27 @@ Coordinate a single shared runtime across multiple agents during testing windows
   - `design_docs/30_Releases/Git_Owner_Handoff_Template.md`
 
 ## Runtime Session
-- Session ID: `beta-now-cycle-1`
-- Current owner: `Plan Orchestration Manager (Codex)`
-- Runtime mode: `containerized`
+- Session ID: `beta-f012-f014-blue-promotion-2026-06-26`
+- Current owner: `Cursor (cur/s1b/chore/f012-f014-governance)`
+- Runtime mode: `containerized` (VPS blue-green, fm-beta)
 - Current status: `live`
-- Started at: `2026-04-27T04:34:00+08:00`
-- Last updated at: `2026-04-27T22:10:00+08:00`
+- Started at: `2026-06-26T11:37:00+08:00`
+- Last updated at: `2026-06-26T14:31:00+08:00`
 
 ### Current Users
-- Owner: `Plan Orchestration Manager (Codex)` (scope: **S1.B** / hosted beta runtime — update this line when ownership changes)
+- Owner: `Cursor (cur/s1b/chore/f012-f014-governance)` (scope: **S1.B** / F-012+F-013+F-014 API merge `6cdb7d0` promoted to active blue; green is rollback color)
 - Sublet users:
   - Agent: _(none yet)_
     scope: _(n/a)_
     started_at: _(n/a)_
 
 ### Lifecycle Commands (script-only)
-- Last command: `./scripts/fm_services.sh stop && ./scripts/fm_docker.sh start --build && ./scripts/fm_docker.sh status && ./scripts/fm_services.sh status`
+- Last command: `./scripts/fm_server_beta.sh rebuild-color blue && ./scripts/fm_server_beta.sh smoke --color blue && ./scripts/fm_server_beta.sh switch --to blue` (VPS)
 - Last status check:
-  - `scripts/fm_docker.sh status`: _(example)_ `db, api-blue/green, web-blue/green, proxy healthy`
-  - `scripts/fm_services.sh status`: _(example)_ `API stopped` when using container-only mode
+  - `scripts/fm_server_beta.sh status`: active `blue`, inactive `green`; api-blue `healthy`; `celery-worker` and `celery-beat` up
+  - migration `0010_usage_monitoring_f014` shows `[X]` applied on shared DB (entrypoint auto-migrate)
+  - smoke `--color blue`: passed before switch; active API/web return HTTP 200
+  - `celery inspect registered`: `notify_operator`, `send_weekly_feature_requests_email`, and `rollup_daily_usage` all registered (`missing=none`)
 
 ### Queue / Waiting Agents
 - Agent: _(none)_
@@ -45,7 +47,13 @@ Coordinate a single shared runtime across multiple agents during testing windows
 - Transfer timestamp: _(n/a)_
 
 ### Notes
-- Blockers: _No startup disconnect reproduced in containerized mode; observed data-source mismatch between local SQLite and container Postgres._
+- **Celery worker + single beat now LIVE** on VPS (`fm-beta_celery-worker_1`, `fm-beta_celery-beat_1`) and included in `fm_server_beta.sh rebuild-color` after parent PR #67. Worker connected to `redis://redis:6379/0`, `celery@... ready`.
+- **F-014 task registration is deployed:** API PR #38 (`6cdb7d0`) is live on active blue. Worker registers `notify_operator`, `rollup_daily_usage`, and `send_weekly_feature_requests_email`.
+- **Compose-output redaction hotfix is merged/deployed:** parent PR #68 (`8c7bcc4`) is merged and already deployed to VPS. This prevents future `podman-compose up` runs from printing interpolated `.secrets/server.env` values.
+- **Live SMTP proof sent:** queued `notify_operator` event `SMTP_LIVE_TEST` through Celery; worker completed task `47fbd4a7-dc0d-4c13-9a8f-7d945a6efd74` with result `sent:SMTP_LIVE_TEST` in ~4.7s.
+  - SMTP send path = Proton SMTP submission token (not headless Bridge). VPS `.secrets/server.env` now includes SMTP settings for `support@thehivemanager.com` (`EMAIL_HOST=smtp.protonmail.ch`, `EMAIL_PORT=587`, TLS enabled, password present). `celery-worker`/`celery-beat` were recreated after env wiring.
+  - Current state: bug-report POSTs succeed, `notify_operator` sends through SMTP, rollup/digest beat tasks are registered. Migration `0010` is additive and safe for rollback to green.
+- Rollback target is green via `./scripts/fm_server_beta.sh rollback` if needed.
 - Mixed runtime allowed? `no`
 
 ## Status Vocabulary
