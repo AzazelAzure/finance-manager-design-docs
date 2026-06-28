@@ -4,18 +4,18 @@
 Coordinate branch ownership across multiple agents so commit/push responsibility is explicit and only the final active owner performs closeout git operations.
 
 ## Branch Session
-- Session ID: `branch-cycle-1`
-- Branch name: `(set per repo)`
-- Current owner: `(agent name)`
-- Current status: `in_progress`
-- Started at: `(timestamp)`
-- Last updated at: `(timestamp)`
+- Session ID: `f011-landing-reflect-roadmap-2026-06-28`
+- Branch name: `cur/s1b/feat/f011-landing-reflect-roadmap`
+- Current owner: _(released — merged + promoted)_
+- Current status: `closed`
+- Started at: `2026-06-28T16:10:00+08:00`
+- Last updated at: `2026-06-28T16:50:00+08:00`
 
 ### Repo Ownership Map
-- API repo (`finance_manager_api/`)
-  - branch:
-  - owner:
-  - status: in_progress | handoff_pending | ready_for_closeout | closed
+- Web repo (`finance_manager_web/`)
+  - branch: `cur/s1b/feat/f011-landing-reflect-roadmap`
+  - owner: `Cursor (F011)`
+  - status: closed
 - CLI repo (`finance_manager_cli/`)
   - branch:
   - owner:
@@ -26,38 +26,36 @@ Coordinate branch ownership across multiple agents so commit/push responsibility
   - status: in_progress | handoff_pending | ready_for_closeout | closed
 
 ### Current Users
-- Owner:
+- Owner: _(released — unassigned)_
 - Sublet users:
-  - Agent:
-    scope:
-    started_at:
+  - _(none)_
 
 ### Queue / Waiting Agents
-- Agent:
-  requested_scope:
-  requested_at:
-  priority: P0 | P1
+- Agent: _(none)_
+  requested_scope: _(n/a)_
+  requested_at: _(n/a)_
+  priority: P1
 
 ### Ownership Transfer
-- Pending transfer to:
-- Transfer condition:
-- Transfer timestamp:
+- Pending transfer to: _(none)_
+- Transfer condition: _(n/a)_
+- Transfer timestamp: `2026-06-28T11:00:00+08:00` (received from F004 closeout)
 
 ### PR Tracking
-- PR URL:
-- PR status: draft | open | in_review | approved | changes_requested | merged
+- PR URL: Web https://github.com/AzazelAzure/finance-manager-web/pull/90
+- PR status: merged (`8c117ee`); promoted to production active green 2026-06-28
 - Slack channel: `#pull-requests`
-- Slack authorization state: pending | approved | merged | changes_requested | blocked
+- Slack authorization state: merged
 - Required checks:
-  - check:
-    status: pending | pass | fail
+  - check: API CI / Web CI
+    status: pass
 - Required signoffs:
-  - reviewer/agent:
-    status: pending | approved | blocked
+  - reviewer/agent: HitM + agent review
+    status: approved
 
 ### Notes
-- Blockers:
-- Cross-repo dependency notes:
+- **F004 complete:** merged to `main` (migrations through `0013_upcomingexpense_bill_realism_fields`). F001 resumes with migration `0014_*` or later.
+- **F001 complete:** API/Web PRs merged, active blue deploy completed, runtime released. Follow-ups tracked in F001 `runtime_handoff.md`.
 
 ## Status Vocabulary
 
