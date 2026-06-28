@@ -9,12 +9,13 @@ Keep `design_docs` aligned with implementation work so planning, architecture, a
 
 Run documentation sync when any of the following occur:
 
-- API contract changes (payload, endpoint behavior, auth expectations)
-- Reflex flow/state behavior changes
-- CLI command semantics or output behavior changes
+- Django API endpoint or serializer contract changes (`finance_manager_api`)
+- React/Vite component behavior or route changes (`finance_manager_web`)
+- Celery task registration or beat schedule changes
 - Phase scope, milestone order, or rollout assumptions change
 - Cross-repo dependency or blocker status changes
-- PR governance/protocol changes (Slack automation routing, approval gates, mergeability rules)
+- PR governance/protocol changes (agent roles, approval gates, mergeability rules)
+- New governance doc added to `governance/` that supersedes a design_doc reference
 
 ## Sync Routine
 
@@ -46,15 +47,16 @@ Run documentation sync when any of the following occur:
 - Follow-up trigger:
 ```
 
-## Run-Through Example (Transaction Calendar Program)
+## Run-Through Example (Legal Pages + Signup Clickwrap, 2026-06-27)
 
-- Change summary: API introduces calendar aggregates; CLI adds verification path; Reflex calendar consumes contract.
-- Repos touched: API, CLI, Reflex.
-- Branch/PRs: `feature/...` branches with linked per-repo PRs.
+- Change summary: API adds `tos_version`/`tos_accepted_at` fields on `AppProfile` (migration `0011`); Web adds `/privacy`, `/terms`, `/cookies` routes and signup clickwrap checkbox; Celery confirmation email task added.
+- Repos touched: `finance_manager_api` (PR #42), `finance_manager_web` (PRs #66, #67).
+- Branch/PRs: `agy/s1b/feat/legal-pages`, `agy/s1b/feat/signup-clickwrap`.
 - Docs updated:
-  - `design_docs/30_Releases/Subagent_Multi_Repo_Routine.md`
-  - `design_docs/20_Roadmap/Phase_Execution_Triggers_and_Breakpoints.md`
+  - `design_docs/30_Releases/Runtime_Signup_Sheet.md` — new session opened post-deploy
+  - `governance/plan_registry.md` — `PLAN_CROSS_LEGAL_PAGES_2026-06-27` and `PLAN_CROSS_SIGNUP_CLICKWRAP_2026-06-27` moved to Recently Completed
+  - `strategy/current_status.md` §5 — status rows updated to ✅
 - Remaining doc gaps:
-  - Endpoint-level payload examples in API architecture docs.
+  - API architecture doc for `AppProfile` model fields not updated.
 - Follow-up trigger:
-  - Run doc sync again when endpoint contracts are finalized in code.
+  - Run again if clickwrap version field (`tos_version` value) changes in production.

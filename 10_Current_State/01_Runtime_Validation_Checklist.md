@@ -6,19 +6,19 @@ Use this checklist after rebuilds/restarts to prevent stale-image false negative
 
 - Workspace root: `/home/pproctor/Documents/python/finance_manager`
 - Primary control scripts:
-  - `scripts/fm_docker.sh`
+  - `scripts/fm_server_beta.sh` (updated 2026-06-29)
   - `scripts/fm_services.sh`
 
 ## A) Container Runtime (Podman/Docker Compose Path)
 
 1. Rebuild and recreate when validating fresh code:
-  - `./scripts/fm_docker.sh rebuild`
+  - `./scripts/fm_server_beta.sh rebuild-color <color>` (updated 2026-06-29)
 2. Confirm containers are healthy:
-  - `./scripts/fm_docker.sh status`
+  - `./scripts/fm_server_beta.sh status` (updated 2026-06-29)
 3. Confirm frontend route is reachable:
   - `https://financemanager.local:8443`
   - `http://localhost:8080` is also exposed by the local proxy for HTTP-only checks.
-4. If output seems stale, verify startup logs for current run (container names depend on compose project; use `./scripts/fm_docker.sh status` or `podman ps`):
+4. If output seems stale, verify startup logs for current run (container names depend on compose project; use `./scripts/fm_server_beta.sh status` or `podman ps`): (updated 2026-06-29)
   - **API** (e.g. `api-blue` / `api-green` service)
   - **Web** static bundle (e.g. `web-blue` / `web-green` service)
 
