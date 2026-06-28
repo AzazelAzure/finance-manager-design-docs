@@ -8,9 +8,9 @@ Defines how messages are **structured**, **routed**, and **owned** across the fo
 
 **Related:**
 - `governance/agent_workspace_isolation.md` — directory layout, git identity, concurrency rules
-- `design_docs/40_System_Design/12_Cursor_CLI_Slack_Cloud_Agent_Bridge.md` — Cursor PA runner details
-- `scripts/antigravity_slack_runner.py` — Antigravity Slack runner
-- `scripts/cursor_headless_slack_agent.py` — Cursor Slack runner (poller)
+- `design_docs/40_System_Design/12_Cursor_CLI_Slack_Cloud_Agent_Bridge.md` — three-tool model: Claude Code / Cursor / Antigravity (updated 2026-06-29)
+- `scripts/antigravity_slack_runner.py` — deprecated (governance overhaul PR #62) (updated 2026-06-29)
+- `scripts/cursor_headless_slack_agent.py` — deprecated (governance overhaul PR #62) (updated 2026-06-29)
 
 ---
 
@@ -21,9 +21,9 @@ Four identities, each with a dedicated workspace clone. No two share a working d
 | Entity | GitHub Account | Role | Workspace | Runner |
 |--------|---------------|------|-----------|--------|
 | **HitM** | AzazelAzure | Orchestrator + V3 Gate | `~/Documents/python/finance_manager/` | Manual (human) |
-| **cursor-executor** | Proctor-Cursor-Agents | Executor (Cursor auto/flash) | `~/agent-workspaces/cursor-executor/finance_manager/` | `cursor_headless_slack_agent.py` or Cursor PA Socket Mode |
-| **antigravity-executor** | Proctor-Gemini-Executor | Executor (Gemini Flash) | `~/agent-workspaces/antigravity-executor/finance_manager/` | `antigravity_slack_runner.py` |
-| **antigravity-reviewer** | Proctor-Gemini-Agent | Reviewer (Gemini Pro) | `~/agent-workspaces/antigravity-reviewer/finance_manager/` | `antigravity_slack_runner.py` |
+| **cursor-executor** | Proctor-Cursor-Agents | Executor (Cursor auto/flash) | `~/agent-workspaces/cursor-executor/finance_manager/` | three-tool model: Claude Code / Cursor / Antigravity (updated 2026-06-29) |
+| **antigravity-executor** | Proctor-Gemini-Executor | Executor (Gemini Flash) | `~/agent-workspaces/antigravity-executor/finance_manager/` | deprecated (governance overhaul PR #62) (updated 2026-06-29) |
+| **antigravity-reviewer** | Proctor-Gemini-Agent | Reviewer (Gemini Pro) | `~/agent-workspaces/antigravity-reviewer/finance_manager/` | deprecated (governance overhaul PR #62) (updated 2026-06-29) |
 
 **Identity rule:** every relay message names **exactly one** `owning_entity` for the current action and **at most one** `next_owner` (or explicit `none`).
 
@@ -68,7 +68,7 @@ Posted by HitM (Orchestrator) to assign work to an executor:
 SLICE: T04.SL1
 PLAN: plans/S1/S1.B/feat-f007-guided-walkthroughs/
 REPO: finance_manager_web
-BRANCH: cursor/s1b/feat/f007-guided-walkthroughs
+BRANCH: agy/s1b/feat/f007-guided-walkthroughs
 V_TIER: V3
 EXECUTOR: cursor-executor | antigravity-executor
 SCOPE: |
@@ -87,7 +87,7 @@ Posted by an executor after completing a slice:
 SLICE: T04.SL1
 PLAN: plans/S1/S1.B/feat-f007-guided-walkthroughs/
 REPO: finance_manager_web
-BRANCH: cursor/s1b/feat/f007-guided-walkthroughs
+BRANCH: agy/s1b/feat/f007-guided-walkthroughs
 COMMIT: abc1234
 EXECUTOR: cursor-executor
 V_TIER: V1
@@ -130,7 +130,7 @@ Only **one entity** may hold the write lock on a branch at any time. Ownership i
 
 ### Branch Ownership
 
-- **Cursor executor** uses branches: `cursor/s1b/feat/<feature>` or `cursor/s1b/feat/<feature>/t##-<slug>`
+- **Cursor executor** uses branches: `agy/s1b/feat/<feature>` or `agy/s1b/feat/<feature>/t##-<slug>` (updated 2026-06-29)
 - **Antigravity executor** uses branches: `antigravity/s1b/feat/<feature>` or `antigravity/s1b/feat/<feature>/t##-<slug>`
 - **Two executors must NEVER push to the same branch.** If a feature needs both executors (e.g., API + web), they use different branches in different subrepos.
 
@@ -169,9 +169,9 @@ Slack can duplicate delivery. Runners process messages **at-least-once**:
 - HitM does V3 verification
 
 ### Phase 2 (Slack Runners Active)
-- `cursor_headless_slack_agent.py` polls `#sprint-queue` for `cursor-executor` tasks
-- `antigravity_slack_runner.py` polls `#sprint-queue` for `antigravity-executor` tasks (separate instance)
-- A second `antigravity_slack_runner.py` instance polls `#review-queue` for `antigravity-reviewer` tasks
+- `cursor_headless_slack_agent.py` (deprecated; Antigravity Pro handles scheduled automation) (updated 2026-06-29)
+- `antigravity_slack_runner.py` (deprecated; Antigravity Pro handles scheduled automation) (updated 2026-06-29)
+- A second `antigravity_slack_runner.py` instance (deprecated; Antigravity Pro handles scheduled automation) (updated 2026-06-29)
 - Runners auto-reply with results in thread
 
 ### Phase 3 (Full Automation — Future)

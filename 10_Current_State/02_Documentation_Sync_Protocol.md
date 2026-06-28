@@ -9,9 +9,9 @@ Keep `design_docs` aligned with implementation work so planning, architecture, a
 
 Run documentation sync when any of the following occur:
 
-- API contract changes (payload, endpoint behavior, auth expectations) — `finance_manager_api`
-- React/Vite component behavior or route changes — `finance_manager_web`
-- Django Celery task registration or beat schedule changes
+- Django API endpoint or serializer contract changes (`finance_manager_api`)
+- React/Vite component behavior or route changes (`finance_manager_web`)
+- Celery task registration or beat schedule changes
 - Phase scope, milestone order, or rollout assumptions change
 - Cross-repo dependency or blocker status changes
 - PR governance/protocol changes (agent roles, approval gates, mergeability rules)
