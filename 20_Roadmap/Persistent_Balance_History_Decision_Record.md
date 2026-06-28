@@ -7,7 +7,7 @@ Select a persistence strategy for historical balances and define API exposure pl
 Choose **daily snapshot persistence** as the primary strategy for Phase 1 history tracking.
 
 ## Rationale
-- Lower query complexity for time-series reads in Reflex.
+- Lower query complexity for time-series reads in React/Vite (`finance_manager_web`). (updated 2026-06-29)
 - Deterministic reconstruction checks are simpler than event-sourced replay for this stage.
 - Supports straightforward retention and pagination limits.
 
