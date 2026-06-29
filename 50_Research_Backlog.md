@@ -1,5 +1,7 @@
 # Research Backlog
 
+> **Note (2026-06-29):** Active research queue and parking-lot items live in the parent workspace `strategy/research/` and `strategy/parking_lot/`. This file retains durable backlog themes for the vault; prefer `strategy/` for current prioritization.
+
 This document tracks items for investigation and future architectural consideration.
 
 ## 1. Regional Formatting & I18n
