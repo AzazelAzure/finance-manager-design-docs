@@ -4,6 +4,13 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Changed (2026-06-29 — design-docs restructure, D6)
+
+- **Archive moves (T01–T02):** `reflex_docs/` → `_historical/reflex_docs/`; `10_Current_State/00_Alpha_Overview.md` → `_historical/10_Current_State/`; active-sounding `20_Roadmap/*.md` → `20_Roadmap/_historical/`; release-ops overlap (`Git_and_Workflow_Strategy`, `pr_status`, etc.) → `30_Releases/_historical/`. **Retained:** `Runtime_Signup_Sheet.md`, handoff templates.
+- **`00_Dashboard.md`:** Removed dead links (`30_Security/`, `Versioning_and_Contracts`, `Dependency_Management`); repointed archived paths; clarified boundary (design_docs = how-it-works; strategy/governance = roadmap/plan ops).
+- **`10_Current_State/02_Documentation_Sync_Protocol.md`:** Updated boundary table and doc-map for post-restructure layout.
+- **`50_Research_Backlog.md`:** Pointer note to `strategy/research/`.
+
 ### Changed (2026-05-22 — `#sprint-queue` spec location)
 
 - **`40_System_Design/12_Cursor_CLI_Slack_Cloud_Agent_Bridge.md`:** `#sprint-queue` **`sprint-queue-v1`** contract points to parent-repo [`governance/sprint_queue_message_spec_v1.md`](../governance/sprint_queue_message_spec_v1.md) for the normative spec; F-007 `SLACK_SPRINT_QUEUE.md` for worked examples; **`Task Id:`** spelling aligned with automation.

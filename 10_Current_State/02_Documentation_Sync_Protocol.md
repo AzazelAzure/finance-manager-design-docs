@@ -1,9 +1,17 @@
 # Documentation Sync Protocol
 
 ## Purpose
-Keep `design_docs` aligned with implementation work so planning, architecture, and release decisions remain trustworthy.
+Keep `design_docs` aligned with implementation work so architecture and technical state remain trustworthy.
 
-**Roadmap and phase truth** live in `strategy/strategic-roadmap-reframe-53be/` (multi-year model, S1 stages, validation gates). **Plan operations** (authoring, lifecycle, registry, deployment) live in `governance/`. When sync touches sequencing or "what is current," update those plans first or cite them; use `design_docs/20_Roadmap/` for deep historical context and feature lists unless a file is explicitly refreshed.
+## Boundary (post-2026-06-29 restructure)
+
+| Area | Canonical home | design_docs role |
+|------|----------------|------------------|
+| Roadmap / phases / gates | `strategy/strategic-roadmap-reframe-53be/` | Historical context only (`20_Roadmap/_historical/`) |
+| Plan ops / deployment rules | `governance/` (`plan_registry.md`, `branching_guidelines.md`, `deployment_protocol.md`) | No duplicate rule docs; retired copies under `30_Releases/_historical/` |
+| Living strategy state | `strategy/` (`current_status.md`, `anomalies/`, `research/`, `projections/`, etc.) | Cross-link when sync touches sequencing |
+| How the system works | `design_docs/` (this vault) | API/Web/CLI/Rust architecture, current-state checklists, release ops templates |
+| VPS runtime checkout | `design_docs/30_Releases/Runtime_Signup_Sheet.md` | Human log; **live** VPS state comes from `scripts/vps_state.sh` (not this file) |
 
 ## Trigger Conditions
 
@@ -26,9 +34,10 @@ Run documentation sync when any of the following occur:
    - What risks/assumptions shifted
 2. **Map to Docs**
    - Current state: `design_docs/10_Current_State/`
-   - Architecture: `design_docs/api_docs/`, `design_docs/reflex_docs/`, `design_docs/cli_docs/`
-   - Roadmap and phases: **canonical** `strategy/strategic-roadmap-reframe-53be/`; **historical / feature backlog context** `design_docs/20_Roadmap/`
-   - Release operations: `design_docs/30_Releases/`
+   - Architecture: `design_docs/api_docs/`, `design_docs/cli_docs/`, `design_docs/rust_docs/`
+   - Archived Reflex UX reference: `design_docs/_historical/reflex_docs/`
+   - Roadmap and phases: **canonical** `strategy/strategic-roadmap-reframe-53be/`; **historical** `design_docs/20_Roadmap/_historical/`
+   - Release operations: `design_docs/30_Releases/` (signup sheet + handoff templates)
 3. **Apply Focused Edits**
    - Update existing files first.
    - Add new file only when no existing document is a good fit.
