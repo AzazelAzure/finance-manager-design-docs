@@ -13,15 +13,25 @@ Coordinate a single shared runtime across multiple agents during testing windows
   - `design_docs/30_Releases/Git_Owner_Handoff_Template.md`
 
 ## Runtime Session
-- Session ID: `f011-landing-reflect-roadmap-inactive-deploy-2026-06-28`
-- Current owner: `Cursor (cur/s1b/feat/f011-landing-reflect-roadmap)`
+- Session ID: `s1b-inactive-polish-blue-promotion-2026-06-29`
+- Current owner: _(released — unassigned)_
 - Runtime mode: `containerized` (VPS blue-green, fm-beta)
-- Current status: `live`
-- Started at: `2026-06-28T16:15:00+08:00`
-- Last updated at: `2026-06-28T16:50:00+08:00`
+- Current status: `live` (active BLUE after export-share token cleanup; verified 2026-06-30T05:54+08:00)
+- Started at: `2026-06-29T18:33:00+08:00`
+- Last updated at: `2026-06-30T05:54:00+08:00`
 
 ### Current Users
-- Owner: _(released — F-011 promoted to production active green)_
+- Owner: _(released — unassigned)_
+
+### S1.B recurrence + inactive-polish deploy log (2026-06-29) — PROMOTED
+- Morning inactive BLUE deploy: Bill Recurrence Engine API/Web stack on `main` (API #63/#64/#65, Web #91); migration `0017_upcomingexpense_bill_cadence` applied; inactive BLUE smoke passed.
+- Afternoon inactive BLUE polish deploy: pulled `main` on VPS clones and rebuilt inactive **blue** with API `a9f7972` (#66 share-link endpoint shutdown) and Web `64daf28` (#92–#95: share UI removal, dashboard/nav polish, Data Hub/Profile restructure, guide/walkthrough expansion). Manual `smoke --color blue` passed; share endpoint returned `404`.
+- Modal-form tour fix deploy: Web #96 merged and inactive **blue** rebuilt again; deployed Web `ed8d2a2` (disabled broken auto-start Joyride on Quick Add / Transactions / Upcoming modal forms; per-field guide mode retained). Manual `smoke --color blue` passed.
+- HitM verified inactive BLUE checklist items needed before flip; unverified items were live-only/mobile/offline checks.
+- `switch --to blue`: pre-cutover smoke passed; active color switched **green -> blue**.
+- Post-switch status: active **blue**, inactive **green**; `api-blue` + `web-blue` healthy; celery worker/beat and proxy up. Post-switch `smoke --color blue` passed.
+- Deployed heads at cutover: API `a9f7972`, Web `ed8d2a2`.
+- Export-share token cleanup: API PR #72 merged (`9938614`); active **blue** rebuilt from API `main`; migration `0018_revoke_export_share_tokens` applied; `finance_exportsharetoken` count verified at `0`; `smoke --color blue` passed.
 
 ### F-011 deploy log (2026-06-28) — PROMOTED
 - Web PR #90 merged to `main` @ `8c117ee`. Visuals HitM-approved.
@@ -68,8 +78,14 @@ Coordinate a single shared runtime across multiple agents during testing windows
   - _(none)_
 
 ### Lifecycle Commands (script-only)
-- Last command: `./scripts/fm_server_beta.sh switch --to blue && ./scripts/fm_server_beta.sh smoke --color active` (VPS; F-005 deploy)
-- Last status check (2026-06-28T13:27+08):
+- Last command: `./scripts/fm_server_beta.sh switch --to blue && ./scripts/fm_server_beta.sh smoke --color blue` (VPS; S1.B recurrence + inactive-polish promotion)
+- Last status check (2026-06-29T19:03+08):
+  - `scripts/fm_server_beta.sh status`: active **blue**, inactive **green**
+  - `api-blue` / `web-blue`: healthy; `api-green` / `web-green`: healthy (rollback color)
+  - `celery-worker` + `celery-beat`: up
+  - `proxy`: up on `:8080` / `:8443`
+  - active blue smoke: passed
+- Prior status check (2026-06-28T13:27+08):
   - `scripts/fm_server_beta.sh status`: active **blue**, inactive **green**
 - Prior status check (2026-06-28T12:32+08):
   - `scripts/fm_server_beta.sh status`: active **green**, inactive **blue**
@@ -95,6 +111,7 @@ Coordinate a single shared runtime across multiple agents during testing windows
 - **F-001 deploy complete:** pulled API/Web `main`, rebuilt inactive **blue**, applied additive migration `0014`, backfilled balance snapshots, smoked blue, switched active color **green -> blue**, public smoke passed, and released ownership.
 - **F-010 deploy complete:** pulled API/Web `main`, rebuilt inactive **green**, applied additive migration `0015`, smoked green, switched active color **blue -> green**, public smoke passed, and released ownership.
 - **F-005 deploy complete:** pulled API/Web `main`, rebuilt inactive **blue**, applied additive migration `0016_savings_goal`, smoked blue, switched active color **green -> blue**, origin smoke passed (`/finance/savings-goals/` 401, web `/app/goals` 200), and released ownership. Rollback color: **green** (warm).
+- **S1.B recurrence + inactive polish deploy complete:** pulled API/Web `main`, rebuilt inactive **blue**, verified recurrence and polish on inactive, disabled broken modal-form Joyride auto-tours via Web #96, smoked blue, switched active color **green -> blue**, and released ownership. Rollback color: **green** (warm).
 - **Prior closeout:** CI/CD plan (`PLAN_CROSS_CI_CD`), F-012/F-013/F-014 closeout, secret-redaction deploy, and production-UX promotion completed before this F-004 deploy.
 - **Rollback:** inactive **green** retained (warm); `./scripts/fm_server_beta.sh rollback` if needed.
 - **Stale orphans:** legacy `finance-manager-db` / `finance-manager-proxy` containers show `Exited (2 weeks ago)` — harmless pre–blue-green names; optional cleanup on a future maintenance pass.
@@ -163,7 +180,7 @@ Coordinate a single shared runtime across multiple agents during testing windows
 ### Lifecycle Commands (script-only)
 - Last command:
 - Last status check:
-  - `scripts/fm_docker.sh status`:
+  - `scripts/fm_server_beta.sh status`:
   - `scripts/fm_services.sh status`:
 
 ### Queue / Waiting Agents
