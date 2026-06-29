@@ -13,15 +13,26 @@ Coordinate a single shared runtime across multiple agents during testing windows
   - `design_docs/30_Releases/Git_Owner_Handoff_Template.md`
 
 ## Runtime Session
-- Session ID: `s1b-inactive-polish-blue-promotion-2026-06-29`
+- Session ID: `s1b-profile-fix-green-restage-2026-06-30`
 - Current owner: _(released — unassigned)_
 - Runtime mode: `containerized` (VPS blue-green, fm-beta)
-- Current status: `live` (active BLUE after export-share token cleanup; verified 2026-06-30T05:54+08:00)
-- Started at: `2026-06-29T18:33:00+08:00`
-- Last updated at: `2026-06-30T05:54:00+08:00`
+- Current status: `live` (active **GREEN** after Web #97 promotion; inactive **BLUE** warm rollback)
+- Started at: `2026-06-30T07:14:00+08:00`
+- Last updated at: `2026-06-30T07:24:00+08:00`
 
 ### Current Users
-- Owner: _(released — unassigned)_
+- Owner: _(released — unassigned)_ — green promotion complete
+
+### Profile-fix green restage + promotion log (2026-06-30) — PROMOTED
+- Trigger: Web PR **#97** merged to `main` (`9436e3b` — Profile tab black-screen Rules-of-Hooks fix + app/route `ErrorBoundary`). API `main` unchanged (`9938614`, #72); no new migration in this batch.
+- Live status before restage (captured 2026-06-30T07:13+08): active **blue**, inactive **green**; all containers healthy (green stale at F-011 build, up 38h).
+- `scripts/sprint_verify.sh --color green --branch main --repos api,web --smoke --smoke-color inactive --no-cache`: rebuilt inactive **green** (api/web + celery worker/beat); orphan prune `0`; `api-green` healthy in 4s. Checked-out heads: **api-green `9938614`**, **web-green `9436e3b`** (both match `origin/main`).
+- Known anomaly observed: `sprint_verify.sh --smoke` skipped the smoke step (SSH heredoc env passthrough drops `DO_SMOKE`; logged anomaly `2026-06-29_BILL-RECURRENCE_sprint-verify-skips-smoke.md`). Ran smoke manually instead.
+- Pre-flip smoke (captured 2026-06-30T07:19+08): `fm_server_beta.sh smoke --color green` **passed**.
+- HitM authorized flip (2026-06-30): `switch --to green` — pre-cutover smoke passed; active color switched **blue -> green**; post-switch `smoke --color green` passed (captured 2026-06-30T07:24+08).
+- Post-switch status: active **green**, inactive **blue** (warm rollback); deployed heads at cutover: API `9938614`, Web `9436e3b`.
+- Secret-redaction check: rebuild log + smoke output scanned for `--env`/secret patterns — none leaked.
+- Evidence: `deploy/generated/green-restage-2026-06-30/sprint_verify_20260629T231442Z.log` (gitignored).
 
 ### S1.B recurrence + inactive-polish deploy log (2026-06-29) — PROMOTED
 - Morning inactive BLUE deploy: Bill Recurrence Engine API/Web stack on `main` (API #63/#64/#65, Web #91); migration `0017_upcomingexpense_bill_cadence` applied; inactive BLUE smoke passed.
@@ -78,8 +89,11 @@ Coordinate a single shared runtime across multiple agents during testing windows
   - _(none)_
 
 ### Lifecycle Commands (script-only)
-- Last command: `./scripts/fm_server_beta.sh switch --to blue && ./scripts/fm_server_beta.sh smoke --color blue` (VPS; S1.B recurrence + inactive-polish promotion)
-- Last status check (2026-06-29T19:03+08):
+- Last command: `fm_server_beta.sh switch --to green` + `smoke --color green` (Web #97 promotion; active **green**)
+- Last status check (2026-06-30T07:24+08): active **green**, inactive **blue** (warm); post-switch green smoke passed; heads API `9938614`, Web `9436e3b`
+- Prior restage (2026-06-30T07:19+08): `sprint_verify.sh --color green --branch main --repos api,web --no-cache` + manual green smoke
+- Prior status check (2026-06-30T07:13+08): active **blue**, inactive **green**; all containers healthy before restage
+- Prior status check (2026-06-29T19:03+08):
   - `scripts/fm_server_beta.sh status`: active **blue**, inactive **green**
   - `api-blue` / `web-blue`: healthy; `api-green` / `web-green`: healthy (rollback color)
   - `celery-worker` + `celery-beat`: up

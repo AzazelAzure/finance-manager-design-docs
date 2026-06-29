@@ -4,6 +4,10 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Changed (2026-06-30 — Web #97 green promotion)
+
+- **`30_Releases/Runtime_Signup_Sheet.md`:** Log inactive-green restage on `main` (API `9938614`, Web `9436e3b` / PR #97 Profile fix + ErrorBoundary), manual smoke after `sprint_verify.sh --smoke` skip, and active color flip **blue → green** (captured 2026-06-30T07:24+08).
+
 ### Changed (2026-06-29 — design-docs restructure, D6)
 
 - **Archive moves (T01–T02):** `reflex_docs/` → `_historical/reflex_docs/`; `10_Current_State/00_Alpha_Overview.md` → `_historical/10_Current_State/`; active-sounding `20_Roadmap/*.md` → `20_Roadmap/_historical/`; release-ops overlap (`Git_and_Workflow_Strategy`, `pr_status`, etc.) → `30_Releases/_historical/`. **Retained:** `Runtime_Signup_Sheet.md`, handoff templates.
