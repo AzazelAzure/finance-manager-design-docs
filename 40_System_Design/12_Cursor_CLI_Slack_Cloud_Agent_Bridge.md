@@ -1,5 +1,8 @@
 # Cursor CLI ↔ Slack ↔ Cloud Agent Bridge
 
+> [!WARNING]
+> This document describes the legacy Slack bridge infrastructure which is now **deprecated (governance overhaul PR #62, updated 2026-06-30)**. Scheduled automation is now handled natively by Antigravity Pro.
+
 ## Purpose
 
 Single manifest for **GitHub cloud agents**, **CI/automation**, and **humans** describing how to task the headless **Cursor CLI agent** over Slack, which workflows to run, how to stay aligned with **git/PR policy**, and how to choose a **runtime** (local workstation vs future server). Cloud agents should treat this file as the operational contract; pin a short summary in `#cli-interface` and link here.
@@ -105,7 +108,7 @@ TASK: |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | **WORKSPACE_PATH**           | In Slack use `**~/Documents/python/finance_manager`** or `**~/Documents/python/finance_manager/<sub_repo>**` — not `/home/...`. On the runner host, `~` is the operator’s home. | Deployed server: same convention with the appropriate home-relative path in each task.     |
 | **Cursor CLI / `agent`**     | Installed on the machine running the script                                                                                                                                     | Same, on the server host or in an approved runner image.                                   |
-| **Containers / services**    | Follow `scripts/fm_docker.sh` / `scripts/fm_services.sh` and **single runtime owner** in `design_docs/30_Releases/Runtime_Signup_Sheet.md`                                      | Same policy; do not mix modes without documentation.                                       |
+| **Containers / services**    | Follow `scripts/fm_server_beta.sh` / `scripts/fm_services.sh` and **single runtime owner** in `design_docs/30_Releases/Runtime_Signup_Sheet.md` (updated 2026-06-30) | Same policy; do not mix modes without documentation.                                       |
 | **Secrets**                  | `CURSOR_API_KEY`, `SLACK_BOT_TOKEN` in env or secure store                                                                                                                      | Same; prefer secret manager on server.                                                     |
 | **Runtime bundle migration** | Build artifacts with `scripts/server/create_runtime_bundle.sh`; optional single-step push with `scripts/server/push_runtime_bundle.sh` for VPS handoff testing.                 | Prefer artifact push + `scripts/server/verify_release_manifest.sh` over ad-hoc host edits. |
 
