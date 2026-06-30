@@ -6,13 +6,13 @@ The API is built using **Django REST Framework (DRF)** and follows a strict 6-la
 
 ## Documentation Sections
 
-- **[API Overview & Architecture](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/02_Data_Flow_and_Architecture.md)**: Deep dive into the 6-layer architecture and request lifecycle.
-- **[Endpoints & Contracts](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/01_Endpoints_and_Contracts.md)**: Detailed API reference for all endpoints, request/response formats.
-- **[Models Reference](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/03_Models_Reference.md)**: Comprehensive guide to the data models and their fields.
-- **[Business Logic](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/04_Business_Logic_Reference.md)**: Documentation of complex calculations (Snapshots, Bill Matching).
-- **[Authentication & Security](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/05_Authentication_and_Security.md)**: Details on JWT, Social Auth, and hardening measures.
-- **[Data Access Layer](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/06_Data_Access_Layer.md)**: Documentation of query optimizations and database interactions.
-- **[Validators & Tools](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/07_Validators_and_Tools.md)**: Reference for shared validation logic and utilities.
+- **[API Overview & Architecture](02_Data_Flow_and_Architecture.md)**: Deep dive into the 6-layer architecture and request lifecycle.
+- **[Endpoints & Contracts](01_Endpoints_and_Contracts.md)**: Detailed API reference for all endpoints, request/response formats.
+- **[Models Reference](03_Models_Reference.md)**: Comprehensive guide to the data models and their fields.
+- **[Business Logic](04_Business_Logic_Reference.md)**: Documentation of complex calculations (Snapshots, Bill Matching).
+- **[Authentication & Security](05_Authentication_and_Security.md)**: Details on JWT, Social Auth, and hardening measures.
+- **[Data Access Layer](06_Data_Access_Layer.md)**: Documentation of query optimizations and database interactions.
+- **[Validators & Tools](07_Validators_and_Tools.md)**: Reference for shared validation logic and utilities.
 
 ## Core Responsibilities
 

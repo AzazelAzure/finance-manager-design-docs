@@ -4,7 +4,7 @@ This document details the core financial logic and state mutation rules implemen
 
 ## Core Logic Components
 
-### [Calculator](file:///home/pproctor/Documents/python/finance_manager/finance_manager_api/finance/logic/fincalc.py)
+### [Calculator](../../finance_manager_api/finance/logic/fincalc.py)
 
 The `Calculator` class is responsible for pure, read-only financial computations. It handles currency conversion automatically to ensure all totals are presented in the user's `base_currency`.
 
@@ -18,7 +18,7 @@ The `Calculator` class is responsible for pure, read-only financial computations
 
 ---
 
-### [Updater](file:///home/pproctor/Documents/python/finance_manager/finance_manager_api/finance/logic/updaters.py)
+### [Updater](../../finance_manager_api/finance/logic/updaters.py)
 
 The `Updater` class handles stateful mutations and side effects that occur after CRUD operations. It ensures that data remains consistent across different models.
 
@@ -60,4 +60,4 @@ When a transaction is linked to a recurring `UpcomingExpense`, the `Updater` aut
 
 ---
 
-**[Return to Overview](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/00_API_Overview.md)**
+**[Return to Overview](00_API_Overview.md)**

@@ -57,4 +57,4 @@ The API relies on an external dataset for currency conversion, stored in `financ
 
 ---
 
-**[Return to Overview](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/00_API_Overview.md)**
+**[Return to Overview](00_API_Overview.md)**
