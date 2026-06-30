@@ -15,6 +15,7 @@ Roadmap sequencing, governance runbooks, and tactical plans live in the **privat
 | :--- | :--- | :--- |
 | **Guidelines & encryption** | `00_*.md` | Coding guidelines, encryption strategy |
 | **API** | [`api_docs/`](api_docs/00_API_Overview.md) | Endpoints, models, business logic, auth, data access |
+| **Web (flagship SPA)** | [`web_docs/`](web_docs/00_Web_Overview.md) | React client, routing, PWA/offline, pages, build/deploy |
 | **CLI** | [`cli_docs/`](cli_docs/00_CLI_Overview.md) | Command architecture, auth/HTTP, configuration |
 | **Rust** | [`rust_docs/`](rust_docs/00_Rust_Overview.md) | Planned middleware layer (scaffold today) |
 | **System design** | [`40_System_Design/`](40_System_Design/05_Deployment_Strategy.md) | Deployment, logging, PWA/offline, Android sync, security posture |

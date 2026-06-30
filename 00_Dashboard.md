@@ -16,9 +16,10 @@ Welcome to the **active system design** vault. This repository documents how the
 Deep-dives into each system component's structure, contracts, and behavior.
 
 - [[api_docs/00_API_Overview|API Documentation]]
+- [[web_docs/00_Web_Overview|Web Documentation (flagship SPA)]]
 - [[cli_docs/00_CLI_Overview|CLI Documentation]]
 - [[rust_docs/00_Rust_Overview|Rust Middleware (planned)]]
-- **Web (flagship):** implementation and env contract live in workspace `finance_manager_web/README.md` (HTTPS via proxy **:8443** when deployed).
+- **Implementation README:** `finance_manager_web/README.md` (env, lanes, Docker — HTTPS via proxy **:8443** when deployed)
 
 ### System design (`40_System_Design/`)
 

@@ -4,6 +4,9 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Added
+- **`web_docs/` (new section):** Nine-page wiki-style documentation for `finance_manager_web` — architecture, routing, state/offline, API client, PWA sync, pages/features, build/deploy, i18n/tours. Cross-links `api_docs/` and `40_System_Design/12_Web_PWA_*`; avoids dead `30_Releases`/`20_Roadmap` paths and private `strategy/` wikilinks.
+
 ### Changed
 - **`api_docs/` (full rewrite):** Updated all nine API vault pages to reflect tight-beta implementation — decoupled `uid` model, `/finance/` routing, bill cadence engine, F-001 balance history, F-005 savings goals, F-010 export (share tokens removed), PWA idempotency middleware, support intake, Celery beat tasks, and contributor onboarding path. Replaces stale Reflex-centric and pre-recurrence content.
 
