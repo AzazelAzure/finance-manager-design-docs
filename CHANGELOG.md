@@ -4,6 +4,9 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Changed
+- **`api_docs/` (full rewrite):** Updated all nine API vault pages to reflect tight-beta implementation — decoupled `uid` model, `/finance/` routing, bill cadence engine, F-001 balance history, F-005 savings goals, F-010 export (share tokens removed), PWA idempotency middleware, support intake, Celery beat tasks, and contributor onboarding path. Replaces stale Reflex-centric and pre-recurrence content.
+
 ### Added
 - **`README.md`:** Vault index for active system design scope (post-2026-06-30 cleanup).
 
