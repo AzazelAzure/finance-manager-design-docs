@@ -4,6 +4,13 @@ Notable changes to the Obsidian vault: current state, roadmap pointers, system d
 
 ## [Unreleased]
 
+### Added
+- **`README.md`:** Vault index for active system design scope (post-2026-06-30 cleanup).
+
+### Changed
+- **`00_Dashboard.md`:** Reworked navigation — removed dead wikilinks to archived/removed sections (`10_Current_State`, `20_Roadmap`, `30_Releases`, reflex, research); index only tracks `00_*`, `api_docs/`, `cli_docs/`, `rust_docs/`, `40_System_Design/`.
+- **`api_docs/*.md`:** Replaced Obsidian `file:///home/pproctor/...` absolute links with repo-relative paths (ecosystem-relative for API source code).
+
 ### Changed (2026-06-30 — Web #97 green promotion)
 
 - **`30_Releases/Runtime_Signup_Sheet.md`:** Log inactive-green restage on `main` (API `9938614`, Web `9436e3b` / PR #97 Profile fix + ErrorBoundary), manual smoke after `sprint_verify.sh --smoke` skip, and active color flip **blue → green** (captured 2026-06-30T07:24+08).

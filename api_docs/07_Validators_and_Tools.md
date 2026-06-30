@@ -58,4 +58,4 @@ Contains helper functions for building complex ORM queries, particularly those i
 
 ---
 
-**[Return to Overview](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/00_API_Overview.md)**
+**[Return to Overview](00_API_Overview.md)**

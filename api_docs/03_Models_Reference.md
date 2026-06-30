@@ -4,7 +4,7 @@ This document provides a detailed reference for all data models in the Finance M
 
 ## Core Models
 
-### [AppProfile](file:///home/pproctor/Documents/python/finance_manager/finance_manager_api/finance/models.py#L46)
+### [AppProfile](../../finance_manager_api/finance/models.py#L46)
 
 The central user configuration model. Automatically created via signals when a new Django user is registered.
 
@@ -21,7 +21,7 @@ The central user configuration model. Automatically created via signals when a n
 
 ---
 
-### [Transaction](file:///home/pproctor/Documents/python/finance_manager/finance_manager_api/finance/models.py#L188)
+### [Transaction](../../finance_manager_api/finance/models.py#L188)
 
 Records of individual financial movements.
 
@@ -44,7 +44,7 @@ Records of individual financial movements.
 
 ---
 
-### [PaymentSource](file:///home/pproctor/Documents/python/finance_manager/finance_manager_api/finance/models.py#L87)
+### [PaymentSource](../../finance_manager_api/finance/models.py#L87)
 
 Represents financial accounts (Checking, Savings, etc.).
 
@@ -60,7 +60,7 @@ Represents financial accounts (Checking, Savings, etc.).
 
 ---
 
-### [UpcomingExpense](file:///home/pproctor/Documents/python/finance_manager/finance_manager_api/finance/models.py#L125)
+### [UpcomingExpense](../../finance_manager_api/finance/models.py#L125)
 
 Planned or recurring bills used for forecasting.
 
@@ -79,7 +79,7 @@ Planned or recurring bills used for forecasting.
 
 ---
 
-### [FinancialSnapshot](file:///home/pproctor/Documents/python/finance_manager/finance_manager_api/finance/models.py#L254)
+### [FinancialSnapshot](../../finance_manager_api/finance/models.py#L254)
 
 Aggregated financial health data. One per user.
 
@@ -106,4 +106,4 @@ To support high performance and future microservice migration, this project avoi
 
 ---
 
-**[Return to Overview](file:///home/pproctor/Documents/python/finance_manager/design_docs/api_docs/00_API_Overview.md)**
+**[Return to Overview](00_API_Overview.md)**
