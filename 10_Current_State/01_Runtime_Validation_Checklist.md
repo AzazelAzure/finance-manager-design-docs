@@ -4,7 +4,7 @@ Use this checklist after rebuilds/restarts to prevent stale-image false negative
 
 ## Scope
 
-- Workspace root: `/home/pproctor/Documents/python/finance_manager`
+- Workspace root: `<ecosystem-root>` (the cloned finance-manager-ecosystem directory)
 - Primary control scripts:
   - `scripts/fm_server_beta.sh` (updated 2026-06-29)
   - `scripts/fm_services.sh`
