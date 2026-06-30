@@ -1,108 +1,245 @@
 # Models Reference
 
-This document provides a detailed reference for all data models in the Finance Manager API. All models are defined in `finance_manager_api/finance/models.py`.
+Related: [API Overview](00_API_Overview.md) · [Business Rules](03_Business_Rules_and_Invariants.md)
 
-## Core Models
+All domain models live in [`finance/models.py`](../../finance_manager_api/finance/models.py). Custom managers are in [`finance/management/managers.py`](../../finance_manager_api/finance/management/managers.py).
 
-### [AppProfile](../../finance_manager_api/finance/models.py#L46)
+Migrations: `finance/migrations/` (`0001`–`0018` as of tight beta).
 
-The central user configuration model. Automatically created via signals when a new Django user is registered.
+## Architectural note: decoupled `uid`
 
+Most models reference ownership via **`uid`** (`CharField` holding `AppProfile.user_id` as string) and **name-based** links (`source`, `category`, `bill`) rather than Django `ForeignKey`. Exceptions noted below.
 
-| Field            | Type          | Default              | Description                                               |
-| ---------------- | ------------- | -------------------- | --------------------------------------------------------- |
-| `username`       | OneToOneField | -                    | Link to the Django Auth User model.                       |
-| `user_id`        | UUIDField     | `uuid4`              | Primary key and unique identifier used across services.   |
-| `spend_accounts` | JSONField     | `[]`                 | List of source names considered "spending" accounts.      |
-| `base_currency`  | CharField     | `"USD"`              | The default currency for calculations.                    |
-| `timezone`       | CharField     | `"America/New_York"` | User's local timezone for date-based logic.               |
-| `start_of_week`  | IntegerField  | `1`                  | Day of the week (0-6) representing the start of the week. |
-
+Integrity: validators + services + signals (see [Validators & Tools](07_Validators_and_Tools.md)).
 
 ---
 
-### [Transaction](../../finance_manager_api/finance/models.py#L188)
+## AppProfile
 
-Records of individual financial movements.
+Central user configuration. **PK:** `user_id` (UUID). Created automatically on user signup.
 
+| Field | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `username` | `OneToOneField(User)` | — | Django auth user |
+| `user_id` | `UUIDField` | `uuid4` | Primary key; copied to `uid` on other models |
+| `spend_accounts` | `JSONField` (list) | `[]` | Source **names** treated as spendable for STS (not M2M) |
+| `base_currency` | `CharField(3)` | `USD` | Conversion target for aggregates |
+| `timezone` | `CharField` | `America/New_York` | IANA timezone for date boundaries |
+| `start_of_week` | `IntegerField` | `1` | 0=Mon … 6=Sun for calendar UI |
+| `completed_tours` | `JSONField` | `[]` | F-007 guided tour progress |
+| `tos_version` | `CharField` | — | Clickwrap version accepted |
+| `tos_accepted_at` | `DateTimeField` | — | Server-set acceptance time |
+| `sts_window_mode` | `CharField` | `calendar_month` | `calendar_month` or `pay_cycle` (F-004) |
+| `pay_cycle_frequency` | `CharField` | — | `weekly` / `biweekly` / `semimonthly` / `monthly` |
+| `pay_cycle_anchor_date` | `DateField` | — | Anchor for pay-cycle window |
 
-| Field         | Type         | Default | Description                                                  |
-| ------------- | ------------ | ------- | ------------------------------------------------------------ |
-| `date`        | DateField    | -       | The date the transaction occurred.                           |
-| `description` | CharField    | -       | Human-readable description.                                  |
-| `amount`      | DecimalField | `0`     | Financial value (positive for income, negative for expense). |
-| `created_on`  | DateField    | -       | System timestamp of record creation.                         |
-| `category`    | CharField    | -       | Decoupled link to a Category name.                           |
-| `source`      | CharField    | -       | Decoupled link to a PaymentSource name.                      |
-| `currency`    | CharField    | -       | 3-letter currency code (e.g., "USD").                        |
-| `tags`        | JSONField    | `[]`    | List of associated tag names.                                |
-| `tx_id`       | CharField    | -       | Unique business identifier (e.g., TX-12345).                 |
-| `bill`        | CharField    | -       | Optional decoupled link to an UpcomingExpense name.          |
-| `tx_type`     | CharField    | -       | Enum: `EXPENSE`, `INCOME`, `XFER_IN`, `XFER_OUT`.            |
-| `uid`         | CharField    | -       | The `user_id` of the owner.                                  |
-
-
----
-
-### [PaymentSource](../../finance_manager_api/finance/models.py#L87)
-
-Represents financial accounts (Checking, Savings, etc.).
-
-
-| Field      | Type         | Default   | Description                                                   |
-| ---------- | ------------ | --------- | ------------------------------------------------------------- |
-| `source`   | CharField    | -         | Unique name of the source (per user).                         |
-| `acc_type` | CharField    | `UNKNOWN` | Enum: `SAVINGS`, `CHECKING`, `CASH`, `INVESTMENT`, `EWALLET`. |
-| `currency` | CharField    | `"USD"`   | Account currency.                                             |
-| `amount`   | DecimalField | `0`       | Current balance (calculated/synced).                          |
-| `uid`      | CharField    | -         | The `user_id` of the owner.                                   |
-
+**Manager:** `AppProfileManager` — `for_user`, `get_base_currency`, `get_timezone`, etc.
 
 ---
 
-### [UpcomingExpense](../../finance_manager_api/finance/models.py#L125)
+## Transaction
 
-Planned or recurring bills used for forecasting.
+Individual ledger entries.
 
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `uid` | `CharField` | Owner `user_id` string |
+| `tx_id` | `CharField` | Business id `YYYY-MM-DD-XXXXXXXX` (server-generated) |
+| `date` | `DateField` | Transaction date |
+| `created_on` | `DateField` | Record creation date |
+| `description` | `CharField` | Free text |
+| `amount` | `Decimal(10,2)` | Signed per `tx_type` (expenses negative) |
+| `category` | `CharField` | Category **name** (not FK) |
+| `source` | `CharField` | PaymentSource **name** |
+| `currency` | `CharField(3)` | ISO code |
+| `tags` | `JSONField` (list) | Tag name strings |
+| `bill` | `CharField` | Optional UpcomingExpense **name** |
+| `tx_type` | `CharField` | `EXPENSE`, `INCOME`, `XFER_IN`, `XFER_OUT` |
 
-| Field          | Type         | Default | Description                                           |
-| -------------- | ------------ | ------- | ----------------------------------------------------- |
-| `name`         | CharField    | -       | Unique name of the expense (per user).                |
-| `amount`       | DecimalField | -       | Expected amount.                                      |
-| `due_date`     | DateField    | -       | Next date this expense is due.                        |
-| `start_date`   | DateField    | -       | When the recurring cycle starts.                      |
-| `end_date`     | DateField    | -       | Optional termination date.                            |
-| `paid_flag`    | BooleanField | `False` | Whether it has been satisfied for the current period. |
-| `is_recurring` | BooleanField | `False` | Whether it repeats automatically.                     |
-| `uid`          | CharField    | -       | The `user_id` of the owner.                           |
+**Constraints:** `unique_together (tx_id, uid)` · **Ordering:** `-date`
 
-
----
-
-### [FinancialSnapshot](../../finance_manager_api/finance/models.py#L254)
-
-Aggregated financial health data. One per user.
-
-
-| Field                      | Type         | Description                                            |
-| -------------------------- | ------------ | ------------------------------------------------------ |
-| `total_assets`             | DecimalField | Sum of all positive account balances.                  |
-| `safe_to_spend`            | DecimalField | Assets minus upcoming expenses for the period.         |
-| `total_savings`            | DecimalField | Aggregate of all `SAVINGS` accounts.                   |
-| `total_checking`           | DecimalField | Aggregate of all `CHECKING` accounts.                  |
-| `total_monthly_spending`   | DecimalField | Sum of expenses in the current month.                  |
-| `total_remaining_expenses` | DecimalField | Sum of unpaid `UpcomingExpense` records for the month. |
-
+**Manager:** `TransactionManager` — filtering by month, tag (JSON), type, bill linkage, etc.
 
 ---
 
-## Architectural Note: UUID Decoupling
+## PaymentSource
 
-To support high performance and future microservice migration, this project avoids strict database-level Foreign Keys between most models. Instead:
+Account / wallet balances.
 
-- Relationships are maintained via **UUID or unique name strings** (stored in `CharField`).
-- Referential integrity is enforced at the **Application Layer** (Validators and Signals).
-- This prevents database-level locking and allows for easier horizontal scaling.
+| Field | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `source` | `CharField` | — | Unique name per user |
+| `acc_type` | `CharField` | `UNKNOWN` | `SAVINGS`, `CHECKING`, `CASH`, `INVESTMENT`, `EWALLET`, `UNKNOWN` |
+| `currency` | `CharField` | `USD` | Account currency |
+| `amount` | `Decimal(15,2)` | `0` | Current balance (updated by `Updater` on tx writes) |
+| `uid` | `CharField` | — | Owner |
+
+**Constraints:** `unique_together (source, uid)`
+
+Reserved **`unknown`**: system source; protected from user mutation.
+
+---
+
+## UpcomingExpense (bills)
+
+| Field | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `name` | `CharField` | — | Unique per user |
+| `amount` | `Decimal(10,2)` | — | Nominal bill amount |
+| `due_date` | `DateField` | — | Next due date |
+| `start_date` | `DateField` | — | Recurrence anchor |
+| `end_date` | `DateField` | null | Optional end |
+| `paid_flag` | `BooleanField` | `False` | Satisfied for current period |
+| `is_recurring` | `BooleanField` | `False` | Whether bill repeats |
+| `currency` | `CharField` | — | Bill currency |
+| `uid` | `CharField` | — | Owner |
+| `bill_class` | `CharField` | — | `rigid` or `volatile` (F-004) |
+| `planned_partial_amount` | `Decimal` | null | Partial payment plan |
+| `cycle_residual_amount` | `Decimal` | null | Remaining obligation this cycle |
+| `remainder_due_date` | `DateField` | null | When residual is due |
+| `cadence` | `CharField` | `monthly` | Recurrence engine cadence |
+| `custom_interval_days` | `IntegerField` | null | Required when `cadence=custom` |
+
+**Constraints:** `unique_together (name, uid)`; `planned_partial_amount <= amount`; custom cadence requires positive interval days.
+
+---
+
+## Category
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `name` | `CharField` | Unique per user |
+| `uid` | `CharField` | Owner |
+
+System defaults (`expense`, `income`, `transfer`) are protected from destructive API operations.
+
+---
+
+## Tag
+
+One row per user storing **all** tag names:
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `tags` | `JSONField` (list) | All tag strings for user |
+| `uid` | `CharField` | Owner |
+
+---
+
+## FinancialSnapshot
+
+Denormalized dashboard cache — **one row per user** (`uid` PK).
+
+| Field | Description |
+| :--- | :--- |
+| `total_assets` | Sum of account balances (converted) |
+| `safe_to_spend` | Spendable accounts minus unpaid obligations in STS window |
+| `total_savings`, `total_checking`, `total_investment`, `total_cash`, `total_ewallet` | Per-type totals |
+| `total_monthly_spending` | Expenses in current month window |
+| `total_remaining_expenses` | Unpaid bills in STS window |
+| `total_leaks` | Transfer imbalance magnitude (`XFER_IN` + `XFER_OUT` net) |
+
+Rebuilt by `Updater._tx_snapshot_handler` using `Calculator`.
+
+---
+
+## SavingsGoal (F-005)
+
+Uses **real foreign keys** (unlike most domain models):
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `uid` | `FK → AppProfile` | Owner |
+| `source` | `FK → PaymentSource`, `SET_NULL` | Optional linked account |
+| `name` | `CharField` | Goal label |
+| `target_amount` | `Decimal` | Target |
+| `currency` | `CharField` | Goal currency |
+| `target_date` | `DateField` | Target date |
+| `current_amount` | `Decimal` | Progress |
+
+---
+
+## BalanceSnapshot (F-001)
+
+Day-end closing balance per source.
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `uid` | `CharField` | Owner |
+| `source` | `CharField` | Source name |
+| `snapshot_date` | `DateField` | Calendar date |
+| `closing_balance` | `Decimal` | Balance in source currency |
+| `currency` | `CharField` | Source currency at capture |
+
+**Constraints:** `unique_together (uid, source, snapshot_date)` · index `(uid, snapshot_date)`
+
+---
+
+## Operational & support models
+
+### ExportShareToken (audit only)
+
+FK to `AppProfile`. **Endpoints removed 2026-06-29**; migration `0018` cleared rows. Do not build new features against this model.
+
+### IdempotencyRecord (PWA D2)
+
+| Field | Description |
+| :--- | :--- |
+| `uid`, `key_hash` | Unique per user + idempotency key |
+| `method`, `path`, `status_code`, `response_body` | Replay cache |
+
+### SupportTicket (F-012)
+
+| Field | Description |
+| :--- | :--- |
+| `id` | UUID PK |
+| `report_type` | `BUG` / `FEATURE` |
+| `severity`, `nature`, `comment` | User report (redacted on write) |
+| `diagnostic_log_key` | F-013 incident file reference |
+| `emailed` | Digest / notification flags |
+
+### DailyUsageSnapshot (F-014)
+
+Operator DAU/MAU rollup storage.
+
+### InviteChainEvent (F-014)
+
+Growth analytics scaffold — not yet populated in production flows.
+
+### OperatorAlertState
+
+Dedupes threshold alert emails (24h window).
+
+---
+
+## Entity relationship (logical)
+
+```mermaid
+erDiagram
+    User ||--|| AppProfile : username
+    AppProfile ||--o| FinancialSnapshot : uid
+    AppProfile ||--o{ SavingsGoal : uid_FK
+    AppProfile {
+        uuid user_id PK
+        json spend_accounts
+    }
+    Transaction {
+        string uid
+        string source
+        string category
+        string bill
+    }
+    PaymentSource {
+        string uid
+        string source
+    }
+    UpcomingExpense {
+        string uid
+        string name
+    }
+```
+
+Solid lines = real FK; dashed semantics = string `uid` / name coupling.
 
 ---
 
